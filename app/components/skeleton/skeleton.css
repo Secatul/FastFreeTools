@@ -1,0 +1,52 @@
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.skeleton-card {
+  background-color: #f5f5f5; /* Light, subtle background for the card */
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: blink 1.5s infinite ease-in-out; /* Blinking animation */
+}
+
+.skeleton-icon, .skeleton-badge, .skeleton-text {
+  background-color: #e0e0e0; /* Slightly darker gray for the skeleton elements */
+  border-radius: 0.25rem;
+  animation: blink 1.5s infinite ease-in-out; /* Apply the blinking animation */
+}
+
+.skeleton-icon {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+
+.skeleton-badge {
+  height: 24px;
+  width: 100px;
+  border-radius: 0.25rem;
+}
+
+.skeleton-text {
+  height: 20px;
+  border-radius: 0.25rem;
+}
+
+.skeleton-text:first-child {
+  width: 75%; /* Wider for the first text line */
+}
+
+.skeleton-text:last-child {
+  width: 50%; /* Narrower for the second text line */
+}
