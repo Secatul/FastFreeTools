@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from 'react'
@@ -15,10 +14,11 @@ import {
 } from "@/components/ui/dialog"
 import Head from 'next/head';
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, Link, Image, Code, Download, Upload, Maximize, Minimize } from 'lucide-react'
+import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, Link as LinkIcon, Image, Code, Download, Upload, Maximize, Minimize } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import Link from 'next/link'  
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState('')
@@ -101,7 +101,6 @@ export default function MarkdownEditor() {
   const characterCount = markdown.length
 
   return (
-
     <>
       <Head>
         <title>Markdown Editor</title>
@@ -142,7 +141,6 @@ export default function MarkdownEditor() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <div className={`p-4 ${isFullScreen ? 'fixed inset-0 z-50 bg-background' : 'max-w-6xl mx-auto'}`}>
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-3xl font-bold">Markdown Editor</h1>
@@ -172,10 +170,10 @@ export default function MarkdownEditor() {
               </DialogContent>
             </Dialog>
             <Button variant="outline" size="icon" asChild>
-              <a href="/">
+              <Link href="/" aria-label="Home"> {/* Corrected Link usage */}
                 <Home className="h-4 w-4" />
                 <span className="sr-only">Home</span>
-              </a>
+              </Link>
             </Button>
             <Button
               variant="outline"
@@ -206,7 +204,7 @@ export default function MarkdownEditor() {
             <ListOrdered className="h-4 w-4" />
           </Button>
           <Button variant="outline" size="icon" onClick={() => handleFormatting('link')}>
-            <Link className="h-4 w-4" />
+            <LinkIcon className="h-4 w-4" /> {/* Use LinkIcon for actual icon */}
           </Button>
           <Button variant="outline" size="icon" onClick={() => handleFormatting('image')}>
             <Image className="h-4 w-4" alt="Insert image" />
@@ -244,11 +242,12 @@ export default function MarkdownEditor() {
                   return !inline && match ? (
                     <SyntaxHighlighter
                       {...props}
-                      children={String(children).replace(/\n$/, '')}
                       style={tomorrow}
                       language={match[1]}
                       PreTag="div"
-                    />
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
                   ) : (
                     <code {...props} className={className}>
                       {children}

@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import Link from "next/link";
+
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Head from "next/head";
 import {
@@ -166,10 +168,11 @@ export default function LinkGenerator() {
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-            <Button variant="outline" size="icon" asChild aria-label="Home">
-              <a href="/">
+            <Button variant="outline" size="icon" asChild>
+              <Link href="/" aria-label="Home">
                 <Home className="h-4 w-4" />
-              </a>
+                <span className="sr-only">Home</span>
+              </Link>
             </Button>
             <Button
               variant="outline"

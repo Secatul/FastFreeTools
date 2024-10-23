@@ -14,6 +14,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import Link from "next/link";
+
 import {
   Tooltip,
   TooltipContent,
@@ -342,11 +344,11 @@ export default function MorseCodeTranslator() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
-                        <a href="/" aria-label="Home">
-                          <Home className="h-5 w-5" />
+                      <Button variant="outline" size="icon" asChild>
+                        <Link href="/" aria-label="Home">
+                          <Home className="h-4 w-4" />
                           <span className="sr-only">Home</span>
-                        </a>
+                        </Link>
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>

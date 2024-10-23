@@ -6,6 +6,8 @@ import DOMPurify from "dompurify";
 import Head from "next/head";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
+
 import {
   Dialog,
   DialogContent,
@@ -158,10 +160,11 @@ export default function QRCodeGenerator() {
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-            <Button variant="outline" size="icon" asChild aria-label="Home">
-              <a href="/">
+            <Button variant="outline" size="icon" asChild>
+              <Link href="/" aria-label="Home">
                 <Home className="h-4 w-4" />
-              </a>
+                <span className="sr-only">Home</span>
+              </Link>
             </Button>
             <Button
               variant="outline"

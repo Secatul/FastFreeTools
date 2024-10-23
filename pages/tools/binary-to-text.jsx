@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useTheme } from "next-themes";
 import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw } from 'lucide-react';
@@ -124,10 +125,10 @@ export default function BinaryTextConverter() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="outline" size="icon" asChild>
-                    <a href="/" aria-label="Home">
+                    <Link href="/" aria-label="Home">
                       <Home className="h-4 w-4" />
                       <span className="sr-only">Home</span>
-                    </a>
+                    </Link>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>

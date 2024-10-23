@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -73,22 +74,22 @@ function hslToRgb(h, s, l) {
     const hue2rgb = (p, q, t) => {
       if (t < 0) t += 1
       if (t > 1) t -= 1
-      if (t < 1/6) return p + (q - p) * 6 * t
-      if (t < 1/2) return q
-      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6
+      if (t < 1 / 6) return p + (q - p) * 6 * t
+      if (t < 1 / 2) return q
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
       return p
     }
 
     const q = l < 0.5 ? l * (1 + s) : l + s - l * s
     const p = 2 * l - q
-    r = hue2rgb(p, q, h + 1/3)
+    r = hue2rgb(p, q, h + 1 / 3)
     g = hue2rgb(p, q, h)
-    b = hue2rgb(p, q, h - 1/3)
+    b = hue2rgb(p, q, h - 1 / 3)
   }
 
-  return { 
-    r: Math.round(r * 255), 
-    g: Math.round(g * 255), 
+  return {
+    r: Math.round(r * 255),
+    g: Math.round(g * 255),
     b: Math.round(b * 255)
   }
 }
@@ -210,7 +211,7 @@ export default function ColorPicker() {
     const updatedPalettes = [...savedPalettes, newPalette]
     setSavedPalettes(updatedPalettes)
     localStorage.setItem('savedPalettes', JSON.stringify(updatedPalettes))
-    
+
     toast({
       title: "Palette saved",
       description: "Your color palette has been saved.",
@@ -224,7 +225,7 @@ export default function ColorPicker() {
     toast({
       title: "Palette deleted",
       description: "The selected color palette has been deleted.",
-      variant:"destructive"
+      variant: "destructive"
     })
   }
 
@@ -360,20 +361,21 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-              
+
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="outline" size="icon" asChild aria-label="Home">
-                    <a href="/">
+                  <Button variant="outline" size="icon" asChild>
+                    <Link href="/" aria-label="Home">
                       <Home className="h-4 w-4" />
-                    </a>
+                      <span className="sr-only">Home</span>
+                    </Link>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Return to the home page</p>
                 </TooltipContent>
               </Tooltip>
-              
+
               <Button
                 variant="outline"
                 size="icon"
@@ -385,7 +387,7 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
               </Button>
             </div>
           </header>
-      
+
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="w-full h-40 rounded-lg" style={{ backgroundColor: color }}></div>
@@ -459,7 +461,7 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
                 </Button>
               </div>
             </div>
-    
+
             <div className="space-y-4">
               <Tabs defaultValue="palette">
                 <TabsList className="grid w-full grid-cols-4">
@@ -551,7 +553,7 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
               </Tabs>
             </div>
           </section>
-  
+
           {savedPalettes.length > 0 && (
             <section className="space-y-4">
               <h2 className="text-2xl font-bold">Saved Palettes</h2>

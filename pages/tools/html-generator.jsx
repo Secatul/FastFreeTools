@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import Link from "next/link";
 import { useTheme } from "next-themes"
 import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, ChevronUp, ChevronDown, Edit, Trash2 } from 'lucide-react'
 import DOMPurify from 'isomorphic-dompurify'
@@ -421,12 +422,14 @@ export default function HTMLGenerator() {
             </DialogContent>
           </Dialog>
 
+
           <Button variant="outline" size="icon" asChild>
-            <a href="/">
+            <Link href="/" aria-label="Home">
               <Home className="h-4 w-4" />
               <span className="sr-only">Home</span>
-            </a>
+            </Link>
           </Button>
+
           <Button
             variant="outline"
             size="icon"

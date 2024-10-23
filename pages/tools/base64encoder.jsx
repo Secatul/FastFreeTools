@@ -23,6 +23,7 @@ import {
 import { useTheme } from "next-themes";
 import { Home, HelpCircle, Copy, Check, Moon, Sun } from "lucide-react";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Base64Converter() {
   const [inputText, setInputText] = useState("");
@@ -146,10 +147,10 @@ export default function Base64Converter() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="outline" size="icon" asChild>
-                    <a href="/" aria-label="Home">
+                    <Link href="/" aria-label="Home">
                       <Home className="h-4 w-4" />
                       <span className="sr-only">Home</span>
-                    </a>
+                    </Link>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
