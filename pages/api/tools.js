@@ -1,6 +1,10 @@
 export default function handler(req, res) {
-  const { locale = 'en'
-  } = req.query;
+  const locale = req.query.locale || 'en';
+
+  // Verifica se o método é GET, caso contrário, retorna 405 (Método não permitido)
+  if (req.method !== 'GET') {
+    return res.status(405).json({ message: 'Method Not Allowed' });
+  }
 
   const tools = [
     { name: 'Uppercase Converter', route: `/${locale}/tools/uppercase`, icon: '🔠', createdAt: '2023-01-01' },
@@ -11,6 +15,7 @@ export default function handler(req, res) {
     { name: 'Lorem Ipsum Generator', route: `/${locale}/tools/lorem-ipsum`, icon: '📜', createdAt: '2023-05-20' },
     { name: 'Link Generator', route: `/${locale}/tools/linkgenerator`, icon: '🔗', createdAt: '2023-05-20' },
     { name: 'HTML Generator', route: `/${locale}/tools/html-generator`, icon: '📑', createdAt: '2023-05-20' },
+    { name: 'HTML to Markdown Converter', route: `/${locale}/tools/html-md-converter`, icon: '📄', createdAt: '2023-05-20' },
     { name: 'Word Counter', route: `/${locale}/tools/word-counter`, icon: '✏️', createdAt: '2023-05-20' },
     { name: 'Binary to Text Converter', route: `/${locale}/tools/binary-to-text`, icon: '🔢', createdAt: '2023-06-30' },
     { name: 'Unix Timestamp Converter', route: `/${locale}/tools/unix-timestamp`, icon: '🕒', createdAt: '2023-06-30' },
@@ -23,5 +28,6 @@ export default function handler(req, res) {
     { name: 'Markdown Editor', route: `/${locale}/tools/markdown-editor`, icon: '📘', createdAt: '2023-08-01' },
   ];
 
+  // Retorna a lista de ferramentas com status 200
   res.status(200).json(tools);
 }

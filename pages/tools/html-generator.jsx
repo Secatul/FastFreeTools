@@ -1,9 +1,8 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Label } from "@/components/ui/label"
 import {
@@ -23,9 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, Plus, ChevronUp, ChevronDown, Edit, Trash2 } from 'lucide-react'
-
-// You'll need to install this package: npm install prismjs
+import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, ChevronUp, ChevronDown, Edit, Trash2 } from 'lucide-react'
+import DOMPurify from 'isomorphic-dompurify'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-markup'
 import 'prismjs/themes/prism.css'
@@ -38,19 +36,22 @@ export default function HTMLGenerator() {
   const [isCopied, setIsCopied] = useState(false)
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-
   const { toast } = useToast()
 
   useEffect(() => {
     Prism.highlightAll()
   }, [elements])
 
+  const sanitizeInput = (input) => {
+    return DOMPurify.sanitize(input)
+  }
+
   const addHtmlElement = (parentId = null) => {
     if (selectedElement && elementContent) {
       const newElement = {
         id: Date.now().toString(),
         tag: selectedElement,
-        content: elementContent,
+        content: sanitizeInput(elementContent),
         children: [],
       }
 
@@ -102,29 +103,6 @@ export default function HTMLGenerator() {
     })
   }
 
-  const flattenElements = (elements) => {
-    return elements.reduce((acc, el) => {
-      return [...acc, el, ...flattenElements(el.children)]
-    }, [])
-  }
-
-  const rebuildElementTree = (flatElements) => {
-    const elementMap = new Map()
-    flatElements.forEach(el => elementMap.set(el.id, { ...el, children: [] }))
-
-    const rootElements = []
-    flatElements.forEach(el => {
-      const parent = flatElements.find(p => p.children.some(c => c.id === el.id))
-      if (parent) {
-        elementMap.get(parent.id)?.children.push(elementMap.get(el.id))
-      } else {
-        rootElements.push(elementMap.get(el.id))
-      }
-    })
-
-    return rootElements
-  }
-
   const editElement = (id) => {
     const element = findElement(id, elements)
     if (element) {
@@ -140,7 +118,7 @@ export default function HTMLGenerator() {
         const updateEl = (elements) => {
           return elements.map(el => {
             if (el.id === editingElement) {
-              return { ...el, tag: selectedElement, content: elementContent }
+              return { ...el, tag: selectedElement, content: sanitizeInput(elementContent) }
             } else if (el.children.length > 0) {
               return { ...el, children: updateEl(el.children) }
             }
@@ -186,18 +164,19 @@ export default function HTMLGenerator() {
         <div className="flex items-center space-x-2">
           <span className="font-mono text-sm">{`<${element.tag}>`}</span>
           <span>{element.content}</span>
-          <Button size="sm" variant="outline" onClick={() => moveElement(element.id, 'up')}>
+          <Button size="sm" variant="outline" onClick={() => moveElement(element.id, 'up')} aria-label="Move element up" title="Move element up">
             <ChevronUp className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="outline" onClick={() => moveElement(element.id, 'down')}>
+          <Button size="sm" variant="outline" onClick={() => moveElement(element.id, 'down')} aria-label="Move element down" title="Move element down">
             <ChevronDown className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="outline" onClick={() => editElement(element.id)}>
+          <Button size="sm" variant="outline" onClick={() => editElement(element.id)} aria-label="Edit element" title="Edit element">
             <Edit className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="outline" onClick={() => deleteElement(element.id)}>
+          <Button size="sm" variant="outline" onClick={() => deleteElement(element.id)} aria-label="Delete element" title="Delete element">
             <Trash2 className="h-4 w-4" />
           </Button>
+
         </div>
         {element.children.map(child => renderElement(child, depth + 1))}
       </div>
@@ -413,10 +392,10 @@ export default function HTMLGenerator() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+      <header className="flex flex-col md:flex-row justify-between items-center gap-4">
         <h1 className="text-3xl font-bold">HTML Generator</h1>
-        <div className="space-x-2 flex items-center">
+        <nav className="space-x-2 flex items-center">
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" size="icon">
@@ -457,11 +436,11 @@ export default function HTMLGenerator() {
             <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
-        </div>
-      </div>
+        </nav>
+      </header>
 
-      <div className="space-y-4">
-        <div className="flex items-end space-x-2">
+      <main className="space-y-4">
+        <section className="flex flex-col md:flex-row items-end gap-2">
           <div className="flex-1">
             <Label htmlFor="html-element">HTML Element</Label>
             <Select value={selectedElement} onValueChange={setSelectedElement}>
@@ -508,9 +487,9 @@ export default function HTMLGenerator() {
           <Button onClick={() => editingElement ? updateElement() : addHtmlElement()}>
             {editingElement ? 'Update Element' : 'Add Element'}
           </Button>
-        </div>
+        </section>
 
-        <div className="space-x-2">
+        <section className="flex flex-wrap gap-2">
           <Button onClick={() => addPrebuiltComponent('header')}>Add Header</Button>
           <Button onClick={() => addPrebuiltComponent('navbar')}>Add Navbar</Button>
           <Button onClick={() => addPrebuiltComponent('main')}>Add Main</Button>
@@ -520,34 +499,34 @@ export default function HTMLGenerator() {
           <Button onClick={() => addPrebuiltComponent('section')}>Add Section</Button>
           <Button onClick={() => addPrebuiltComponent('form')}>Add Form</Button>
           <Button onClick={() => addPrebuiltComponent('table')}>Add Table</Button>
-        </div>
+        </section>
 
         <Dialog open={isResetDialogOpen} onOpenChange={setIsResetDialogOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">
-                Reset
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Are you sure?</DialogTitle>
-                <DialogDescription>
-                  This will reset your entire canvas and remove all the elements. This action cannot be undone.
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter>
-                <Button variant="outline" onClick={() => setIsResetDialogOpen(false)}>Cancel</Button>
-                <Button variant="destructive" onClick={resetElements}>Confirm Reset</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm">
+              Reset
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you sure?</DialogTitle>
+              <DialogDescription>
+                This will reset your entire canvas and remove all the elements. This action cannot be undone.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setIsResetDialogOpen(false)}>Cancel</Button>
+              <Button variant="destructive" onClick={resetElements}>Confirm Reset</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
-        <div className="border p-4 rounded-md">
+        <section className="border p-4 rounded-md">
           {elements.map(el => renderElement(el))}
-        </div>
-      </div>
+        </section>
+      </main>
 
-      <div className="space-y-2">
+      <section className="space-y-2">
         <div className="flex justify-between items-center">
           <Label htmlFor="html-output">Generated HTML</Label>
           <div className="space-x-2">
@@ -579,14 +558,14 @@ export default function HTMLGenerator() {
         <pre className="language-markup">
           <code>{generateHtml(elements)}</code>
         </pre>
-      </div>
+      </section>
 
-      <div className="space-y-2">
+      <section className="space-y-2">
         <Label>Live Preview</Label>
         <div className="border p-4 rounded-md">
-          <div dangerouslySetInnerHTML={{ __html: generateHtml(elements) }} />
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(generateHtml(elements)) }} />
         </div>
-      </div>
+      </section>
     </div>
   )
 }

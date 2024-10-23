@@ -37,8 +37,8 @@ export default function Page() {
   };
 
   useEffect(() => {
-    dispatch(fetchTools());  // Busca as ferramentas
-    fetchRatings();  // Busca os votos do Supabase
+    dispatch(fetchTools());  
+    fetchRatings(); 
   }, [dispatch]);
 
   // Função para determinar se uma ferramenta é popular com base no número de votos do Supabase
@@ -60,7 +60,7 @@ export default function Page() {
     }))
     .sort((a, b) => b.votes - a.votes || new Date(b.createdAt) - new Date(a.createdAt));
 
-  const popularTools = sortedTools.slice(0, 3);  // Top 3 most popular tools
+  const popularTools = sortedTools.slice(0, 3);  
   const remainingTools = sortedTools.slice(3).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const filteredTools = [...popularTools, ...remainingTools].filter((tool) =>
@@ -129,7 +129,6 @@ export default function Page() {
   const ToolCard = ({ tool, index }) => {
     const [hoveredStars, setHoveredStars] = useState(null);
 
-    // Dynamically calculate if the tool should have the "Top Rated" border
     const dynamicRating = ratingData[tool.name]?.rating || 0;
 
     return (
@@ -200,12 +199,11 @@ export default function Page() {
         <Header title="Fast Task" description="Your Quick Tools for Every Task" />
 
         <main className="mt-12 space-y-16">
-          <section>
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-              <h2 className="text-3xl font-bold">Tools</h2>
-              <Search searchQuery={searchQuery} onSearchChange={handleSearchChange} />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <section className="flex flex-col items-center gap-8">
+            <Search searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+            <h2 className="text-3xl font-bold flex self-start">Tools</h2>
+            
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTools.length > 0 ? (
                 filteredTools.map((tool, index) => (
                   <ToolCard key={index} tool={tool} index={index} />

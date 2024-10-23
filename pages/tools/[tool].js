@@ -6,6 +6,7 @@ import BinaryTextConverter from './binary-to-text';
 import UUIDGenerator from './uuid-generator';
 import WordCounter from './word-counter';
 import HTMLGenerator from './html-generator';
+import HTMLToMarkdownConverter from './html-md-converter';
 import QRCodeGenerator from './qr-code-generator';
 import MarkdownEditor from './markdown-editor';
 import ColorPicker from './color-picker';
@@ -18,6 +19,8 @@ const ToolPage = () => {
 
   const renderTool = () => {
     switch (tool) {
+      case 'html-md-converter':
+        return <HTMLToMarkdownConverter />;
       case 'uppercase':
         return <CaseConverter />;
       case 'base64encoder':
@@ -42,8 +45,6 @@ const ToolPage = () => {
         return <BinaryTextConverter />;
       case 'unix-timestamp':
         return <UnixTimestampTool />;
-      // case 'html-md-converter':
-      //   return <HTMLToMarkdownConverter />;
       case 'morse-code-translator':
         return <MorseCodeTranslator />;
       case 'case-converter':
@@ -57,7 +58,7 @@ const ToolPage = () => {
       case 'markdown-editor':
         return <MarkdownEditor />;
       default:
-        return <p>Tool not found</p>;  // Fallback in case the tool doesn't exist
+        return <p>Tool not found</p>;  
     }
   };
 
