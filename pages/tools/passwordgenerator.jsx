@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -36,7 +36,7 @@ export default function PasswordGenerator() {
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const generatePassword = () => {
+  const generatePassword = useCallback(() => {
     const lowercase = "abcdefghijklmnopqrstuvwxyz";
     const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "0123456789";
@@ -59,7 +59,11 @@ export default function PasswordGenerator() {
       generatedPassword += charset[randomIndex];
     }
     setPassword(generatedPassword);
-  };
+  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols]);
+
+  useEffect(() => {
+    generatePassword();
+  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, generatePassword]);
 
   const handleCopy = async () => {
     try {

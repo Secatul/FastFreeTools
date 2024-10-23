@@ -414,7 +414,7 @@ export default function HTMLGenerator() {
                     <strong>What:</strong> You can add HTML elements, nest them, reorder them, and even use pre-built components.
                   </p>
                   <p className="mt-2">
-                    <strong>How:</strong> Select an element type, enter content, and click "Add Element". Use the buttons to reorder, edit, or delete elements. The generated HTML will be displayed with a live preview.
+                    <strong>How:</strong> Select an element type, enter content, and click &quot;Add Element&quot;. Use the buttons to reorder, edit, or delete elements. The generated HTML will be displayed with a live preview.
                   </p>
                 </DialogDescription>
               </DialogHeader>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Head from "next/head";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -112,7 +113,7 @@ export default function UUIDGenerator() {
                       <strong>What:</strong> This tool generates version 4 UUIDs, which are randomly generated.
                     </p>
                     <p className="mt-2">
-                      <strong>How:</strong> Click "Generate UUID" to create new UUIDs. You can generate multiple UUIDs at once and choose uppercase format if needed.
+                      <strong>How:</strong> Click &quot;Generate UUID&quot; to create new UUIDs. You can generate multiple UUIDs at once and choose uppercase format if needed.
                     </p>
                   </DialogDescription>
                 </DialogHeader>

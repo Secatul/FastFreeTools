@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -35,9 +35,26 @@ export default function HTMLToMarkdownConverter() {
 
   const turndownService = new TurndownService();
 
+  // Memoize the convertHtml function using useCallback
+  const convertHtml = useCallback((input) => {
+    try {
+      const sanitizedInput = sanitizeHtmlInput(input);
+      const cleanedHtml = cleanHtmlContent(sanitizedInput);
+      setCleanHtml(cleanedHtml);
+
+      const result = turndownService.turndown(cleanedHtml);
+      setMarkdown(result);
+      setError("");
+    } catch (err) {
+      setError("Invalid HTML input. Please check your HTML and try again.");
+      setCleanHtml("");
+      setMarkdown("");
+    }
+  }, []);
+
   useEffect(() => {
     convertHtml(html);
-  }, [html]);
+  }, [html, convertHtml]);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -53,22 +70,6 @@ export default function HTMLToMarkdownConverter() {
       return `<${p1}${attr ? " " + attr[0] : ""}>`;
     });
     return cleaned;
-  };
-
-  const convertHtml = (input) => {
-    try {
-      const sanitizedInput = sanitizeHtmlInput(input);
-      const cleanedHtml = cleanHtmlContent(sanitizedInput);
-      setCleanHtml(cleanedHtml);
-
-      const result = turndownService.turndown(cleanedHtml);
-      setMarkdown(result);
-      setError("");
-    } catch (err) {
-      setError("Invalid HTML input. Please check your HTML and try again.");
-      setCleanHtml("");
-      setMarkdown("");
-    }
   };
 
   const handleCopy = async (text) => {

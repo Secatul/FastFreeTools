@@ -1,10 +1,10 @@
 "use client";
 
+import Head from "next/head";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import Head from "next/head";
 import {
   Dialog,
   DialogContent,
@@ -126,7 +126,7 @@ export default function JsonFormatter() {
                     </p>
                     <p className="mt-2">
                       <strong>How:</strong> Simply paste your JSON into the input
-                      area, then click "Format JSON" or "Minify JSON". The tool
+                      area, then click &quot;Format JSON&quot; or &quot;Minify JSON&quot;. The tool
                       will process your input and display the result.
                     </p>
                   </DialogDescription>

@@ -159,7 +159,7 @@ export default function LinkGenerator() {
                     </p>
                     <p className="mt-2">
                       <strong>How:</strong> Fill in the desired options, choose
-                      between text or image links, and click "Generate Code" to
+                      between text or image links, and click &quot;Generate Code&quot; to
                       create your HTML link.
                     </p>
                   </DialogDescription>
@@ -214,7 +214,7 @@ export default function LinkGenerator() {
                   onCheckedChange={setAddRelNoopener}
                   aria-label='Add "noopener noreferrer"'
                 />
-                <Label htmlFor="rel-noopener">Add rel="noopener noreferrer"</Label>
+                <Label htmlFor="rel-noopener">Add rel=&quot;noopener noreferrer&quot;</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Switch
@@ -223,7 +223,7 @@ export default function LinkGenerator() {
                   onCheckedChange={setAddRelNofollow}
                   aria-label='Add "nofollow"'
                 />
-                <Label htmlFor="rel-nofollow">Add rel="nofollow"</Label>
+                <Label htmlFor="rel-nofollow">Add rel=&quot;nofollow&quot;</Label>
               </div>
             </div>
 

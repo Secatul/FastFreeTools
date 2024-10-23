@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 // import { LanguageSwitcher } from "./components/language-switcher";
 import '../styles/globals.css';
-import '../i18n';
+// import '../i18n';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

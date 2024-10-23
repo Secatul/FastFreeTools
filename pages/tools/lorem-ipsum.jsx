@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import Head from "next/head";
 import { Switch } from "@/components/ui/switch";
 import {
   Select,
@@ -75,7 +76,6 @@ export default function LoremIpsumGenerator() {
   return (
 
     <>
-
       <Head>
         <title>Lorem Ipsum Generator</title>
         <meta
@@ -137,7 +137,7 @@ export default function LoremIpsumGenerator() {
                       <strong>What:</strong> This tool generates Lorem Ipsum text based on your specifications.
                     </p>
                     <p className="mt-2">
-                      <strong>How:</strong> Choose the amount and unit of text you want, then click "Generate" to create your Lorem Ipsum text.
+                      <strong>How:</strong> Choose the amount and unit of text you want, then click &quot;Generate&quot; to create your Lorem Ipsum text.
                     </p>
                   </DialogDescription>
                 </DialogHeader>

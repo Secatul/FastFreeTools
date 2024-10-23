@@ -37,8 +37,9 @@ export default function Page() {
   };
 
   useEffect(() => {
-    dispatch(fetchTools());  
-    fetchRatings(); 
+    console.log("Dispatching fetchTools...");
+    dispatch(fetchTools());
+    fetchRatings();
   }, [dispatch]);
 
   // Função para determinar se uma ferramenta é popular com base no número de votos do Supabase
@@ -52,17 +53,19 @@ export default function Page() {
     setSearchQuery(sanitizedQuery);
   };
 
+
+  
   const sortedTools = tools
-    .map((tool) => ({
-      ...tool,
-      votes: ratingData[tool.name]?.votes || 0,
-      rating: ratingData[tool.name]?.rating || 0,
-    }))
-    .sort((a, b) => b.votes - a.votes || new Date(b.createdAt) - new Date(a.createdAt));
-
-  const popularTools = sortedTools.slice(0, 3);  
+  .map((tool) => ({
+    ...tool,
+    votes: ratingData[tool.name]?.votes || 0,
+    rating: ratingData[tool.name]?.rating || 0,
+  }))
+  .sort((a, b) => b.votes - a.votes || new Date(b.createdAt) - new Date(a.createdAt));
+  
+  const popularTools = sortedTools.slice(0, 3);
   const remainingTools = sortedTools.slice(3).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
+  
   const filteredTools = [...popularTools, ...remainingTools].filter((tool) =>
     tool.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -202,7 +205,7 @@ export default function Page() {
           <section className="flex flex-col items-center gap-8">
             <Search searchQuery={searchQuery} onSearchChange={handleSearchChange} />
             <h2 className="text-3xl font-bold flex self-start">Tools</h2>
-            
+
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTools.length > 0 ? (
                 filteredTools.map((tool, index) => (

@@ -112,7 +112,10 @@ export default function BinaryTextConverter() {
                         <strong>What:</strong> It can convert binary to text and vice versa, which is useful for encoding and decoding binary data.
                       </p>
                       <p className="mt-2">
-                        <strong>How:</strong> Enter your input, choose the conversion direction, and click "Convert". The result will be displayed below.
+                        <p className="mt-2">
+                          <strong>How:</strong> Enter your input, choose the conversion direction, and click &quot;Convert&quot;. The result will be displayed below.
+                        </p>
+
                       </p>
                     </DialogDescription>
                   </DialogHeader>

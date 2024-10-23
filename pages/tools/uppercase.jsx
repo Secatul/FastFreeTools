@@ -142,13 +142,13 @@ export default function CaseConverter() {
                   <DialogTitle>About Case Converter</DialogTitle>
                   <DialogDescription>
                     <p className="mt-2">
-                      <strong>Why:</strong> The Case Converter tool helps you quickly transform text into different case styles, saving time and ensuring consistency in your writing or coding.
+                    <strong>Why:</strong> The Case Converter tool helps you quickly transform text into different case styles, saving time and ensuring consistency in your writing or coding.
                     </p>
                     <p className="mt-2">
                       <strong>What:</strong> It converts text between various case styles, including uppercase, lowercase, title case, camelCase, snake_case, and PascalCase.
                     </p>
                     <p className="mt-2">
-                      <strong>How:</strong> Simply enter your text, choose a conversion type, and click "Convert". The tool will instantly transform your text to the selected case style.
+                      <strong>How:</strong> Simply enter your text, choose a conversion type, and click &quot;Convert&quot;. The tool will instantly transform your text to the selected case style.
                     </p>
                   </DialogDescription>
                 </DialogHeader>
