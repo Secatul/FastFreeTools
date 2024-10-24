@@ -215,7 +215,7 @@ export default function GrammarChecker() {
                             <strong>What:</strong> It provides instant feedback on your text, highlighting potential issues and offering suggestions for improvement.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Simply paste or type your text into the input area, click "Check Grammar", and review the suggestions provided.
+                            <strong>How:</strong> Simply paste or type your text into the input area, click &quot;Check Grammar&quot;, and review the suggestions provided.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
