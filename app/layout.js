@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import Head from "next/head";
@@ -49,6 +50,7 @@ function RootLayout({ children }) {
             <Toaster />
             <Analytics />
             <SpeedInsights/>
+            <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
           </ThemeProvider>
         </Provider>
       </body>
