@@ -50,7 +50,7 @@ export default function handler(req, res) {
     { name: 'Word Counter', route: `/${locale}/tools/word-counter`, icon: '✏️', description: 'Count words, characters, and spaces.', createdAt: '2023-05-20' },
     { name: 'Binary to Text Converter', route: `/${locale}/tools/binary-to-text`, icon: '🔢', description: 'Convert binary data to text and vice versa.', createdAt: '2023-06-30' },
     { name: 'Morse Code Translator', route: `/${locale}/tools/morse-code-translator`, icon: '📡', description: 'Translate text to Morse code and vice versa.', createdAt: '2023-06-30' },
-    { name: 'Case Converter', route: `/${locale}/tools/case-converter`, icon: '🇬🇧', description: 'Convert text between various cases.', createdAt: '2023-06-30' },
+    { name: 'Case Converter', route: `/${locale}/tools/case-converter`, icon: 'Aa', description: 'Convert text between various cases.', createdAt: '2023-06-30' },
     { name: 'Text Reverser', route: `/${locale}/tools/text-reverser`, icon: '🔀', description: 'Reverse the order of characters in text.', createdAt: '2023-06-30' },
     { name: 'Regex Tester', route: `/${locale}/tools/regex-tester`, icon: '🔍', description: 'Test regular expressions.', createdAt: '2023-06-30' },
     { name: 'Color Picker', route: `/${locale}/tools/color-picker`, icon: '🎨', description: 'Select and manage colors.', createdAt: '2023-06-30' },
