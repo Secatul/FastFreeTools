@@ -27,17 +27,15 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N9VQ84833"></script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-9N9VQ84833');
-      `,
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+            `,
           }}
         />
       </Head>
@@ -49,7 +47,7 @@ function RootLayout({ children }) {
             {children}
             <Toaster />
             <Analytics />
-            <SpeedInsights/>
+            <SpeedInsights />
             <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
           </ThemeProvider>
         </Provider>
