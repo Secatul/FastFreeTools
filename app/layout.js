@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import Head from "next/head";
@@ -47,6 +48,7 @@ function RootLayout({ children }) {
             {children}
             <Toaster />
             <Analytics />
+            <SpeedInsights/>
           </ThemeProvider>
         </Provider>
       </body>
