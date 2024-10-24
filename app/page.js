@@ -73,13 +73,14 @@ export default function Page() {
     if (localStorage.getItem(voteKey)) {
       toast({
         variant: "destructive",
-        title: "Voto já registrado",
-        description: "Você já votou nesta ferramenta.",
+        title: "Vote already registered",
+        description: "You have already voted for this tool.",
         status: "info",
         duration: 3000,
       });
       return;
     }
+
 
     const existingRating = ratingData[toolName] || { rating: 0, votes: 0 };
     const updatedRating = (existingRating.rating * existingRating.votes + newRating) / (existingRating.votes + 1);
@@ -99,8 +100,8 @@ export default function Page() {
       localStorage.setItem(voteKey, 'true');
 
       toast({
-        title: "Voto registrado com sucesso!",
-        description: `Você deu uma avaliação de ${newRating} estrelas para "${toolName}".`,
+        title: "Vote successfully registered!",
+        description: `You rated "${toolName}" with ${newRating} stars.`,
         status: "success",
         duration: 3000,
       });
