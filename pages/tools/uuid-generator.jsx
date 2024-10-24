@@ -55,7 +55,7 @@ export default function UUIDGenerator() {
   return (
     <>
       <Head>
-        <title>UUID Generator</title>
+        <title>UUID Generator | Fast Free Tools</title>
         <meta
           name="description"
           content="Generate version 4 UUIDs quickly and easily. Create multiple UUIDs at once and format them in uppercase if needed."
@@ -64,33 +64,27 @@ export default function UUIDGenerator() {
           name="keywords"
           content="UUID generator, UUID tool, online UUID generator, generate UUID, version 4 UUID"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="UUID Generator" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/uuid-generator" />
+        <meta property="og:title" content="UUID Generator | Fast Free Tools" />
         <meta
           property="og:description"
           content="Generate version 4 UUIDs for use in systems, databases, and software development. Create multiple UUIDs with customizable options like uppercase formatting."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/uuid-generator" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/uuid-generator" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="UUID Generator" />
+        <meta name="twitter:title" content="UUID Generator | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Easily generate multiple UUIDs, including version 4 UUIDs, with options for uppercase formatting."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Charset and Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
 

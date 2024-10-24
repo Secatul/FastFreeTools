@@ -142,10 +142,33 @@ export default function QRCodeGenerator() {
   return (
     <>
       <Head>
-        <title>QR Code Generator | Fast Task</title>
-        <meta name="description" content="Create custom QR codes with configurable options like content, size, foreground and background colors, error correction levels, and logos. Download your QR codes in PNG or SVG format." />
-        <meta name="keywords" content="QR code generator, QR code with logo, custom QR codes, QR code download, online QR code generator" />
+        <title>QR Code Generator | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Create custom QR codes with configurable options like content, size, foreground and background colors, error correction levels, and logos. Download your QR codes in PNG or SVG format."
+        />
+        <meta
+          name="keywords"
+          content="QR code generator, QR code with logo, custom QR codes, QR code download, online QR code generator"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/qr-code-generator" />
+        <meta property="og:title" content="QR Code Generator | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Create custom QR codes with configurable options like content, size, colors, and logos. Download your QR codes in PNG or SVG format."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/qr-code-generator" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="QR Code Generator | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Generate custom QR codes with content, color options, and logos. Download in PNG or SVG format."
+        />
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
@@ -327,13 +350,13 @@ export default function QRCodeGenerator() {
                       imageSettings={
                         logoUrl
                           ? {
-                              src: logoUrl,
-                              x: undefined,
-                              y: undefined,
-                              height: 24,
-                              width: 24,
-                              excavate: true,
-                            }
+                            src: logoUrl,
+                            x: undefined,
+                            y: undefined,
+                            height: 24,
+                            width: 24,
+                            excavate: true,
+                          }
                           : undefined
                       }
                     />

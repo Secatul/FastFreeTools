@@ -142,10 +142,33 @@ export default function PasswordGenerator() {
   return (
     <>
       <Head>
-        <title>Password Generator | Fast Task</title>
-        <meta name="description" content="Generate secure, random passwords with customizable options like length, uppercase, lowercase, numbers, and symbols. Improve your online security with strong passwords." />
-        <meta name="keywords" content="password generator, strong passwords, random password generator, secure passwords, online password tool" />
+        <title>Password Generator | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Generate secure, random passwords with customizable options like length, uppercase, lowercase, numbers, and symbols. Improve your online security with strong passwords."
+        />
+        <meta
+          name="keywords"
+          content="password generator, strong passwords, random password generator, secure passwords, online password tool"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/password-generator" />
+        <meta property="og:title" content="Password Generator | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Generate secure, random passwords with customizable options like length, uppercase, lowercase, numbers, and symbols."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/password-generator" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Password Generator | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Improve your online security with strong, customizable passwords generated using our secure password tool."
+        />
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">

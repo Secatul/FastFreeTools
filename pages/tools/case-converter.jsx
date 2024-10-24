@@ -36,11 +36,11 @@ function getReadabilityScore(text) {
 function getSentiment(text) {
   const positiveWords = ['good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'happy', 'love']
   const negativeWords = ['bad', 'terrible', 'awful', 'horrible', 'poor', 'disappointing', 'sad', 'hate']
-  
+
   const words = text.toLowerCase().match(/\b(\w+)\b/g) || []
   const positiveCount = words.filter(word => positiveWords.includes(word)).length
   const negativeCount = words.filter(word => negativeWords.includes(word)).length
-  
+
   if (positiveCount > negativeCount) return 'Positive'
   if (negativeCount > positiveCount) return 'Negative'
   return 'Neutral'
@@ -79,12 +79,12 @@ export default function CaseConverter() {
         result = sanitizedText.replace(/\b\w/g, l => l.toUpperCase())
         break
       case 'alternating':
-        result = sanitizedText.split('').map((char, index) => 
+        result = sanitizedText.split('').map((char, index) =>
           index % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
         ).join('')
         break
       case 'title':
-        result = sanitizedText.replace(/\b\w+/g, word => 
+        result = sanitizedText.replace(/\b\w+/g, word =>
           word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
         )
         break
@@ -149,10 +149,33 @@ export default function CaseConverter() {
   return (
     <>
       <Head>
-        <title>Case Converter | Fast Task</title>
-        <meta name="description" content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis." />
-        <meta name="keywords" content="case converter, text case, uppercase, lowercase, title case, sentence case" />
+        <title>Case Converter | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
+        />
+        <meta
+          name="keywords"
+          content="case converter, text case, uppercase, lowercase, title case, sentence case"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/case-converter" />
+        <meta property="og:title" content="Case Converter | Fast Task" />
+        <meta
+          property="og:description"
+          content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/case-converter" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Case Converter | Fast Task" />
+        <meta
+          name="twitter:description"
+          content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
+        />
+        <meta charSet="UTF-8" />
+
+
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
@@ -297,7 +320,7 @@ export default function CaseConverter() {
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Readability Score</h3>
                       <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                        
+
                         {getReadabilityScore(inputText)}
                       </div>
                       <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">

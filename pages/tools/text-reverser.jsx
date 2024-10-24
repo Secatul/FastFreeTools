@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import Head from 'next/head';
 import Link from "next/link";
 
 import {
@@ -80,19 +81,37 @@ export default function TextReverter() {
 
   return (
     <>
-      <meta name="description" content="Reverse text by characters, words, or sentences with the Text Reverser tool. Includes whitespace preservation, instant reversal, and copy-to-clipboard functionality." />
-      <meta name="keywords" content="Text Reverser, Reverse text, Text manipulation, Reverse characters, Reverse words, Reverse sentences, Text tool, Text utility, Whitespace preservation" />
-      <meta name="author" content="Your Name" />
-      <meta property="og:title" content="Text Reverser - Reverse Text Instantly" />
-      <meta property="og:description" content="Easily reverse your text by characters, words, or sentences. Preserve whitespace, swap input and output, and copy the result with one click." />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://yourwebsite.com/text-reverser" />
-      <meta property="og:image" content="https://yourwebsite.com/images/text-reverser-preview.png" />
-      <meta property="og:site_name" content="Your Website Name" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Text Reverser - Reverse Text Instantly" />
-      <meta name="twitter:description" content="Reverse text by characters, words, or sentences instantly. Includes whitespace preservation and copy-to-clipboard functionality." />
-      <meta name="twitter:image" content="https://yourwebsite.com/images/text-reverser-preview.png" />
+      <Head>
+        <title>Text Reverser | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Reverse text by characters, words, or sentences with the Text Reverser tool. Includes whitespace preservation, instant reversal, and copy-to-clipboard functionality."
+        />
+        <meta
+          name="keywords"
+          content="Text Reverser, Reverse text, Text manipulation, Reverse characters, Reverse words, Reverse sentences, Text tool, Text utility, Whitespace preservation"
+        />
+        <meta name="author" content="Fast Free Tools" />
+        <meta property="og:title" content="Text Reverser - Reverse Text Instantly | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Easily reverse your text by characters, words, or sentences. Preserve whitespace, swap input and output, and copy the result with one click."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://fastfreetools.com/text-reverser" />
+        <meta property="og:image" content="https://fastfreetools.com/images/text-reverser-preview.png" />
+        <meta property="og:site_name" content="Fast Free Tools" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Text Reverser - Reverse Text Instantly | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Reverse text by characters, words, or sentences instantly. Includes whitespace preservation and copy-to-clipboard functionality."
+        />
+        <meta name="twitter:image" content="https://fastfreetools.com/images/text-reverser-preview.png" />
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+
+      </Head>
 
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">

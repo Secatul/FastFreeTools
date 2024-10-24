@@ -322,9 +322,28 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
   return (
     <>
       <Head>
-        <title>Color Picker</title>
-        <meta name="description" content="A comprehensive color picker tool with various features like palette generation, contrast checking, color blindness simulation, and gradient creation." />
+        <title>Color Picker Tool | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="A comprehensive color picker tool with various features like palette generation, contrast checking, color blindness simulation, and gradient creation."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/color-picker" />
+        <meta property="og:title" content="Color Picker Tool | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="A comprehensive color picker tool with various features like palette generation, contrast checking, color blindness simulation, and gradient creation."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/color-picker" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Color Picker Tool | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="A comprehensive color picker tool with various features like palette generation, contrast checking, color blindness simulation, and gradient creation."
+        />
+        <meta charSet="UTF-8" />
+
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
@@ -405,9 +424,9 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
                   <div className="space-y-2">
                     <Label htmlFor="hex-input" className="text-lg font-semibold text-gray-700 dark:text-gray-300">HEX</Label>
                     <div className="flex space-x-2">
-                      <Input 
-                        id="hex-input" 
-                        value={color} 
+                      <Input
+                        id="hex-input"
+                        value={color}
                         onChange={handleHexChange}
                         className="border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                       />
@@ -512,7 +531,7 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
                         </div>
                       </div>
                       <Button onClick={savePalette} className="w-full bg-purple-500 hover:bg-purple-600 text-white">
-                
+
                         <Save className="h-4 w-4 mr-2" />
                         Save Palette
                       </Button>

@@ -140,10 +140,33 @@ export default function RegexTester() {
   return (
     <>
       <Head>
-        <title>Regex Tester | Fast Task</title>
-        <meta name="description" content="Test and debug your regular expressions with our powerful Regex Tester tool. Features include real-time matching, syntax highlighting, and pattern saving." />
-        <meta name="keywords" content="regex, regular expression, tester, debugger, pattern matching" />
+        <title>Regex Tester | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Test and debug your regular expressions with our powerful Regex Tester tool. Features include real-time matching, syntax highlighting, and pattern saving."
+        />
+        <meta
+          name="keywords"
+          content="regex, regular expression, tester, debugger, pattern matching"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/regex-tester" />
+        <meta property="og:title" content="Regex Tester | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Test and debug your regular expressions with real-time matching and syntax highlighting."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/regex-tester" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Regex Tester | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Test and debug your regular expressions with real-time matching, syntax highlighting, and pattern saving."
+        />
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">

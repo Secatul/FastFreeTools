@@ -48,6 +48,7 @@ export default function handler(req, res) {
     { name: 'HTML Generator', route: `/${locale}/tools/html-generator`, icon: '📑', description: 'Generate HTML templates.', createdAt: '2023-05-20' },
     { name: 'HTML to Markdown Converter', route: `/${locale}/tools/html-md-converter`, icon: '📄', description: 'Convert HTML to Markdown format.', createdAt: '2023-05-20' },
     { name: 'Word Counter', route: `/${locale}/tools/word-counter`, icon: '✏️', description: 'Count words, characters, and spaces.', createdAt: '2023-05-20' },
+    { name: 'Grammar Checker', route: `/${locale}/tools/grammar-checker`, icon: '✍️', description: 'Check and correct grammar and punctuation.', createdAt: '2023-05-20' },
     { name: 'Binary to Text Converter', route: `/${locale}/tools/binary-to-text`, icon: '🔢', description: 'Convert binary data to text and vice versa.', createdAt: '2023-06-30' },
     { name: 'Morse Code Translator', route: `/${locale}/tools/morse-code-translator`, icon: '📡', description: 'Translate text to Morse code and vice versa.', createdAt: '2023-06-30' },
     { name: 'Case Converter', route: `/${locale}/tools/case-converter`, icon: 'Aa', description: 'Convert text between various cases.', createdAt: '2023-06-30' },

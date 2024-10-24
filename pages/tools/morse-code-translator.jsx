@@ -286,20 +286,37 @@ export default function MorseCodeTranslator() {
   return (
     <>
       <Head>
-        <title>Morse Code Translator - Convert Text to Morse Code and Vice Versa</title>
-        <meta name="description" content="Use our Morse Code Translator to easily convert text to Morse code and vice-versa. Save translations, play audio, and download your Morse code as audio files." />
-        <meta name="keywords" content="Morse code, translator, text to Morse, Morse to text, audio download, save translations, Morse code chart" />
-        <meta name="author" content="Seu Nome ou Nome da Empresa" />
+        <title>Morse Code Translator - Convert Text to Morse Code and Vice Versa | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Use our Morse Code Translator to easily convert text to Morse code and vice-versa. Save translations, play audio, and download your Morse code as audio files."
+        />
+        <meta
+          name="keywords"
+          content="Morse code, translator, text to Morse, Morse to text, audio download, save translations, Morse code chart"
+        />
+        <meta name="author" content="Fast Free Tools" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Morse Code Translator - Convert Text to Morse Code" />
-        <meta property="og:description" content="Easily translate text to Morse code and vice-versa with our user-friendly tool." />
-        <meta property="og:image" content="URL_da_imagem_de_preview" />
-        <meta property="og:url" content="URL_da_sua_página" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/morse-code-translator" />
+        <meta property="og:title" content="Morse Code Translator - Convert Text to Morse Code | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Easily translate text to Morse code and vice-versa with our user-friendly tool."
+        />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/morse-code-translator" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Morse Code Translator" />
-        <meta name="twitter:description" content="Translate text to Morse code and download audio." />
-        <meta name="twitter:image" content="URL_da_imagem_de_preview" />
+        <meta name="twitter:title" content="Morse Code Translator | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Translate text to Morse code and download audio."
+        />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
+        <meta charSet="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
       <TooltipProvider>
@@ -351,7 +368,7 @@ export default function MorseCodeTranslator() {
                         aria-label="Home"
                         asChild
                       >
-                        <Link href="/" aria-label="Home"> 
+                        <Link href="/" aria-label="Home">
                           <Home className="h-4 w-4" />
                           <span className="sr-only">Home</span>
                         </Link>

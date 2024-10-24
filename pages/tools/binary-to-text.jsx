@@ -74,12 +74,36 @@ export default function BinaryTextConverter() {
   return (
     <>
       <Head>
-        <title>Binary ⇄ Text Converter | Your Tool Name</title>
-        <meta name="description" content="Easily convert between binary and text formats with this online tool." />
-        <meta name="keywords" content="Binary to Text, Text to Binary, Binary Converter, Encoding, Decoding" />
+        <title>Binary ⇄ Text Converter | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Easily convert between binary and text formats with this online tool."
+        />
+        <meta
+          name="keywords"
+          content="Binary to Text, Text to Binary, Binary Converter, Encoding, Decoding"
+        />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href="https://fastfreetools.com/binary-text-converter" />
+
+
+        <meta property="og:title" content="Binary ⇄ Text Converter | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Easily convert between binary and text formats with this online tool."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/binary-text-converter" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Binary ⇄ Text Converter | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Easily convert between binary and text formats with this online tool."
+        />
+        <meta charSet="UTF-8" />
+
       </Head>
 
       <TooltipProvider>
@@ -176,16 +200,16 @@ export default function BinaryTextConverter() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <Button 
-                    onClick={toggleMode} 
+                  <Button
+                    onClick={toggleMode}
                     variant="outline"
                     className="w-full sm:w-auto bg-pink-100 hover:bg-pink-200 text-pink-800 dark:bg-pink-900 dark:hover:bg-pink-800 dark:text-pink-100"
                   >
                     <RefreshCw className="h-4 w-4 mr-2" />
                     Switch to {mode === 'binaryToText' ? 'Text to Binary' : 'Binary to Text'}
                   </Button>
-                  <Button 
-                    onClick={handleConvert} 
+                  <Button
+                    onClick={handleConvert}
                     aria-label="Convert binary or text"
                     className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white"
                   >

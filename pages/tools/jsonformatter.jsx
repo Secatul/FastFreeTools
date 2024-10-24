@@ -64,7 +64,7 @@ export default function JsonFormatter() {
   return (
     <>
       <Head>
-        <title>JSON Formatter</title>
+        <title>JSON Formatter Tool | Fast Free Tools</title>
         <meta
           name="description"
           content="Format and minify JSON data with ease using our JSON Formatter tool. Quick and easy formatting and minification for developers."
@@ -73,33 +73,27 @@ export default function JsonFormatter() {
           name="keywords"
           content="JSON Formatter, JSON minify, format JSON, minify JSON, JSON tool"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="JSON Formatter" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/json-formatter" />
+        <meta property="og:title" content="JSON Formatter Tool | Fast Free Tools" />
         <meta
           property="og:description"
           content="Easily format and minify JSON data with our tool. Perfect for developers who need quick JSON formatting."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/json-formatter" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/json-formatter" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="JSON Formatter" />
+        <meta name="twitter:title" content="JSON Formatter Tool | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Format or minify your JSON data easily with our JSON Formatter tool."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <link rel="icon" href="/favicon.ico" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
+
       </Head>
 
       <div className="max-w-2xl mx-auto p-6 space-y-6">

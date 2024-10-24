@@ -88,16 +88,17 @@ export default function Base64Converter() {
           property="og:description"
           content="Convert text to Base64 or decode Base64 to text effortlessly with our online tool."
         />
-        <meta property="og:url" content="https://example.com/base64-converter" />
+        <meta property="og:url" content="https://fastfreetools.com/base64-converter" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://example.com/image.jpg" />
+        <meta property="og:image" content="https://fastfreetools.com/image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Base64 Converter" />
         <meta
           name="twitter:description"
           content="A quick and easy way to encode and decode text using Base64 encoding."
         />
-        <meta name="twitter:image" content="https://example.com/image.jpg" />
+        <meta name="twitter:image" content="https://fastfreetools.com/image.jpg" />
+        <meta charSet="UTF-8" />
       </Head>
 
       <TooltipProvider>

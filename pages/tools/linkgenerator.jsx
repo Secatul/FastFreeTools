@@ -96,7 +96,7 @@ export default function LinkGenerator() {
     <>
 
       <Head>
-        <title>Link Generator</title>
+        <title>Link Generator Tool | Fast Free Tools</title>
         <meta
           name="description"
           content="Generate HTML links easily with our Link Generator tool. Customize attributes like target, rel, and UTM parameters, and preview the generated link."
@@ -105,33 +105,27 @@ export default function LinkGenerator() {
           name="keywords"
           content="Link Generator, HTML link generator, UTM parameters, link attributes, link creation"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Link Generator" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/link-generator" />
+        <meta property="og:title" content="Link Generator Tool | Fast Free Tools" />
         <meta
           property="og:description"
           content="Easily create customized HTML links with attributes such as target, rel, and UTM parameters using the Link Generator."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/link-generator" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/link-generator" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Link Generator" />
+        <meta name="twitter:title" content="Link Generator Tool | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Use our Link Generator tool to quickly generate HTML links with customizable attributes."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Charset and Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
 

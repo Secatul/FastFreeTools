@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { Label } from "@/components/ui/label"
 import Link from 'next/link'
+import Head from 'next/head'
 import {
   Dialog,
   DialogContent,
@@ -393,182 +394,215 @@ export default function HTMLGenerator() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
-      <header className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <h1 className="text-3xl font-bold">HTML Generator</h1>
-        <nav className="space-x-2 flex items-center">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="icon">
-                <HelpCircle className="h-4 w-4" />
-                <span className="sr-only">Help</span>
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>About HTML Generator</DialogTitle>
-                <DialogDescription>
-                  <p className="mt-2">
-                    <strong>Why:</strong> This tool helps you generate HTML code by adding and organizing elements visually.
-                  </p>
-                  <p className="mt-2">
-                    <strong>What:</strong> You can add HTML elements, nest them, reorder them, and even use pre-built components.
-                  </p>
-                  <p className="mt-2">
-                    <strong>How:</strong> Select an element type, enter content, and click &quot;Add Element&quot;. Use the buttons to reorder, edit, or delete elements. The generated HTML will be displayed with a live preview.
-                  </p>
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+    <>
+      <Head>
+        <title>HTML Generator Tool | Fast Free Tools</title>
+        <meta
+          name="description"
+          content="Generate HTML code easily with our free HTML Generator Tool. Customize your code for websites, blogs, and more with real-time previews."
+        />
+        <meta
+          name="keywords"
+          content="HTML generator, HTML tool, website code, blog HTML, HTML editor, code generator"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/html-generator" />
+        <meta property="og:title" content="HTML Generator Tool | Fast Free Tools" />
+        <meta
+          property="og:description"
+          content="Generate HTML code easily with our free HTML Generator Tool. Customize your code for websites, blogs, and more with real-time previews."
+        />
+        <meta property="og:url" content="https://fastfreetools.com/html-generator" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="HTML Generator Tool | Fast Free Tools" />
+        <meta
+          name="twitter:description"
+          content="Generate HTML code easily with our free HTML Generator Tool. Customize your code for websites, blogs, and more with real-time previews."
+        />
 
-         
+        <meta charSet="UTF-8" />
+      </Head>
+
+
+
+      <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+        <header className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <h1 className="text-3xl font-bold">HTML Generator</h1>
+          <nav className="space-x-2 flex items-center">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <HelpCircle className="h-4 w-4" />
+                  <span className="sr-only">Help</span>
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>About HTML Generator</DialogTitle>
+                  <DialogDescription>
+                    <p className="mt-2">
+                      <strong>Why:</strong> This tool helps you generate HTML code by adding and organizing elements visually.
+                    </p>
+                    <p className="mt-2">
+                      <strong>What:</strong> You can add HTML elements, nest them, reorder them, and even use pre-built components.
+                    </p>
+                    <p className="mt-2">
+                      <strong>How:</strong> Select an element type, enter content, and click &quot;Add Element&quot;. Use the buttons to reorder, edit, or delete elements. The generated HTML will be displayed with a live preview.
+                    </p>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+
+
             <Button variant="outline" size="icon" asChild>
               <Link href="/" aria-label="Home">
                 <Home className="h-4 w-4" />
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
-         
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-        </nav>
-      </header>
-
-      <main className="space-y-4">
-        <section className="flex flex-col md:flex-row items-end gap-2">
-          <div className="flex-1">
-            <Label htmlFor="html-element">HTML Element</Label>
-            <Select value={selectedElement} onValueChange={setSelectedElement}>
-              <SelectTrigger id="html-element">
-                <SelectValue placeholder="Select element" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="h1">Heading 1</SelectItem>
-                <SelectItem value="h2">Heading 2</SelectItem>
-                <SelectItem value="h3">Heading 3</SelectItem>
-                <SelectItem value="p">Paragraph</SelectItem>
-                <SelectItem value="a">Link</SelectItem>
-                <SelectItem value="ul">Unordered List</SelectItem>
-                <SelectItem value="ol">Ordered List</SelectItem>
-                <SelectItem value="li">List Item</SelectItem>
-                <SelectItem value="div">Div</SelectItem>
-                <SelectItem value="span">Span</SelectItem>
-                <SelectItem value="header">Header</SelectItem>
-                <SelectItem value="nav">Navigation</SelectItem>
-                <SelectItem value="main">Main</SelectItem>
-                <SelectItem value="article">Article</SelectItem>
-                <SelectItem value="section">Section</SelectItem>
-                <SelectItem value="aside">Aside</SelectItem>
-                <SelectItem value="footer">Footer</SelectItem>
-                <SelectItem value="form">Form</SelectItem>
-                <SelectItem value="input">Input</SelectItem>
-                <SelectItem value="button">Button</SelectItem>
-                <SelectItem value="table">Table</SelectItem>
-                <SelectItem value="tr">Table Row</SelectItem>
-                <SelectItem value="td">Table Cell</SelectItem>
-                <SelectItem value="th">Table Header</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex-1">
-            <Label htmlFor="element-content">Element Content</Label>
-            <Input
-              id="element-content"
-              value={elementContent}
-              onChange={(e) => setElementContent(e.target.value)}
-              placeholder="Enter element content"
-            />
-          </div>
-          <Button onClick={() => editingElement ? updateElement() : addHtmlElement()}>
-            {editingElement ? 'Update Element' : 'Add Element'}
-          </Button>
-        </section>
-
-        <section className="flex flex-wrap gap-2">
-          <Button onClick={() => addPrebuiltComponent('header')}>Add Header</Button>
-          <Button onClick={() => addPrebuiltComponent('navbar')}>Add Navbar</Button>
-          <Button onClick={() => addPrebuiltComponent('main')}>Add Main</Button>
-          <Button onClick={() => addPrebuiltComponent('aside')}>Add Aside</Button>
-          <Button onClick={() => addPrebuiltComponent('footer')}>Add Footer</Button>
-          <Button onClick={() => addPrebuiltComponent('article')}>Add Article</Button>
-          <Button onClick={() => addPrebuiltComponent('section')}>Add Section</Button>
-          <Button onClick={() => addPrebuiltComponent('form')}>Add Form</Button>
-          <Button onClick={() => addPrebuiltComponent('table')}>Add Table</Button>
-        </section>
-
-        <Dialog open={isResetDialogOpen} onOpenChange={setIsResetDialogOpen}>
-          <DialogTrigger asChild>
-            <Button variant="outline" size="sm">
-              Reset
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Are you sure?</DialogTitle>
-              <DialogDescription>
-                This will reset your entire canvas and remove all the elements. This action cannot be undone.
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter>
-              <Button variant="outline" onClick={() => setIsResetDialogOpen(false)}>Cancel</Button>
-              <Button variant="destructive" onClick={resetElements}>Confirm Reset</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-
-        <section className="border p-4 rounded-md">
-          {elements.map(el => renderElement(el))}
-        </section>
-      </main>
-
-      <section className="space-y-2">
-        <div className="flex justify-between items-center">
-          <Label htmlFor="html-output">Generated HTML</Label>
-          <div className="space-x-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleCopy}
-              disabled={elements.length === 0}
-            >
-              {isCopied ? (
-                <Check className="h-4 w-4 mr-2" />
-              ) : (
-                <Copy className="h-4 w-4 mr-2" />
-              )}
-              {isCopied ? 'Copied!' : 'Copy'}
-            </Button>
 
             <Button
               variant="outline"
-              size="sm"
-              onClick={handleDownload}
-              disabled={elements.length === 0}
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              <Download className="h-4 w-4 mr-2" />
-              Download
+              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
             </Button>
-          </div>
-        </div>
-        <pre className="language-markup">
-          <code>{generateHtml(elements)}</code>
-        </pre>
-      </section>
+          </nav>
+        </header>
 
-      <section className="space-y-2">
-        <Label>Live Preview</Label>
-        <div className="border p-4 rounded-md">
-          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(generateHtml(elements)) }} />
-        </div>
-      </section>
-    </div>
+        <main className="space-y-4">
+          <section className="flex flex-col md:flex-row items-end gap-2">
+            <div className="flex-1">
+              <Label htmlFor="html-element">HTML Element</Label>
+              <Select value={selectedElement} onValueChange={setSelectedElement}>
+                <SelectTrigger id="html-element">
+                  <SelectValue placeholder="Select element" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="h1">Heading 1</SelectItem>
+                  <SelectItem value="h2">Heading 2</SelectItem>
+                  <SelectItem value="h3">Heading 3</SelectItem>
+                  <SelectItem value="p">Paragraph</SelectItem>
+                  <SelectItem value="a">Link</SelectItem>
+                  <SelectItem value="ul">Unordered List</SelectItem>
+                  <SelectItem value="ol">Ordered List</SelectItem>
+                  <SelectItem value="li">List Item</SelectItem>
+                  <SelectItem value="div">Div</SelectItem>
+                  <SelectItem value="span">Span</SelectItem>
+                  <SelectItem value="header">Header</SelectItem>
+                  <SelectItem value="nav">Navigation</SelectItem>
+                  <SelectItem value="main">Main</SelectItem>
+                  <SelectItem value="article">Article</SelectItem>
+                  <SelectItem value="section">Section</SelectItem>
+                  <SelectItem value="aside">Aside</SelectItem>
+                  <SelectItem value="footer">Footer</SelectItem>
+                  <SelectItem value="form">Form</SelectItem>
+                  <SelectItem value="input">Input</SelectItem>
+                  <SelectItem value="button">Button</SelectItem>
+                  <SelectItem value="table">Table</SelectItem>
+                  <SelectItem value="tr">Table Row</SelectItem>
+                  <SelectItem value="td">Table Cell</SelectItem>
+                  <SelectItem value="th">Table Header</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex-1">
+              <Label htmlFor="element-content">Element Content</Label>
+              <Input
+                id="element-content"
+                value={elementContent}
+                onChange={(e) => setElementContent(e.target.value)}
+                placeholder="Enter element content"
+              />
+            </div>
+            <Button onClick={() => editingElement ? updateElement() : addHtmlElement()}>
+              {editingElement ? 'Update Element' : 'Add Element'}
+            </Button>
+          </section>
+
+          <section className="flex flex-wrap gap-2">
+            <Button onClick={() => addPrebuiltComponent('header')}>Add Header</Button>
+            <Button onClick={() => addPrebuiltComponent('navbar')}>Add Navbar</Button>
+            <Button onClick={() => addPrebuiltComponent('main')}>Add Main</Button>
+            <Button onClick={() => addPrebuiltComponent('aside')}>Add Aside</Button>
+            <Button onClick={() => addPrebuiltComponent('footer')}>Add Footer</Button>
+            <Button onClick={() => addPrebuiltComponent('article')}>Add Article</Button>
+            <Button onClick={() => addPrebuiltComponent('section')}>Add Section</Button>
+            <Button onClick={() => addPrebuiltComponent('form')}>Add Form</Button>
+            <Button onClick={() => addPrebuiltComponent('table')}>Add Table</Button>
+          </section>
+
+          <Dialog open={isResetDialogOpen} onOpenChange={setIsResetDialogOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm">
+                Reset
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you sure?</DialogTitle>
+                <DialogDescription>
+                  This will reset your entire canvas and remove all the elements. This action cannot be undone.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsResetDialogOpen(false)}>Cancel</Button>
+                <Button variant="destructive" onClick={resetElements}>Confirm Reset</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <section className="border p-4 rounded-md">
+            {elements.map(el => renderElement(el))}
+          </section>
+        </main>
+
+        <section className="space-y-2">
+          <div className="flex justify-between items-center">
+            <Label htmlFor="html-output">Generated HTML</Label>
+            <div className="space-x-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCopy}
+                disabled={elements.length === 0}
+              >
+                {isCopied ? (
+                  <Check className="h-4 w-4 mr-2" />
+                ) : (
+                  <Copy className="h-4 w-4 mr-2" />
+                )}
+                {isCopied ? 'Copied!' : 'Copy'}
+              </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleDownload}
+                disabled={elements.length === 0}
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Download
+              </Button>
+            </div>
+          </div>
+          <pre className="language-markup">
+            <code>{generateHtml(elements)}</code>
+          </pre>
+        </section>
+
+        <section className="space-y-2">
+          <Label>Live Preview</Label>
+          <div className="border p-4 rounded-md">
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(generateHtml(elements)) }} />
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

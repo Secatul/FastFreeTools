@@ -18,7 +18,7 @@ import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, 
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Link from 'next/link'  
+import Link from 'next/link'
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState('')
@@ -103,7 +103,7 @@ export default function MarkdownEditor() {
   return (
     <>
       <Head>
-        <title>Markdown Editor</title>
+        <title>Markdown Editor | Fast Free Tools</title>
         <meta
           name="description"
           content="A versatile Markdown editor with real-time preview, file import/export, and support for text formatting. Write, format, and preview Markdown easily."
@@ -112,33 +112,27 @@ export default function MarkdownEditor() {
           name="keywords"
           content="Markdown editor, Markdown preview, online Markdown editor, Markdown formatting, Markdown tool"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Markdown Editor" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/markdown-editor" />
+        <meta property="og:title" content="Markdown Editor | Fast Free Tools" />
         <meta
           property="og:description"
           content="Create and preview Markdown content in real-time with our Markdown Editor. Import/export files and use handy formatting options."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/markdown-editor" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/markdown-editor" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Markdown Editor" />
+        <meta name="twitter:title" content="Markdown Editor | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="A powerful Markdown editor that allows you to write, format, and preview Markdown content in real-time."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Charset and Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
       <div className={`p-4 ${isFullScreen ? 'fixed inset-0 z-50 bg-background' : 'max-w-6xl mx-auto'}`}>

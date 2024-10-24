@@ -90,7 +90,7 @@ export default function CaseConverter() {
   return (
     <>
       <Head>
-        <title>Case Converter</title>
+        <title>Case Converter | Fast Free Tools</title>
         <meta
           name="description"
           content="Easily convert text between different case styles such as uppercase, lowercase, camelCase, snake_case, PascalCase, and more with this Case Converter tool."
@@ -99,33 +99,27 @@ export default function CaseConverter() {
           name="keywords"
           content="case converter, text converter, uppercase, lowercase, capitalize, camelCase, snake_case, PascalCase"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Case Converter" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/case-converter" />
+        <meta property="og:title" content="Case Converter | Fast Free Tools" />
         <meta
           property="og:description"
           content="Quickly transform text into different case styles, including uppercase, lowercase, camelCase, snake_case, and PascalCase."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/case-converter" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/case-converter" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Case Converter" />
+        <meta name="twitter:title" content="Case Converter | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Convert text between various case styles with this easy-to-use Case Converter tool."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Charset and Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
       <div className="max-w-2xl mx-auto p-6 space-y-6">
@@ -144,7 +138,7 @@ export default function CaseConverter() {
                   <DialogTitle>About Case Converter</DialogTitle>
                   <DialogDescription>
                     <p className="mt-2">
-                    <strong>Why:</strong> The Case Converter tool helps you quickly transform text into different case styles, saving time and ensuring consistency in your writing or coding.
+                      <strong>Why:</strong> The Case Converter tool helps you quickly transform text into different case styles, saving time and ensuring consistency in your writing or coding.
                     </p>
                     <p className="mt-2">
                       <strong>What:</strong> It converts text between various case styles, including uppercase, lowercase, title case, camelCase, snake_case, and PascalCase.

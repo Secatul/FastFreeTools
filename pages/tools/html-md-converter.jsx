@@ -99,7 +99,7 @@ export default function HTMLToMarkdownConverter() {
   return (
     <>
       <Head>
-        <title>HTML to Markdown Converter</title>
+        <title>HTML to Markdown Converter | Fast Free Tools</title>
         <meta
           name="description"
           content="Easily convert your HTML content to Markdown format with this simple and fast HTML to Markdown converter tool. View, clean, copy, or download your results in real-time."
@@ -108,35 +108,27 @@ export default function HTMLToMarkdownConverter() {
           name="keywords"
           content="HTML to Markdown converter, HTML converter, Markdown generator, HTML sanitization, real-time conversion"
         />
-        <meta name="author" content="Your Name or Company Name" />
-
-        {/* Open Graph (OG) meta tags for social sharing */}
-        <meta property="og:title" content="HTML to Markdown Converter" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/html-to-markdown" />
+        <meta property="og:title" content="HTML to Markdown Converter | Fast Free Tools" />
         <meta
           property="og:description"
           content="Easily convert your HTML content to Markdown format with this simple and fast HTML to Markdown converter tool."
         />
-        <meta property="og:image" content="https://example.com/preview-image.jpg" />
-        <meta property="og:url" content="https://example.com/html-to-markdown" />
+        <meta property="og:image" content="https://fastfreetools.com/preview-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/html-to-markdown" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Cards meta tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="HTML to Markdown Converter" />
+        <meta name="twitter:title" content="HTML to Markdown Converter | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Convert your HTML content to Markdown easily and quickly. Real-time results with copy and download functionality."
         />
-        <meta name="twitter:image" content="https://example.com/preview-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/preview-image.jpg" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-        {/* Charset */}
         <meta charSet="UTF-8" />
+
       </Head>
 
       <div className="max-w-6xl mx-auto p-6 space-y-6">

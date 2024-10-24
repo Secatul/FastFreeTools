@@ -79,7 +79,7 @@ export default function LoremIpsumGenerator() {
 
     <>
       <Head>
-        <title>Lorem Ipsum Generator</title>
+        <title>Lorem Ipsum Generator | Fast Free Tools</title>
         <meta
           name="description"
           content="Generate Lorem Ipsum placeholder text for your designs and projects. Choose the amount and unit of text to fit your needs."
@@ -88,33 +88,27 @@ export default function LoremIpsumGenerator() {
           name="keywords"
           content="Lorem Ipsum generator, placeholder text generator, design placeholder, text generator"
         />
-        <meta name="author" content="Your Name or Company" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Lorem Ipsum Generator" />
+        <meta name="author" content="Fast Free Tools" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://fastfreetools.com/lorem-ipsum-generator" />
+        <meta property="og:title" content="Lorem Ipsum Generator | Fast Free Tools" />
         <meta
           property="og:description"
           content="Easily generate Lorem Ipsum placeholder text for your designs, websites, or projects. Choose between words, sentences, or paragraphs."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <meta property="og:url" content="https://example.com/lorem-ipsum-generator" />
+        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:url" content="https://fastfreetools.com/lorem-ipsum-generator" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lorem Ipsum Generator" />
+        <meta name="twitter:title" content="Lorem Ipsum Generator | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Generate placeholder Lorem Ipsum text for your projects. Choose the amount of words, sentences, or paragraphs you need."
         />
-        <meta name="twitter:image" content="https://example.com/twitter-image.jpg" />
-
-        {/* Responsive design */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Charset and Favicon */}
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
 
 
