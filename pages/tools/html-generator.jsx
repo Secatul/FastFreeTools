@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { Label } from "@/components/ui/label"
+import Link from 'next/link'
 import {
   Dialog,
   DialogContent,
@@ -21,7 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import Link from "next/link";
 import { useTheme } from "next-themes"
 import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, ChevronUp, ChevronDown, Edit, Trash2 } from 'lucide-react'
 import DOMPurify from 'isomorphic-dompurify'
@@ -422,14 +422,14 @@ export default function HTMLGenerator() {
             </DialogContent>
           </Dialog>
 
-
-          <Button variant="outline" size="icon" asChild>
-            <Link href="/" aria-label="Home">
-              <Home className="h-4 w-4" />
-              <span className="sr-only">Home</span>
-            </Link>
-          </Button>
-
+         
+            <Button variant="outline" size="icon" asChild>
+              <Link href="/" aria-label="Home">
+                <Home className="h-4 w-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+            </Button>
+         
           <Button
             variant="outline"
             size="icon"

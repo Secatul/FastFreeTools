@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Badge } from '@/components/ui/badge';
 import { Star, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import Footer from './components/ui/footer';
 
 export default function Page() {
   const { toast } = useToast();
@@ -37,9 +38,8 @@ export default function Page() {
   };
 
   useEffect(() => {
-    console.log("Dispatching fetchTools...");
-    dispatch(fetchTools());
-    fetchRatings();
+    dispatch(fetchTools());  // Busca as ferramentas
+    fetchRatings();  // Busca os votos do Supabase
   }, [dispatch]);
 
   // Função para determinar se uma ferramenta é popular com base no número de votos do Supabase
@@ -53,19 +53,17 @@ export default function Page() {
     setSearchQuery(sanitizedQuery);
   };
 
-
-  
   const sortedTools = tools
-  .map((tool) => ({
-    ...tool,
-    votes: ratingData[tool.name]?.votes || 0,
-    rating: ratingData[tool.name]?.rating || 0,
-  }))
-  .sort((a, b) => b.votes - a.votes || new Date(b.createdAt) - new Date(a.createdAt));
-  
-  const popularTools = sortedTools.slice(0, 3);
+    .map((tool) => ({
+      ...tool,
+      votes: ratingData[tool.name]?.votes || 0,
+      rating: ratingData[tool.name]?.rating || 0,
+    }))
+    .sort((a, b) => b.votes - a.votes || new Date(b.createdAt) - new Date(a.createdAt));
+
+  const popularTools = sortedTools.slice(0, 3);  // Top 3 most popular tools
   const remainingTools = sortedTools.slice(3).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  
+
   const filteredTools = [...popularTools, ...remainingTools].filter((tool) =>
     tool.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -128,22 +126,21 @@ export default function Page() {
     }
     return stars;
   };
-
-  const ToolCard = ({ tool, index }) => {
+  const ToolCard = ({ tool }) => {
     const [hoveredStars, setHoveredStars] = useState(null);
 
     const dynamicRating = ratingData[tool.name]?.rating || 0;
 
     return (
       <Card
-        className={`group hover:shadow-md transition-all duration-300 ${dynamicRating >= 4.5 ? 'border-primary/50' : ''
+        className={`group bg-gray-100 dark:bg-gray-800 rounded-lg p-2 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${dynamicRating >= 4.5 ? 'border-primary/50' : ''
           }`}
       >
         <CardContent className="p-6">
           <Link href={tool.route} className="block">
             <div className="flex items-center justify-between mb-4">
               <span className="text-4xl">{tool.icon}</span>
-              <div className="space-y-1">
+              <div className="space-y-1 text-lg font-medium group-hover:text-blue-600 dark:group-hover:text-primary transition-colors duration-300 mb-2">
                 {isPopular(tool.name) && (
                   <Badge variant="secondary" className="bg-primary/10 text-primary">
                     Popular
@@ -160,6 +157,9 @@ export default function Page() {
             <h3 className="text-lg font-medium group-hover:text-primary transition-colors duration-300 mb-2">
               {tool.name}
             </h3>
+
+            {/* Exibir a descrição da ferramenta */}
+            <p className="text-gray-400 mb-4">{tool.description}</p>
           </Link>
 
           <div className="mt-4">
@@ -169,7 +169,7 @@ export default function Page() {
                   {renderStars(dynamicRating, tool.name, hoveredStars, setHoveredStars)}
                 </div>
                 <span className="text-sm font-medium text-primary">
-                  {dynamicRating.toFixed(1)} {/* Display rating from Supabase */}
+                  {dynamicRating.toFixed(1)}
                 </span>
               </div>
               <span className="text-sm text-muted-foreground">
@@ -182,44 +182,57 @@ export default function Page() {
     );
   };
 
+
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-end mb-4">
-          <div className="flex items-center space-x-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </div>
-        </div>
-
-        <Header title="Fast Task" description="Your Quick Tools for Every Task" />
-
-        <main className="mt-12 space-y-16">
-          <section className="flex flex-col items-center gap-8">
-            <Search searchQuery={searchQuery} onSearchChange={handleSearchChange} />
-            <h2 className="text-3xl font-bold flex self-start">Tools</h2>
-
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredTools.length > 0 ? (
-                filteredTools.map((tool, index) => (
-                  <ToolCard key={index} tool={tool} index={index} />
-                ))
-              ) : (
-                <p className="text-muted-foreground col-span-full text-center text-lg">
-                  No tools found for your search.
-                </p>
-              )}
+    <>
+      <div className="min-h-screen bg-white py-12 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-end mb-4">
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="relative inline-flex items-center justify-center p-2 rounded-full bg-gray-700 dark:bg-gray-800 focus:outline-none transition-colors duration-300
+border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 transition-all"
+              >
+                <span className="absolute transform transition-all duration-500 dark:rotate-180 dark:opacity-0 opacity-100">
+                  <Sun className="w-6 h-6 text-yellow-400" />
+                </span>
+                <span className="absolute transform transition-all duration-500 rotate-180 dark:rotate-0 opacity-0 dark:opacity-100">
+                  <Moon className="w-6 h-6 text-blue-400" />
+                </span>
+                <span className="sr-only">Toggle theme</span>
+              </Button>
             </div>
-          </section>
-        </main>
+          </div>
+
+          <Header title="Fast Task" description="Your Quick Tools for Every Task" />
+
+          <main className="mt-12 space-y-16">
+            <section>
+              <div className='flex items-center justify-center'>
+                <Search searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+                <h2 className="text-3xl font-bold">Tools</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredTools.length > 0 ? (
+                  filteredTools.map((tool, index) => (
+                    <ToolCard key={index} tool={tool} index={index} />
+                  ))
+                ) : (
+                  <p className="text-muted-foreground col-span-full text-center text-lg">
+                    No tools found for your search.
+                  </p>
+                )}
+              </div>
+            </section>
+          </main>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

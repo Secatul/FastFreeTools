@@ -344,8 +344,14 @@ export default function MorseCodeTranslator() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
-                        <Link href="/" aria-label="Home">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="bg-white/10 hover:bg-white/20 text-white"
+                        aria-label="Home"
+                        asChild
+                      >
+                        <Link href="/" aria-label="Home"> 
                           <Home className="h-4 w-4" />
                           <span className="sr-only">Home</span>
                         </Link>
@@ -355,6 +361,7 @@ export default function MorseCodeTranslator() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button

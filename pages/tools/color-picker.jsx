@@ -327,274 +327,298 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <TooltipProvider>
-        <main className="max-w-4xl mx-auto p-6 space-y-6">
-          <header className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold">Color Picker</h1>
-            <div className="space-x-2 flex items-center">
-              <Dialog>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" size="icon" aria-label="Help">
-                        <HelpCircle className="h-4 w-4" />
+        <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
+          <main className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
+            <header className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800 text-white p-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h1 className="text-3xl sm:text-4xl font-bold">Color Picker</h1>
+                <nav className="flex items-center space-x-2">
+                  <Dialog>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="icon" aria-label="Help" className="bg-white/10 hover:bg-white/20 text-white">
+                            <HelpCircle className="h-5 w-5" />
+                          </Button>
+                        </DialogTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Get help and information about the Color Picker</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>About Color Picker</DialogTitle>
+                        <DialogDescription>
+                          <p className="mt-2">
+                            <strong>Why:</strong> This tool helps you choose and analyze colors for your designs.
+                          </p>
+                          <p className="mt-2">
+                            <strong>What:</strong> You can pick colors, generate palettes, check contrast, simulate color blindness, and create gradients.
+                          </p>
+                          <p className="mt-2">
+                            <strong>How:</strong> Use the color inputs or sliders to select a color. Explore different features in the tabs below.
+                          </p>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
+                        <Link href="/" aria-label="Home">
+                          <Home className="h-5 w-5" />
+                        </Link>
                       </Button>
-                    </DialogTrigger>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Get help and information about the Color Picker</p>
-                  </TooltipContent>
-                </Tooltip>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>About Color Picker</DialogTitle>
-                    <DialogDescription>
-                      <p className="mt-2">
-                        <strong>Why:</strong> This tool helps you choose and analyze colors for your designs.
-                      </p>
-                      <p className="mt-2">
-                        <strong>What:</strong> You can pick colors, generate palettes, check contrast, simulate color blindness, and create gradients.
-                      </p>
-                      <p className="mt-2">
-                        <strong>How:</strong> Use the color inputs or sliders to select a color. Explore different features in the tabs below.
-                      </p>
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Return to the home page</p>
+                    </TooltipContent>
+                  </Tooltip>
 
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="icon" asChild>
-                    <Link href="/" aria-label="Home">
-                      <Home className="h-4 w-4" />
-                      <span className="sr-only">Home</span>
-                    </Link>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Return to the home page</p>
-                </TooltipContent>
-              </Tooltip>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                aria-label="Toggle theme"
-              >
-                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              </Button>
-            </div>
-          </header>
-
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="w-full h-40 rounded-lg" style={{ backgroundColor: color }}></div>
-              <div className="space-y-2">
-                <Label htmlFor="hex-input">HEX</Label>
-                <div className="flex space-x-2">
-                  <Input id="hex-input" value={color} onChange={handleHexChange} />
-                  <Button onClick={() => copyToClipboard(color, 'HEX value')} aria-label="Copy HEX">
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </div>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                        aria-label="Toggle theme"
+                        className="bg-white/10 hover:bg-white/20 text-white"
+                      >
+                        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Switch between light and dark mode</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </nav>
               </div>
-              <div className="space-y-2">
-                <Label>RGB</Label>
-                <div className="grid grid-cols-3 gap-2">
-                  {['r', 'g', 'b'].map((channel) => (
-                    <div key={channel} className="space-y-2">
-                      <Input
-                        type="number"
-                        min="0"
-                        max="255"
-                        value={rgb[channel]}
-                        onChange={(e) => handleRgbChange(channel, parseInt(e.target.value))}
-                        aria-label={`Channel ${channel.toUpperCase()}`}
-                      />
-                      <Slider
-                        min={0}
-                        max={255}
-                        step={1}
-                        value={[rgb[channel]]}
-                        onValueChange={(value) => handleRgbChange(channel, value[0])}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <Button onClick={() => copyToClipboard(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`, 'RGB value')}>
-                  <Copy className="h-4 w-4 mr-2" />
-                  Copy RGB
-                </Button>
-              </div>
-              <div className="space-y-2">
-                <Label>HSL</Label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { key: 'h', max: 360 },
-                    { key: 's', max: 100 },
-                    { key: 'l', max: 100 },
-                  ].map(({ key, max }) => (
-                    <div key={key} className="space-y-2">
-                      <Input
-                        type="number"
-                        min="0"
-                        max={max}
-                        value={hsl[key]}
-                        onChange={(e) => handleHslChange(key, parseInt(e.target.value))}
-                        aria-label={`Channel ${key.toUpperCase()}`}
-                      />
-                      <Slider
-                        min={0}
-                        max={max}
-                        step={1}
-                        value={[hsl[key]]}
-                        onValueChange={(value) => handleHslChange(key, value[0])}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <Button onClick={() => copyToClipboard(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`, 'HSL value')}>
-                  <Copy className="h-4 w-4 mr-2" />
-                  Copy HSL
-                </Button>
-              </div>
-            </div>
+            </header>
 
-            <div className="space-y-4">
-              <Tabs defaultValue="palette">
-                <TabsList className="grid w-full grid-cols-4">
-                  <TabsTrigger value="palette">Palette</TabsTrigger>
-                  <TabsTrigger value="contrast">Contrast</TabsTrigger>
-                  <TabsTrigger value="colorblind">Colorblind</TabsTrigger>
-                  <TabsTrigger value="gradient">Gradient</TabsTrigger>
-                </TabsList>
-                <TabsContent value="palette" className="space-y-4">
+            <div className="p-6 space-y-6">
+              <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="w-full h-40 rounded-lg shadow-md" style={{ backgroundColor: color }}></div>
                   <div className="space-y-2">
-                    <Label>Complementary</Label>
-                    <div className="h-10 rounded-lg" style={{ backgroundColor: getComplementaryColor(color) }}></div>
+                    <Label htmlFor="hex-input" className="text-lg font-semibold text-gray-700 dark:text-gray-300">HEX</Label>
+                    <div className="flex space-x-2">
+                      <Input 
+                        id="hex-input" 
+                        value={color} 
+                        onChange={handleHexChange}
+                        className="border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      />
+                      <Button onClick={() => copyToClipboard(color, 'HEX value')} aria-label="Copy HEX" className="bg-blue-500 hover:bg-blue-600 text-white">
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>Analogous</Label>
-                    <div className="flex space-x-2">
-                      {getAnalogousColors(color).map((c, i) => (
-                        <div key={i} className="flex-1 h-10 rounded-lg" style={{ backgroundColor: c }}></div>
+                    <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">RGB</Label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {['r', 'g', 'b'].map((channel) => (
+                        <div key={channel} className="space-y-2">
+                          <Input
+                            type="number"
+                            min="0"
+                            max="255"
+                            value={rgb[channel]}
+                            onChange={(e) => handleRgbChange(channel, parseInt(e.target.value))}
+                            aria-label={`Channel ${channel.toUpperCase()}`}
+                            className="border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          />
+                          <Slider
+                            min={0}
+                            max={255}
+                            step={1}
+                            value={[rgb[channel]]}
+                            onValueChange={(value) => handleRgbChange(channel, value[0])}
+                            className="[&>span:first-child]:bg-purple-300 [&>span:first-child]:dark:bg-purple-600"
+                          />
+                        </div>
                       ))}
                     </div>
+                    <Button onClick={() => copyToClipboard(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`, 'RGB value')} className="bg-green-500 hover:bg-green-600 text-white">
+                      <Copy className="h-4 w-4 mr-2" />
+                      Copy RGB
+                    </Button>
                   </div>
                   <div className="space-y-2">
-                    <Label>Triadic</Label>
-                    <div className="flex space-x-2">
-                      {getTriadicColors(color).map((c, i) => (
-                        <div key={i} className="flex-1 h-10 rounded-lg" style={{ backgroundColor: c }}></div>
+                    <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">HSL</Label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[
+                        { key: 'h', max: 360 },
+                        { key: 's', max: 100 },
+                        { key: 'l', max: 100 },
+                      ].map(({ key, max }) => (
+                        <div key={key} className="space-y-2">
+                          <Input
+                            type="number"
+                            min="0"
+                            max={max}
+                            value={hsl[key]}
+                            onChange={(e) => handleHslChange(key, parseInt(e.target.value))}
+                            aria-label={`Channel ${key.toUpperCase()}`}
+                            className="border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          />
+                          <Slider
+                            min={0}
+                            max={max}
+                            step={1}
+                            value={[hsl[key]]}
+                            onValueChange={(value) => handleHslChange(key, value[0])}
+                            className="[&>span:first-child]:bg-purple-300 [&>span:first-child]:dark:bg-purple-600"
+                          />
+                        </div>
                       ))}
                     </div>
+                    <Button onClick={() => copyToClipboard(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`, 'HSL value')} className="bg-pink-500 hover:bg-pink-600 text-white">
+                      <Copy className="h-4 w-4 mr-2" />
+                      Copy HSL
+                    </Button>
                   </div>
-                  <Button onClick={savePalette}>
-                    <Save className="h-4 w-4 mr-2" />
-                    Save Palette
-                  </Button>
-                </TabsContent>
-                <TabsContent value="contrast" className="space-y-4">
-                  <div className="space-y-2">
-                    <Label>Contrast with White</Label>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: color }}>
-                        <span className="text-white font-bold">A</span>
+                </div>
+
+                <div className="space-y-4">
+                  <Tabs defaultValue="palette" className="w-full">
+                    <TabsList className="grid w-full grid-cols-4 bg-purple-100 dark:bg-purple-900">
+                      <TabsTrigger value="palette" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Palette</TabsTrigger>
+                      <TabsTrigger value="contrast" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Contrast</TabsTrigger>
+                      <TabsTrigger value="colorblind" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Colorblind</TabsTrigger>
+                      <TabsTrigger value="gradient" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Gradient</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="palette" className="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-b-lg shadow-md">
+                      <div className="space-y-2">
+                        <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Complementary</Label>
+                        <div className="h-10 rounded-lg shadow-inner" style={{ backgroundColor: getComplementaryColor(color) }}></div>
                       </div>
-                      <span>{getContrastRatio(color, '#ffffff').toFixed(2)}:1</span>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Contrast with Black</Label>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: color }}>
-                        <span className="text-black font-bold">A</span>
+                      <div className="space-y-2">
+                        <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Analogous</Label>
+                        <div className="flex space-x-2">
+                          {getAnalogousColors(color).map((c, i) => (
+                            <div key={i} className="flex-1 h-10 rounded-lg shadow-inner" style={{ backgroundColor: c }}></div>
+                          ))}
+                        </div>
                       </div>
-                      <span>{getContrastRatio(color, '#000000').toFixed(2)}:1</span>
-                    </div>
-                  </div>
-                </TabsContent>
-                <TabsContent value="colorblind" className="space-y-4">
-                  <Select value={colorBlindnessType} onValueChange={setColorBlindnessType}>
-                    <SelectTrigger aria-label="Type of Color Blindness">
-                      <SelectValue placeholder="Select color blindness type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="normal">Normal Vision</SelectItem>
-                      <SelectItem value="protanopia">Protanopia</SelectItem>
-                      <SelectItem value="deuteranopia">Deuteranopia</SelectItem>
-                      <SelectItem value="tritanopia">Tritanopia</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <div className="h-20 rounded-lg" style={{ backgroundColor: simulateColorBlindness(color, colorBlindnessType) }}></div>
-                </TabsContent>
-                <TabsContent value="gradient" className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="gradient-color">Gradient End Color</Label>
-                    <Input
-                      id="gradient-color"
-                      type="color"
-                      value={gradientColor}
-                      onChange={(e) => {
-                        if (isValidHex(e.target.value)) {
-                          setGradientColor(e.target.value)
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="h-20 rounded-lg" style={{ background: `linear-gradient(to right, ${color}, ${gradientColor})` }}></div>
-                  <Button onClick={() => copyToClipboard(`linear-gradient(to right, ${color}, ${gradientColor})`, 'Gradient CSS')}>
-                    <Copy className="h-4 w-4 mr-2" />
-                    Copy Gradient CSS
-                  </Button>
-                </TabsContent>
-              </Tabs>
-            </div>
-          </section>
+                      <div className="space-y-2">
+                        <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Triadic</Label>
+                        <div className="flex space-x-2">
+                          {getTriadicColors(color).map((c, i) => (
+                            <div key={i} className="flex-1 h-10 rounded-lg shadow-inner" style={{ backgroundColor: c }}></div>
+                          ))}
+                        </div>
+                      </div>
+                      <Button onClick={savePalette} className="w-full bg-purple-500 hover:bg-purple-600 text-white">
+                
+                        <Save className="h-4 w-4 mr-2" />
+                        Save Palette
+                      </Button>
+                    </TabsContent>
+                    <TabsContent value="contrast" className="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-b-lg shadow-md">
+                      <div className="space-y-2">
+                        <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Contrast with White</Label>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-md" style={{ backgroundColor: color }}>
+                            <span className="text-white font-bold">A</span>
+                          </div>
+                          <span className="text-lg font-semibold">{getContrastRatio(color, '#ffffff').toFixed(2)}:1</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Contrast with Black</Label>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-md" style={{ backgroundColor: color }}>
+                            <span className="text-black font-bold">A</span>
+                          </div>
+                          <span className="text-lg font-semibold">{getContrastRatio(color, '#000000').toFixed(2)}:1</span>
+                        </div>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="colorblind" className="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-b-lg shadow-md">
+                      <Select value={colorBlindnessType} onValueChange={setColorBlindnessType}>
+                        <SelectTrigger aria-label="Type of Color Blindness" className="border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                          <SelectValue placeholder="Select color blindness type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="normal">Normal Vision</SelectItem>
+                          <SelectItem value="protanopia">Protanopia</SelectItem>
+                          <SelectItem value="deuteranopia">Deuteranopia</SelectItem>
+                          <SelectItem value="tritanopia">Tritanopia</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <div className="h-20 rounded-lg shadow-inner" style={{ backgroundColor: simulateColorBlindness(color, colorBlindnessType) }}></div>
+                    </TabsContent>
+                    <TabsContent value="gradient" className="space-y-4 bg-white dark:bg-gray-800 p-4 rounded-b-lg shadow-md">
+                      <div className="space-y-2">
+                        <Label htmlFor="gradient-color" className="text-lg font-semibold text-gray-700 dark:text-gray-300">Gradient End Color</Label>
+                        <Input
+                          id="gradient-color"
+                          type="color"
+                          value={gradientColor}
+                          onChange={(e) => {
+                            if (isValidHex(e.target.value)) {
+                              setGradientColor(e.target.value)
+                            }
+                          }}
+                          className="h-10 w-full border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="h-20 rounded-lg shadow-inner" style={{ background: `linear-gradient(to right, ${color}, ${gradientColor})` }}></div>
+                      <Button onClick={() => copyToClipboard(`linear-gradient(to right, ${color}, ${gradientColor})`, 'Gradient CSS')} className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+                        <Copy className="h-4 w-4 mr-2" />
+                        Copy Gradient CSS
+                      </Button>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+              </section>
 
-          {savedPalettes.length > 0 && (
-            <section className="space-y-4">
-              <h2 className="text-2xl font-bold">Saved Palettes</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {savedPalettes.map((palette) => (
-                  <div key={palette.id} className="border p-4 rounded-lg space-y-2">
-                    <div className="flex space-x-2">
-                      <button
-                        className="flex-1 h-10 rounded-lg focus:outline-none"
-                        style={{ backgroundColor: palette.mainColor }}
-                        onClick={() => loadPalette(palette)}
-                        aria-label="Load palette"
-                      ></button>
-                      <div className="flex-1 h-10 rounded-lg" style={{ backgroundColor: palette.complementary }}></div>
-                    </div>
-                    <div className="flex space-x-2">
-                      {palette.analogous.map((c, i) => (
-                        <div key={i} className="flex-1 h-10 rounded-lg" style={{ backgroundColor: c }}></div>
-                      ))}
-                    </div>
-                    <div className="flex space-x-2">
-                      {palette.triadic.map((c, i) => (
-                        <div key={i} className="flex-1 h-10 rounded-lg" style={{ backgroundColor: c }}></div>
-                      ))}
-                    </div>
-                    <div className="flex justify-between">
-                      <Button variant="outline" onClick={() => downloadPaletteInfo(palette)}>
-                        <Download className="h-4 w-4 mr-2" />
-                        Download Info
-                      </Button>
-                      <Button variant="destructive" onClick={() => deletePalette(palette.id)}>
-                        <Trash2 className="h-4 w-4 mr-2" />
-                        Delete
-                      </Button>
-                    </div>
+              {savedPalettes.length > 0 && (
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Saved Palettes</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {savedPalettes.map((palette) => (
+                      <div key={palette.id} className="border border-purple-300 dark:border-purple-600 p-4 rounded-lg space-y-2 bg-white dark:bg-gray-800 shadow-md">
+                        <div className="flex space-x-2">
+                          <button
+                            className="flex-1 h-10 rounded-lg focus:outline-none shadow-inner"
+                            style={{ backgroundColor: palette.mainColor }}
+                            onClick={() => loadPalette(palette)}
+                            aria-label="Load palette"
+                          ></button>
+                          <div className="flex-1 h-10 rounded-lg shadow-inner" style={{ backgroundColor: palette.complementary }}></div>
+                        </div>
+                        <div className="flex space-x-2">
+                          {palette.analogous.map((c, i) => (
+                            <div key={i} className="flex-1 h-10 rounded-lg shadow-inner" style={{ backgroundColor: c }}></div>
+                          ))}
+                        </div>
+                        <div className="flex space-x-2">
+                          {palette.triadic.map((c, i) => (
+                            <div key={i} className="flex-1 h-10 rounded-lg shadow-inner" style={{ backgroundColor: c }}></div>
+                          ))}
+                        </div>
+                        <div className="flex justify-between">
+                          <Button variant="outline" onClick={() => downloadPaletteInfo(palette)} className="bg-green-500 hover:bg-green-600 text-white">
+                            <Download className="h-4 w-4 mr-2" />
+                            Download Info
+                          </Button>
+                          <Button variant="destructive" onClick={() => deletePalette(palette.id)}>
+                            <Trash2 className="h-4 w-4 mr-2" />
+                            Delete
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </section>
-          )}
-        </main>
+                </section>
+              )}
+            </div>
+          </main>
+        </div>
       </TooltipProvider>
     </>
   )
