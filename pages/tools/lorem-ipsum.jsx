@@ -222,7 +222,7 @@ export default function LoremIpsumGenerator() {
                             <strong>What:</strong> This tool generates Lorem Ipsum text based on your specifications.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Choose the amount and unit of text you want, then click "Generate" to create your Lorem Ipsum text.
+                            <strong>How:</strong> Choose the amount and unit of text you want, then click &quot;Generate&quot; to create your Lorem Ipsum text.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
@@ -306,7 +306,7 @@ export default function LoremIpsumGenerator() {
                       aria-label='Toggle "Start with Lorem Ipsum"'
                       className="data-[state=checked]:bg-blue-500 dark:data-[state=checked]:bg-blue-400"
                     />
-                    <Label htmlFor="start-with-lorem">Start with "Lorem ipsum"</Label>
+                    <Label htmlFor="start-with-lorem">Start with &quot;Lorem ipsum&quot;</Label>
                   </div>
                 </div>
                 <div className="mt-4">

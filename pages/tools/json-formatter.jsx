@@ -210,7 +210,7 @@ export default function JsonFormatter() {
                             <strong>What:</strong> It offers JSON formatting with proper indentation and minification to remove unnecessary whitespace.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Simply paste your JSON into the input area, then click "Format JSON" or "Minify JSON". The tool will process your input and display the result.
+                            <strong>How:</strong> Simply paste your JSON into the input area, then click &quot;Format JSON&quot; or &quot;Minify JSON&quot;. The tool will process your input and display the result.
                           </p>
                         </DialogDescription>
                       </DialogHeader>

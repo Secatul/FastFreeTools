@@ -183,7 +183,7 @@ export default function EnhancedUUIDGenerator() {
                             <strong>What:</strong> This tool generates version 1 or 4 UUIDs with customizable options.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Choose your settings and click "Generate UUIDs" to create new UUIDs. You can generate multiple UUIDs at once and customize their format.
+                            <strong>How:</strong> Choose your settings and click &quot;Generate UUIDs&quot; to create new UUIDs. You can generate multiple UUIDs at once and customize their format.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
