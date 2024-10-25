@@ -226,7 +226,7 @@ export default function EnhancedGrammarChecker() {
                             <strong>What:</strong> It provides instant feedback on your text, highlighting potential issues, offering suggestions for improvement, and allowing automatic corrections.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Simply paste or type your text, click "Check Grammar" to see issues, and use "Fix Issues" for automatic corrections.
+                            <strong>How:</strong> Simply paste or type your text, click &quot;Check Grammar&quot; to see issues, and use &quot;Fix Issues&quot; for automatic corrections.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
@@ -365,10 +365,10 @@ export default function EnhancedGrammarChecker() {
                             {issue.description}
                           </p>
                           <p className="text-yellow-600 dark:text-yellow-400 mt-1">
-                            <strong>Context:</strong> "{issue.context}"
+                            <strong>Context:</strong> &quot;{issue.context}&quot;
                           </p>
                           <p className="text-green-600 dark:text-green-400 mt-1">
-                            <strong>Suggestion:</strong> "{issue.correctedContext}"
+                            <strong>Suggestion:</strong> &quot;{issue.correctedContext}&quot;
                           </p>
                         </div>
                       ))}
