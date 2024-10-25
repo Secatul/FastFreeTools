@@ -12,20 +12,87 @@ import { Search } from './components/ui/search';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from '@/components/ui/badge';
-import { Star, Moon, Sun } from 'lucide-react';
+import { Star, Moon, Sun, Share2  } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Footer from './components/ui/footer';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+} from 'react-share';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+// Importação dos componentes de paginação
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 export default function Page() {
   const { toast } = useToast();
   const dispatch = useDispatch();
   const { tools, loading } = useSelector((state) => state.tools);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All'); // Categoria selecionada
+  const [selectedCategory, setSelectedCategory] = useState('All'); 
   const [ratingData, setRatingData] = useState({});
+  const [currentPage, setCurrentPage] = useState(1); // Estado para a página atual
+  const toolsPerPage = 12; // Quantidade de ferramentas por página
   const { theme, setTheme } = useTheme();
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
   const categories = ['All', 'Programming', 'Data Conversion', 'Text Tools', 'Security', 'Design', 'Utility'];
+
+  const ShareDialog = () => {
+    const shareUrl = 'https://fastfreetools.com';
+    const title = 'Check out Fast Free Tools!';
+
+    return (
+      <Dialog open={isShareDialogOpen} onOpenChange={setIsShareDialogOpen}>
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            className="relative inline-flex items-center justify-center p-2 rounded-full bg-gray-700 dark:bg-gray-800 focus:outline-none transition-colors duration-300
+            border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 transition-all ml-2"
+          >
+            <Share2 className="w-6 h-6 dark:text-blue-400 text-yellow-400" />
+            <span className="sr-only">Share</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Share Fast Free Tools</DialogTitle>
+            <DialogDescription>
+              Share our website with your friends and colleagues!
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center space-x-4 mt-4">
+            <FacebookShareButton url={shareUrl} quote={title}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={shareUrl} title={title}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <LinkedinShareButton url={shareUrl} title={title}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+            <WhatsappShareButton url={shareUrl} title={title}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  };
 
   const fetchRatings = async () => {
     const { data, error } = await supabase.from('ratings').select('name, rating, votes');
@@ -61,6 +128,13 @@ export default function Page() {
       const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     });
+
+  // Calcular o total de páginas
+  const totalPages = Math.ceil(filteredTools.length / toolsPerPage);
+
+  // Determinar as ferramentas que serão exibidas na página atual
+  const startIndex = (currentPage - 1) * toolsPerPage;
+  const currentTools = filteredTools.slice(startIndex, startIndex + toolsPerPage);
 
   const handleVote = async (toolName, newRating) => {
     const voteKey = `voted_${toolName}`;
@@ -125,8 +199,7 @@ export default function Page() {
     const dynamicRating = ratingData[tool.name]?.rating || 0;
 
     return (
-      <Card className={`group bg-gray-100 dark:bg-gray-800 rounded-lg p-2 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${dynamicRating >= 4.5 ? 'border-primary/50' : ''
-      }`}>
+      <Card className={`group bg-gray-100 dark:bg-gray-800 rounded-lg p-2 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${dynamicRating >= 4.5 ? 'border-primary/50' : ''}`}>
         <CardContent className="p-6">
           <div>
             <div className="flex items-center justify-between mb-4">
@@ -177,7 +250,7 @@ export default function Page() {
             <div>
               <Link href={tool.route}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-                  Try Now
+                Try Now
                 </Button>
               </Link>
             </div>
@@ -208,6 +281,7 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
                 </span>
                 <span className="sr-only">Toggle theme</span>
               </Button>
+              <ShareDialog />
             </div>
           </div>
 
@@ -224,11 +298,13 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
                 {categories.map((category) => (
                   <Button
                     key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg ${
-                      selectedCategory === category 
-                        ? 'bg-blue-500 text-white dark:bg-blue-600 hover:bg-blue-600' 
-                        : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setCurrentPage(1); // Reseta para a primeira página quando a categoria é alterada
+                    }}
+                    className={`px-4 py-2 rounded-lg ${selectedCategory === category 
+                      ? 'bg-blue-500 text-white dark:bg-blue-600 hover:bg-blue-600' 
+                      : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                   >
                     {category}
@@ -240,8 +316,8 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
                 <h2 className="text-3xl font-bold">Tools</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredTools.length > 0 ? (
-                  filteredTools.map((tool, index) => (
+                {currentTools.length > 0 ? (
+                  currentTools.map((tool, index) => (
                     <ToolCard key={index} tool={tool} index={index} />
                   ))
                 ) : (
@@ -250,6 +326,59 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
                   </p>
                 )}
               </div>
+
+              {/* Componente de Paginação */}
+              {totalPages > 1 && (
+                <Pagination className="flex justify-center mt-6">
+                <PaginationContent className="flex space-x-2">
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage > 1) setCurrentPage(currentPage - 1);
+                      }}
+                      className="px-3 py-1.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    >
+                      Previous
+                    </PaginationPrevious>
+                  </PaginationItem>
+              
+                  {[...Array(totalPages)].map((_, index) => (
+                    <PaginationItem key={index}>
+                      <PaginationLink
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentPage(index + 1);
+                        }}
+                        className={`px-3 py-1.5 rounded-lg transition-colors ${
+                          currentPage === index + 1
+                            ? 'bg-blue-500 text-white hover:bg-blue-600 hover:text-white'
+                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
+                        }`}
+                      >
+                        {index + 1}
+                      </PaginationLink>
+                    </PaginationItem>
+                  ))}
+              
+                  <PaginationItem>
+                    <PaginationNext
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+                      }}
+                      className="px-3 py-1.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    >
+                      Next
+                    </PaginationNext>
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+              
+              )}
             </section>
           </main>
         </div>
