@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import React, { useState, useEffect, useCallback } from "react";
-import Head from "next/head";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import Link from "next/link";
-import ShareButton from "@/app/components/share-button";
+import React, { useState, useEffect, useCallback } from "react"
+import Head from "next/head"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import Link from "next/link"
+import ShareButton from "@/app/components/share-button"
 import {
   Dialog,
   DialogContent,
@@ -16,34 +16,34 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { useTheme } from "next-themes";
-import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DOMPurify from 'dompurify';
+} from "@/components/ui/dialog"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { useTheme } from "next-themes"
+import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import DOMPurify from 'dompurify'
 
 function sanitizeInput(input) {
-  return DOMPurify.sanitize(input);
+  return DOMPurify.sanitize(input)
 }
 
 export default function PasswordGenerator() {
-  const [password, setPassword] = useState("");
-  const [length, setLength] = useState(16);
-  const [includeUppercase, setIncludeUppercase] = useState(true);
-  const [includeLowercase, setIncludeLowercase] = useState(true);
-  const [includeNumbers, setIncludeNumbers] = useState(true);
-  const [includeSymbols, setIncludeSymbols] = useState(true);
-  const [isCopied, setIsCopied] = useState(false);
-  const [savedPasswords, setSavedPasswords] = useState([]);
-  const [showPassword, setShowPassword] = useState(false);
-  const [charset, setCharset] = useState('');
-  const { theme, setTheme } = useTheme();
-  const { toast } = useToast();
+  const [password, setPassword] = useState("")
+  const [length, setLength] = useState(16)
+  const [includeUppercase, setIncludeUppercase] = useState(true)
+  const [includeLowercase, setIncludeLowercase] = useState(true)
+  const [includeNumbers, setIncludeNumbers] = useState(true)
+  const [includeSymbols, setIncludeSymbols] = useState(true)
+  const [isCopied, setIsCopied] = useState(false)
+  const [savedPasswords, setSavedPasswords] = useState([])
+  const [showPassword, setShowPassword] = useState(false)
+  const [charset, setCharset] = useState('')
+  const { theme, setTheme } = useTheme()
+  const { toast } = useToast()
 
-  const shareUrl = "https://fastfreetools.com/password-generator";
-  const shareTitle = "Check out this Password Generator Tool!";
+  const shareUrl = "https://fastfreetools.com/password-generator"
+  const shareTitle = "Check out this Password Generator Tool!"
 
   const generatePassword = useCallback(() => {
     const lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -70,18 +70,18 @@ export default function PasswordGenerator() {
       generatedPassword += newCharset[randomIndex];
     }
     setPassword(generatedPassword);
-  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols]);
+  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols])
 
   useEffect(() => {
-    generatePassword();
-  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, generatePassword]);
+    generatePassword()
+  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, generatePassword])
 
   useEffect(() => {
-    const savedPasswords = localStorage.getItem('savedPasswords');
+    const savedPasswords = localStorage.getItem('savedPasswords')
     if (savedPasswords) {
-      setSavedPasswords(JSON.parse(savedPasswords));
+      setSavedPasswords(JSON.parse(savedPasswords))
     }
-  }, []);
+  }, [])
 
   const handleCopy = async () => {
     try {
@@ -172,7 +172,6 @@ export default function PasswordGenerator() {
         />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
-
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
@@ -181,69 +180,71 @@ export default function PasswordGenerator() {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <h1 className="text-3xl sm:text-4xl font-bold">Password Generator</h1>
                 <nav className="flex items-center space-x-2">
-                  <Dialog>
+                  <nav className="flex items-center space-x-2">
+                    <Dialog>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" size="icon" aria-label="Help" className="bg-white/10 hover:bg-white/20 text-white">
+                              <HelpCircle className="h-5 w-5" />
+                            </Button>
+                          </DialogTrigger>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Get help and information about the Password Generator</p>
+                        </TooltipContent>
+                      </Tooltip>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>About Password Generator</DialogTitle>
+                          <DialogDescription>
+                            <p className="mt-2">
+                              <strong>Why:</strong> This tool helps you create strong, unique passwords to enhance your online security.
+                            </p>
+                            <p className="mt-2">
+                              <strong>What:</strong> It generates random passwords based on your specified criteria, including length and character types.
+                            </p>
+                            <p className="mt-2">
+                              <strong>How:</strong> Adjust the settings to your preference, and a new password will be generated automatically.
+                            </p>
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="icon" aria-label="Help" className="bg-white/10 hover:bg-white/20 text-white">
-                            <HelpCircle className="h-5 w-5" />
-                          </Button>
-                        </DialogTrigger>
+                        <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
+                          <Link href="/" aria-label="Home">
+                            <Home className="h-5 w-5" />
+                          </Link>
+                        </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Get help and information about the Password Generator</p>
+                        <p>Return to the home page</p>
                       </TooltipContent>
                     </Tooltip>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>About Password Generator</DialogTitle>
-                        <DialogDescription>
-                          <p className="mt-2">
-                            <strong>Why:</strong> This tool helps you create strong, unique passwords to enhance your online security.
-                          </p>
-                          <p className="mt-2">
-                            <strong>What:</strong> It generates random passwords based on your specified criteria, including length and character types.
-                          </p>
-                          <p className="mt-2">
-                            <strong>How:</strong> Adjust the settings to your preference, and a new password will be generated automatically.
-                          </p>
-                        </DialogDescription>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
 
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
-                        <Link href="/" aria-label="Home">
-                          <Home className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Return to the home page</p>
-                    </TooltipContent>
-                  </Tooltip>
+                    <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Password Generator Tool" />
 
-                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Password Generator Tool" />
-
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        aria-label="Toggle theme"
-                        className="bg-white/10 hover:bg-white/20 text-white"
-                      >
-                        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Switch between light and dark mode</p>
-                    </TooltipContent>
-                  </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                          aria-label="Toggle theme"
+                          className="bg-white/10 hover:bg-white/20 text-white"
+                        >
+                          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Switch between light and dark mode</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </nav>
                 </nav>
               </div>
             </header>
@@ -265,7 +266,7 @@ export default function PasswordGenerator() {
 
                 <div className="space-y-2">
                   <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Include Characters:</Label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <div className="flex items-center space-x-2">
                       <Switch
                         id="uppercase"
@@ -302,14 +303,14 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
                     <Label htmlFor="generated-password" className="text-lg font-semibold text-gray-700 dark:text-gray-300">Generated Password</Label>
-                    <div className="space-x-2">
-                      <Button variant="outline" size="sm" onClick={generatePassword} className="bg-blue-500 hover:bg-blue-600 text-white">
+                    <div className="flex flex-wrap gap-2">
+                      <Button variant="secondary" size="sm" onClick={generatePassword} className="bg-primary text-primary-foreground hover:bg-primary/90">
                         <RefreshCw className="h-4 w-4 mr-2" />
                         Regenerate
                       </Button>
-                      <Button variant="outline" size="sm" onClick={handleCopy} disabled={!password} className="bg-green-500 hover:bg-green-600 text-white disabled:bg-gray-400">
+                      <Button variant="secondary" size="sm" onClick={handleCopy} disabled={!password} className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-primary/50">
                         {isCopied ? (
                           <Check className="h-4 w-4 mr-2" />
                         ) : (
@@ -317,7 +318,7 @@ export default function PasswordGenerator() {
                         )}
                         {isCopied ? "Copied!" : "Copy"}
                       </Button>
-                      <Button variant="outline" size="sm" onClick={savePassword} disabled={!password} className="bg-purple-500 hover:bg-purple-600 text-white disabled:bg-gray-400">
+                      <Button variant="secondary" size="sm" onClick={savePassword} disabled={!password} className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-primary/50">
                         <Save className="h-4 w-4 mr-2" />
                         Save
                       </Button>
@@ -329,7 +330,7 @@ export default function PasswordGenerator() {
                       value={password}
                       readOnly
                       type={showPassword ? "text" : "password"}
-                      className="pr-10 font-mono border-2 border-purple-300 dark:border-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="pr-10 font-mono border-2 border-primary focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                     <Button
                       variant="ghost"
@@ -351,25 +352,25 @@ export default function PasswordGenerator() {
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Password Analysis</h2>
                 <Tabs defaultValue="entropy">
-                  <TabsList className="grid w-full grid-cols-2 bg-purple-100 dark:bg-purple-900">
-                    <TabsTrigger value="entropy" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Entropy</TabsTrigger>
-                    <TabsTrigger value="time-to-crack" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800">Time to Crack</TabsTrigger>
+                  <TabsList className="grid w-full grid-cols-2 bg-muted">
+                    <TabsTrigger value="entropy" className="data-[state=active]:bg-background">Entropy</TabsTrigger>
+                    <TabsTrigger value="time-to-crack" className="data-[state=active]:bg-background">Time to Crack</TabsTrigger>
                   </TabsList>
-                  <TabsContent value="entropy" className="p-4 bg-white dark:bg-gray-800 rounded-b-lg shadow-md">
+                  <TabsContent value="entropy" className="p-4 bg-card rounded-b-lg shadow-md">
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Password Entropy</h3>
-                      <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
+                      <div className="text-4xl font-bold text-primary">
                         {charset && password ? Math.round(Math.log2(Math.pow(charset.length, password.length))) : 0} bits
                       </div>
-                      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      <p className="mt-2 text-sm text-muted-foreground">
                         Entropy is a measure of password strength. Higher is better.
                       </p>
                     </div>
                   </TabsContent>
-                  <TabsContent value="time-to-crack" className="p-4 bg-white dark:bg-gray-800 rounded-b-lg shadow-md">
+                  <TabsContent value="time-to-crack" className="p-4 bg-card rounded-b-lg shadow-md">
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Estimated Time to Crack</h3>
-                      <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
+                      <div className="text-4xl font-bold text-primary">
                         {(() => {
                           const combinations = Math.pow(charset.length, password.length);
                           const secondsToCrack = combinations / (1000000000 * 60 * 60 * 24 * 365);
@@ -381,7 +382,7 @@ export default function PasswordGenerator() {
                           return `${Math.round(secondsToCrack / 31536000)} years`;
                         })()}
                       </div>
-                      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      <p className="mt-2 text-sm text-muted-foreground">
                         Estimated time for a computer to crack this password by brute force.
                       </p>
                     </div>
@@ -394,18 +395,18 @@ export default function PasswordGenerator() {
                   <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Saved Passwords</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {savedPasswords.map((savedPassword, index) => (
-                      <div key={index} className="border border-purple-300 dark:border-purple-600 p-4 rounded-lg space-y-2 bg-white dark:bg-gray-800 shadow-md">
-                        <p className="font-mono text-sm text-gray-700 dark:text-gray-300">
+                      <div key={index} className="border border-primary p-4 rounded-lg space-y-2 bg-card shadow-md">
+                        <p className="font-mono text-sm text-card-foreground">
                           {showPassword ? savedPassword : '•'.repeat(savedPassword.length)}
                         </p>
                         <div className="flex justify-between">
-                          <Button variant="outline" size="sm" onClick={() => {
-                            navigator.clipboard.writeText(savedPassword);
+                          <Button variant="secondary" size="sm" onClick={() => {
+                            navigator.clipboard.writeText(savedPassword)
                             toast({
                               title: "Password copied",
                               description: "The saved password has been copied to your clipboard.",
-                            });
-                          }} className="bg-blue-500 hover:bg-blue-600 text-white">
+                            })
+                          }} className="bg-primary text-primary-foreground hover:bg-primary/90">
                             <Copy className="h-4 w-4 mr-2" />
                             Copy
                           </Button>
@@ -424,5 +425,5 @@ export default function PasswordGenerator() {
         </div>
       </TooltipProvider>
     </>
-  );
+  )
 }

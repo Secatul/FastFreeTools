@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useTheme } from "next-themes";
-import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, BarChart2, Clock, Book } from "lucide-react";
+import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, BarChart2, Clock, Book, ArrowDownAZ } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DOMPurify from "isomorphic-dompurify";
@@ -38,6 +38,7 @@ export default function WordCounter() {
     charactersNoSpaces: 0,
     sentences: 0,
     paragraphs: 0,
+    lines: 0,
     readingTime: 0,
     speakingTime: 0,
     averageWordLength: 0,
@@ -52,7 +53,6 @@ export default function WordCounter() {
   const shareUrl = "https://fastfreetools.com/word-counter";
   const shareTitle = "Check out this Word Counter tool!";
 
-
   useEffect(() => {
     analyzeText(text);
   }, [text]);
@@ -65,6 +65,7 @@ export default function WordCounter() {
     const charactersNoSpaces = sanitizedInput.replace(/\s/g, "").length;
     const sentences = sanitizedInput.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0);
     const paragraphs = sanitizedInput.split(/\n+/).filter((para) => para.trim().length > 0);
+    const lines = sanitizedInput.split(/\n/).length;
     const readingTime = Math.ceil(words.length / 200);
     const speakingTime = Math.ceil(words.length / 130);
     const averageWordLength = words.length > 0 ? charactersNoSpaces / words.length : 0;
@@ -76,6 +77,7 @@ export default function WordCounter() {
       charactersNoSpaces,
       sentences: sentences.length,
       paragraphs: paragraphs.length,
+      lines,
       readingTime,
       speakingTime,
       averageWordLength: Number(averageWordLength.toFixed(2)),
@@ -146,6 +148,15 @@ export default function WordCounter() {
     });
   };
 
+  const handleAlphabeticalSort = () => {
+    const sortedText = text.split('\n').sort().join('\n');
+    setText(sortedText);
+    toast({
+      title: "Text Sorted",
+      description: "Your text has been sorted alphabetically by line.",
+    });
+  };
+
   return (
     <>
       <Head>
@@ -156,7 +167,7 @@ export default function WordCounter() {
         />
         <meta
           name="keywords"
-          content="word counter, text analysis, character count, keyword density, readability score, reading time, speaking time"
+          content="word counter, text analysis, character count, keyword density, readability score, reading time, speaking time, line counter, alphabetical sorting"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://fastfreetools.com/word-counter" />
@@ -174,7 +185,6 @@ export default function WordCounter() {
           content="Analyze your text with our advanced Word Counter Tool. Get detailed statistics on word count, character count, readability, keyword density, and more."
         />
         <meta charSet="UTF-8" />
-
       </Head>
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
@@ -204,10 +214,10 @@ export default function WordCounter() {
                             <strong>Why:</strong> This tool helps you analyze your text, providing comprehensive insights into its structure and complexity.
                           </p>
                           <p className="mt-2">
-                            <strong>What:</strong> It offers detailed statistics including word count, character count, readability score, keyword density, and more.
+                            <strong>What:</strong> It offers detailed statistics including word count, character count, line count, readability score, keyword density, and more.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Simply paste or type your text into the input area, and the tool will automatically analyze it for you in real-time.
+                            <strong>How:</strong> Simply paste or type your text into the input area, and the tool will automatically analyze it for you in real-time. You can also sort your text alphabetically by line.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
@@ -273,6 +283,10 @@ export default function WordCounter() {
                     <Download className="h-4 w-4 mr-2" />
                     Download
                   </Button>
+                  <Button onClick={handleAlphabeticalSort} disabled={!text} className="bg-purple-500 hover:bg-purple-600 text-white">
+                    <ArrowDownAZ  className="h-4 w-4 mr-2" />
+                    Sort Alphabetically
+                  </Button>
                 </div>
               </div>
 
@@ -315,10 +329,13 @@ export default function WordCounter() {
                         <TableCell>{stats.paragraphs}</TableCell>
                       </TableRow>
                       <TableRow>
+                        <TableCell className="font-medium">Lines</TableCell>
+                        <TableCell>{stats.lines}</TableCell>
+                      </TableRow>
+                      <TableRow>
                         <TableCell className="font-medium">Average Word Length</TableCell>
                         <TableCell>{stats.averageWordLength} characters</TableCell>
                       </TableRow>
-
                       <TableRow>
                         <TableCell className="font-medium">Longest Word</TableCell>
                         <TableCell>{stats.longestWord}</TableCell>

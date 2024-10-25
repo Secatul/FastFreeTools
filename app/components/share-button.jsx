@@ -41,7 +41,6 @@ export default function ShareButton({ shareUrl, shareTitle, tooltipText = "Share
           </TooltipContent>
         </Tooltip>
 
-        {/* Dialog de compartilhamento */}
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Share Tool</DialogTitle>
