@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import ShareButton from "@/app/components/share-button";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -27,6 +28,10 @@ export default function CaseConverter() {
   const [isCopied, setIsCopied] = useState(false);
   const [copyFeedback, setCopyFeedback] = useState("");
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/uppercase";
+  const shareTitle = "Check out this Uppercase converter tool!";
+
 
   const handleTextChange = (e) => {
     const sanitizedInput = DOMPurify.sanitize(e.target.value); // Sanitize input to prevent unsafe characters
@@ -156,6 +161,9 @@ export default function CaseConverter() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Uppercase Converter Tool" />
+
             <Button
               variant="outline"
               size="icon"

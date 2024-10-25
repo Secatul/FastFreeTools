@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import ShareButton from "@/app/components/share-button";
 import {
   Dialog,
   DialogContent,
@@ -42,6 +43,9 @@ export default function QRCodeGenerator() {
   const [savedQRCodes, setSavedQRCodes] = useState([]);
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+
+  const shareUrl = "https://fastfreetools.com/qr-code-generator";
+  const shareTitle = "Check out this QR Code Generator Tool!";
 
   useEffect(() => {
     const savedCodes = localStorage.getItem('savedQRCodes');
@@ -145,7 +149,7 @@ export default function QRCodeGenerator() {
         <title>QR Code Generator | Fast Free Tools</title>
         <meta
           name="description"
-          content="Create custom QR codes with configurable options like content, size, foreground and background colors, error correction levels, and logos. Download your QR codes in PNG or SVG format."
+          content="Create custom QR codes with configurable options like content, size, foreground and background colors, error correction levels, and logos. Download your QR codes in PNG format."
         />
         <meta
           name="keywords"
@@ -156,7 +160,7 @@ export default function QRCodeGenerator() {
         <meta property="og:title" content="QR Code Generator | Fast Free Tools" />
         <meta
           property="og:description"
-          content="Create custom QR codes with configurable options like content, size, colors, and logos. Download your QR codes in PNG or SVG format."
+          content="Create custom QR codes with configurable options like content, size, colors, and logos. Download your QR codes in PNG format."
         />
         <meta property="og:url" content="https://fastfreetools.com/qr-code-generator" />
         <meta property="og:type" content="website" />
@@ -164,7 +168,7 @@ export default function QRCodeGenerator() {
         <meta name="twitter:title" content="QR Code Generator | Fast Free Tools" />
         <meta
           name="twitter:description"
-          content="Generate custom QR codes with content, color options, and logos. Download in PNG or SVG format."
+          content="Generate custom QR codes with content, color options, and logos. Download in PNG format."
         />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
@@ -201,7 +205,7 @@ export default function QRCodeGenerator() {
                             <strong>What:</strong> You can generate QR codes with custom content, colors, error correction levels, and even add a logo.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Enter the content for your QR code, customize its appearance, and download it in PNG or SVG format.
+                            <strong>How:</strong> Enter the content for your QR code, customize its appearance, and download it in PNG format.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
@@ -220,6 +224,9 @@ export default function QRCodeGenerator() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the QR Code Generator Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -365,10 +372,6 @@ export default function QRCodeGenerator() {
                     <Button onClick={() => downloadQRCode("png")} className="bg-blue-500 hover:bg-blue-600 text-white">
                       <Download className="h-4 w-4 mr-2" />
                       Download PNG
-                    </Button>
-                    <Button onClick={() => downloadQRCode("svg")} className="bg-green-500 hover:bg-green-600 text-white">
-                      <Download className="h-4 w-4 mr-2" />
-                      Download SVG
                     </Button>
                     <Button onClick={saveQRCode} className="bg-purple-500 hover:bg-purple-600 text-white">
                       <Save className="h-4 w-4 mr-2" />

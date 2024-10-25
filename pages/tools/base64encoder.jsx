@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import DOMPurify from 'isomorphic-dompurify'
+import DOMPurify from "isomorphic-dompurify";
 import { Label } from "@/components/ui/label";
 import {
   Dialog,
@@ -24,6 +24,7 @@ import { useTheme } from "next-themes";
 import { Home, HelpCircle, Copy, Check, Moon, Sun } from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
+import ShareButton from "@/app/components/share-button";
 
 export default function Base64Converter() {
   const [inputText, setInputText] = useState("");
@@ -73,6 +74,10 @@ export default function Base64Converter() {
     }
   };
 
+  // URL e título para compartilhamento
+  const shareUrl = "https://fastfreetools.com/base64-converter";
+  const shareTitle = "Check out this awesome Base64 Converter Tool!";
+
   return (
     <>
       <Head>
@@ -98,7 +103,6 @@ export default function Base64Converter() {
           content="A quick and easy way to encode and decode text using Base64 encoding."
         />
         <meta name="twitter:image" content="https://fastfreetools.com/image.jpg" />
-        <meta charSet="UTF-8" />
       </Head>
 
       <TooltipProvider>
@@ -113,6 +117,9 @@ export default function Base64Converter() {
                   </p>
                 </div>
                 <nav className="flex items-center space-x-2">
+
+
+                  {/* Botão de ajuda */}
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Dialog>
@@ -147,6 +154,7 @@ export default function Base64Converter() {
                       <p>Get help and information about the Base64 Converter</p>
                     </TooltipContent>
                   </Tooltip>
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
@@ -160,6 +168,9 @@ export default function Base64Converter() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Base64 Converter tool" />
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
@@ -208,8 +219,8 @@ export default function Base64Converter() {
                     />
                     <Label htmlFor="encoding-mode" className="text-gray-700 dark:text-gray-300">{isEncoding ? "Encoding" : "Decoding"}</Label>
                   </div>
-                  <Button 
-                    onClick={handleConvert} 
+                  <Button
+                    onClick={handleConvert}
                     aria-label={`Convert text to ${isEncoding ? "Base64" : "plain text"}`}
                     className="bg-blue-500 hover:bg-blue-600 text-white"
                   >

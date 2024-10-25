@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import ShareButton from '@/app/components/share-button'
 import Head from 'next/head'
 import Link from "next/link";
 
@@ -26,6 +27,9 @@ export default function UnixTimestampTool() {
   const { theme, setTheme } = useTheme()
   const [funFact, setFunFact] = useState('')
   const [timeZone, setTimeZone] = useState('UTC')
+
+  const shareUrl = "https://fastfreetools.com/unix-timestamp";
+  const shareTitle = "Check out this UNIX Timestamp!";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -132,6 +136,9 @@ export default function UnixTimestampTool() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the UNIX Timestamp Tool" />
+            
             <Button
               variant="outline"
               size="icon"

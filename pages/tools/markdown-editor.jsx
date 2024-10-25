@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Head from 'next/head';
+import ShareButton from '@/app/components/share-button';
 import { useTheme } from "next-themes"
 import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, Link as LinkIcon, Image, Code, Download, Upload, Maximize, Minimize } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
@@ -24,6 +25,9 @@ export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState('')
   const [isFullScreen, setIsFullScreen] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  const shareUrl = "https://fastfreetools.com/markdown-editor";
+  const shareTitle = "Check out this Markdown Editor Tool!";
 
   useEffect(() => {
     const savedMarkdown = localStorage.getItem('markdown')
@@ -169,6 +173,9 @@ export default function MarkdownEditor() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Markdown Editor Tool" />
+
             <Button
               variant="outline"
               size="icon"

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import ShareButton from "@/app/components/share-button";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import {
@@ -47,6 +48,10 @@ export default function WordCounter() {
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+
+  const shareUrl = "https://fastfreetools.com/word-counter";
+  const shareTitle = "Check out this Word Counter tool!";
+
 
   useEffect(() => {
     analyzeText(text);
@@ -221,6 +226,8 @@ export default function WordCounter() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Word Counter Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>

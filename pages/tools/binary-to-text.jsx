@@ -18,14 +18,18 @@ import { useTheme } from "next-themes";
 import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw } from 'lucide-react';
 import Head from 'next/head';
 import DOMPurify from 'dompurify';
+import ShareButton from '@/app/components/share-button';
 
 export default function BinaryTextConverter() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
-  const [mode, setMode] = useState('binaryToText');
+  const [mode, setMode] = useState('textToBinary'); // Default set to 'textToBinary'
   const [error, setError] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/binary-text-converter";
+  const shareTitle = "Check out this Binary ⇄ Text Converter Tool!";
 
   const binaryToText = (binaryStr) => {
     return binaryStr.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
@@ -86,8 +90,6 @@ export default function BinaryTextConverter() {
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://fastfreetools.com/binary-text-converter" />
-
-
         <meta property="og:title" content="Binary ⇄ Text Converter | Fast Free Tools" />
         <meta
           property="og:description"
@@ -95,7 +97,6 @@ export default function BinaryTextConverter() {
         />
         <meta property="og:url" content="https://fastfreetools.com/binary-text-converter" />
         <meta property="og:type" content="website" />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Binary ⇄ Text Converter | Fast Free Tools" />
         <meta
@@ -103,7 +104,6 @@ export default function BinaryTextConverter() {
           content="Easily convert between binary and text formats with this online tool."
         />
         <meta charSet="UTF-8" />
-
       </Head>
 
       <TooltipProvider>
@@ -157,6 +157,10 @@ export default function BinaryTextConverter() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  {/* Share Button Component */}
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Binary ⇄ Text Converter" />
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button

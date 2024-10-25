@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import Link from "next/link";
+import ShareButton from "@/app/components/share-button";
 import {
   Dialog,
   DialogContent,
@@ -40,6 +41,9 @@ export default function PasswordGenerator() {
   const [charset, setCharset] = useState('');
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+
+  const shareUrl = "https://fastfreetools.com/password-generator";
+  const shareTitle = "Check out this Password Generator Tool!";
 
   const generatePassword = useCallback(() => {
     const lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -220,6 +224,8 @@ export default function PasswordGenerator() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Password Generator Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>

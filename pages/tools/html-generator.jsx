@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast"
 import { Label } from "@/components/ui/label"
 import Link from 'next/link'
 import Head from 'next/head'
+import ShareButton from '@/app/components/share-button'
 import {
   Dialog,
   DialogContent,
@@ -39,6 +40,10 @@ export default function HTMLGenerator() {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
+
+  const shareUrl = "https://fastfreetools.com/html-generator";
+  const shareTitle = "Check out this HTML Generator Tool!";
+
 
   useEffect(() => {
     Prism.highlightAll()
@@ -462,6 +467,8 @@ export default function HTMLGenerator() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the HTML Generator Tool" />
 
             <Button
               variant="outline"

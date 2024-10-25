@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import ShareButton from '@/app/components/share-button'
 import Link from "next/link"
 import {
   Dialog,
@@ -78,6 +79,9 @@ export default function RegexTester() {
   const [savedPatterns, setSavedPatterns] = useState([])
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
+
+  const shareUrl = "https://fastfreetools.com/regex-tester";
+  const shareTitle = "Check out this Regex Tester Tool!";
 
   useEffect(() => {
     const savedPatterns = localStorage.getItem('savedPatterns')
@@ -218,6 +222,8 @@ export default function RegexTester() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Regex Tester Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>

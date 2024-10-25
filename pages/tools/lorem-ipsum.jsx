@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Textarea } from "@/components/ui/textarea";
 import Head from "next/head";
 import { Switch } from "@/components/ui/switch";
+import ShareButton from "@/app/components/share-button";
 import {
   Select,
   SelectContent,
@@ -37,6 +38,9 @@ export default function LoremIpsumGenerator() {
   const [startWithLoremIpsum, setStartWithLoremIpsum] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/lorem-ipsum-generator";
+  const shareTitle = "Check out this Lorem Ipsum Generator Tool!";
 
   const sanitizeAmount = (input) => {
     const sanitizedValue = Math.min(100, Math.max(1, parseInt(input) || 1)); // Sanitize value between 1 and 100
@@ -145,6 +149,9 @@ export default function LoremIpsumGenerator() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Lorem Ipsum Tool" />
+
             <Button
               variant="outline"
               size="icon"

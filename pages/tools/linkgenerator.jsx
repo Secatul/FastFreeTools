@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import ShareButton from "@/app/components/share-button";
 import Link from "next/link";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -42,6 +43,10 @@ export default function LinkGenerator() {
   const [generatedCode, setGeneratedCode] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/link-generator";
+  const shareTitle = "Check out this Link Generator Tool!";
+
 
   // Sanitize the inputs to prevent XSS attacks
   const sanitizeInput = (input) => DOMPurify.sanitize(input);
@@ -168,6 +173,9 @@ export default function LinkGenerator() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Link Generator Tool" />
+
             <Button
               variant="outline"
               size="icon"

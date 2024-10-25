@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import ShareButton from "@/app/components/share-button";
 import Link from "next/link";
 
 import {
@@ -24,6 +25,9 @@ export default function JsonFormatter() {
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/json-formatter";
+  const shareTitle = "Check out this JSON Formatter Tool!";
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -136,6 +140,8 @@ export default function JsonFormatter() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the JSON Formatter Tool" />
 
             <Button
               variant="outline"

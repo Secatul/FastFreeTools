@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Provider } from 'react-redux';
+import Script from "next/script";
 import { store } from '../store';
 import Head from "next/head";
 import '../styles/globals.css';
@@ -27,8 +28,9 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></script>
-        <script
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></Script>
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

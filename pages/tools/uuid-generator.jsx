@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import Head from "next/head";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import ShareButton from "@/app/components/share-button";
 import Link from "next/link";
 
 import {
@@ -25,6 +26,10 @@ export default function UUIDGenerator() {
   const [uppercase, setUppercase] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/uuid-generator";
+  const shareTitle = "Check out this UUID Generator tool!";
+
 
   const generateUUID = () => {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -121,6 +126,9 @@ export default function UUIDGenerator() {
                 <span className="sr-only">Home</span>
               </Link>
             </Button>
+
+            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the UUID Generator Tool" />
+
             <Button
               variant="outline"
               size="icon"

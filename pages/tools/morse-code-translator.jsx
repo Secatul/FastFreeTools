@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import Head from 'next/head'
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import ShareButton from '@/app/components/share-button'
 import {
   Dialog,
   DialogContent,
@@ -57,6 +58,10 @@ export default function MorseCodeTranslator() {
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
   const audioContext = useRef(null)
+
+  const shareUrl = "https://fastfreetools.com/morse-code-translator";
+  const shareTitle = "Check out this Morse Code Translator Tool!";
+
 
   useEffect(() => {
     const saved = localStorage.getItem('savedTranslations')
@@ -378,6 +383,8 @@ export default function MorseCodeTranslator() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Markdown Editor Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>

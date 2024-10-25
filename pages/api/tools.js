@@ -41,7 +41,7 @@ export default function handler(req, res) {
     { name: 'Uppercase Converter', route: `/${locale}/tools/uppercase`, icon: '🔠', description: 'Convert text to uppercase letters.', createdAt: '2023-01-01' },
     { name: 'Base64 Encoder/Decoder', route: `/${locale}/tools/base64encoder`, icon: '🔐', description: 'Encode and decode Base64 strings.', createdAt: '2023-01-01' },
     { name: 'JSON Formatter Tool', route: `/${locale}/tools/jsonformatter`, icon: '🧾', description: 'Format and beautify JSON data.', createdAt: '2023-02-15' },
-    { name: 'Password Generator', route: `/${locale}/tools/passwordgenerator`, icon: '🔑', description: 'Generate strong and secure passwords.', createdAt: '2023-03-10' },
+    { name: 'Password Generator', route: `/${locale}/tools/password-generator`, icon: '🔑', description: 'Generate strong and secure passwords.', createdAt: '2023-03-10' },
     { name: 'UUID Generator', route: `/${locale}/tools/uuid-generator`, icon: '🆔', description: 'Generate unique UUIDs.', createdAt: '2023-04-05' },
     { name: 'Lorem Ipsum Generator', route: `/${locale}/tools/lorem-ipsum`, icon: '📜', description: 'Generate placeholder Lorem Ipsum text.', createdAt: '2023-05-20' },
     { name: 'Link Generator', route: `/${locale}/tools/linkgenerator`, icon: '🔗', description: 'Create URL-friendly links.', createdAt: '2023-05-20' },

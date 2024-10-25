@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import ShareButton from '@/app/components/share-button';
 import Head from 'next/head';
 import Link from "next/link";
 
@@ -40,6 +41,10 @@ export default function TextReverter() {
   const [preserveWhitespace, setPreserveWhitespace] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const shareUrl = "https://fastfreetools.com/text-reverser";
+  const shareTitle = "Check out this Text Reverser Tool!";
+
 
   useEffect(() => {
     handleReverse();
@@ -170,6 +175,9 @@ export default function TextReverter() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Text Reverser Tool" />
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button

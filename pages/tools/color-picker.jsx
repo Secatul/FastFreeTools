@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import ShareButton from '@/app/components/share-button'
 import Link from "next/link";
 import {
   Dialog,
@@ -36,6 +37,9 @@ function hexToRgb(hex) {
     b: parseInt(result[3], 16)
   } : { r: 0, g: 0, b: 0 }
 }
+
+const shareUrl = "https://fastfreetools.com/binary-text-converter";
+const shareTitle = "Check out this Binary ⇄ Text Converter Tool!";
 
 function rgbToHex(r, g, b) {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
@@ -395,6 +399,8 @@ HSL: ${Object.values(rgbToHsl(...Object.values(hexToRgb(color)))).join(', ')}
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Color Picker Tool" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>

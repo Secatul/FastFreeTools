@@ -21,6 +21,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 import DOMPurify from 'dompurify'
 
+import ShareButton from '@/app/components/share-button';
+
 function sanitizeInput(input) {
   return DOMPurify.sanitize(input)
 }
@@ -53,6 +55,10 @@ export default function CaseConverter() {
   const [savedSnippets, setSavedSnippets] = useState([])
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
+
+  // Defina o URL de compartilhamento e o título do compartilhamento
+  const shareUrl = "https://fastfreetools.com/case-converter";
+  const shareTitle = "Check out this Case Converter Tool!";
 
   useEffect(() => {
     const savedSnippets = localStorage.getItem('savedSnippets')
@@ -174,9 +180,8 @@ export default function CaseConverter() {
           content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
         />
         <meta charSet="UTF-8" />
-
-
       </Head>
+
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
           <main className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
@@ -227,6 +232,9 @@ export default function CaseConverter() {
                       <p>Return to the home page</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  {/* Adicionando o botão de compartilhamento */}
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Case Converter" />
 
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -320,7 +328,6 @@ export default function CaseConverter() {
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Readability Score</h3>
                       <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-
                         {getReadabilityScore(inputText)}
                       </div>
                       <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
