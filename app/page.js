@@ -114,7 +114,7 @@ export default function Page() {
       stars.push(
         <Star
           key={i}
-          className={`w-4 h-4 cursor-pointer transition-all ${i <= (hoveredStars || rating) ? 'fill-yellow-400 text-yellow-400 opacity-100' : 'text-gray-300 opacity-50'
+          className={`w-4 h-4 cursor-pointer transition-all ${i <= (hoveredStars || rating) ? 'fill-yellow-500 text-yellow-500 dark:fill-yellow-400 dark:text-yellow-400 opacity-100' : 'text-gray-400 dark:text-gray-300 opacity-50'
             }`}
           onMouseEnter={() => setHoveredStars(i)}
           onMouseLeave={() => setHoveredStars(null)}
@@ -143,12 +143,18 @@ export default function Page() {
               <span className="text-4xl">{tool.icon}</span>
               <div className="space-y-1 text-lg font-medium group-hover:text-blue-600 dark:group-hover:text-primary transition-colors duration-300 mb-2">
                 {isPopular(tool.name) && (
-                  <Badge variant="secondary" className="bg-primary/10 text-primary">
+                  <Badge
+                    variant="secondary"
+                    className="bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 px-2 py-1 mr-2 rounded-lg font-semibold" 
+                  >
                     Popular
                   </Badge>
                 )}
                 {dynamicRating >= 4.5 && (
-                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-700">
+                  <Badge
+                    variant="secondary"
+                    className="bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100 px- py-1 rounded-lg font-semibold" 
+                  >
                     Top Rated
                   </Badge>
                 )}
@@ -159,12 +165,14 @@ export default function Page() {
               {tool.name}
             </h3>
 
-            {/* Exibir a descrição da ferramenta */}
-            <p className="text-gray-400 mb-4">{tool.description}</p>
+            <p className="dark:text-gray-400 text-gray-700 mb-4">{tool.description}</p>
+            <Badge variant="outline" className="text-blue-400 border-blue-400">
+              Category
+            </Badge>
           </Link>
 
-          <div className="mt-4">
-            <div className="flex items-center justify-between">
+          <div className="mt-4 flex items-center justify-between">
+            <div className="flex sm:items-center flex-col sm:flex-row items-start gap-2">
               <div className="flex items-center">
                 <div className="flex mr-2">
                   {renderStars(dynamicRating, tool.name, hoveredStars, setHoveredStars)}
@@ -174,8 +182,13 @@ export default function Page() {
                 </span>
               </div>
               <span className="text-sm text-muted-foreground">
-                {(ratingData[tool.name]?.votes || 0).toLocaleString()} votos
+                ({(ratingData[tool.name]?.votes || 0).toLocaleString()} votes)
               </span>
+            </div>
+            <div>
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+                Try Now
+              </Button>
             </div>
           </div>
         </CardContent>
@@ -218,7 +231,7 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
               <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
                 <h2 className="text-3xl font-bold">Tools</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredTools.length > 0 ? (
                   filteredTools.map((tool, index) => (
                     <ToolCard key={index} tool={tool} index={index} />
