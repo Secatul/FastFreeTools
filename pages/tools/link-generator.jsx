@@ -187,7 +187,7 @@ export default function LinkGenerator() {
                             <strong>What:</strong> It generates HTML code for links, allowing you to customize attributes like target, rel, and UTM parameters.
                           </p>
                           <p className="mt-2">
-                            <strong>How:</strong> Fill in the desired options, choose between text or image links, and click "Generate Code" to create your HTML link.
+                            <strong>How:</strong> Fill in the desired options, choose between text or image links, and click &quot;Generate Code&quot; to create your HTML link.
                           </p>
                         </DialogDescription>
                       </DialogHeader>
@@ -260,7 +260,7 @@ export default function LinkGenerator() {
                             <Info className="h-4 w-4 ml-1 text-gray-500 cursor-help" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Adds target="_blank" to the link, opening it in a new tab or window</p>
+                            <p>Adds target=&quot;_blank&quot; to the link, opening it in a new tab or window</p>
                           </TooltipContent>
                         </Tooltip>
                       </Label>
@@ -273,7 +273,7 @@ export default function LinkGenerator() {
                         aria-label='Add "noopener noreferrer"'
                       />
                       <Label htmlFor="rel-noopener" className="flex items-center">
-                        Add rel="noopener noreferrer"
+                        Add rel=&quot;noopener noreferrer&quot;
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Info className="h-4 w-4 ml-1 text-gray-500 cursor-help" />
@@ -292,7 +292,7 @@ export default function LinkGenerator() {
                         aria-label='Add "nofollow"'
                       />
                       <Label htmlFor="rel-nofollow" className="flex items-center">
-                        Add rel="nofollow"
+                        Add rel=&quot;nofollow&quot;
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Info className="h-4 w-4 ml-1 text-gray-500 cursor-help" />
