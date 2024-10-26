@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import React, { useState, useEffect, useCallback } from "react"
 import Head from "next/head"
@@ -19,10 +19,11 @@ import {
 } from "@/components/ui/dialog"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff } from "lucide-react"
+import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff, Lock } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import DOMPurify from 'dompurify'
+import bcrypt from 'bcryptjs'
 
 function sanitizeInput(input) {
   return DOMPurify.sanitize(input)
@@ -39,6 +40,8 @@ export default function PasswordGenerator() {
   const [savedPasswords, setSavedPasswords] = useState([])
   const [showPassword, setShowPassword] = useState(false)
   const [charset, setCharset] = useState('')
+  const [hashedPassword, setHashedPassword] = useState('')
+  const [saltRounds, setSaltRounds] = useState(10)
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
 
@@ -62,7 +65,7 @@ export default function PasswordGenerator() {
       return;
     }
 
-    setCharset(newCharset); // Save charset to state
+    setCharset(newCharset);
 
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
@@ -70,6 +73,7 @@ export default function PasswordGenerator() {
       generatedPassword += newCharset[randomIndex];
     }
     setPassword(generatedPassword);
+    setHashedPassword('');
   }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols])
 
   useEffect(() => {
@@ -83,20 +87,20 @@ export default function PasswordGenerator() {
     }
   }, [])
 
-  const handleCopy = async () => {
+  const handleCopy = async (textToCopy) => {
     try {
-      await navigator.clipboard.writeText(password);
+      await navigator.clipboard.writeText(textToCopy);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
       toast({
-        title: "Password copied",
-        description: "The generated password has been copied to your clipboard.",
+        title: "Copied to clipboard",
+        description: "The text has been copied to your clipboard.",
       });
     } catch (err) {
       console.error("Failed to copy text: ", err);
       toast({
         title: "Copy failed",
-        description: "Failed to copy the password. Please try again.",
+        description: "Failed to copy the text. Please try again.",
         variant: "destructive",
       });
     }
@@ -143,6 +147,33 @@ export default function PasswordGenerator() {
     });
   };
 
+  const hashPassword = async () => {
+    try {
+      const response = await fetch('/api/hash-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password, saltRounds }),
+      });
+  
+      const data = await response.json();
+      setHashedPassword(data.hashedPassword);
+      toast({
+        title: "Password hashed",
+        description: "The password has been hashed using bcrypt.",
+      });
+    } catch (error) {
+      console.error("Hashing failed:", error);
+      toast({
+        title: "Hashing failed",
+        description: "Failed to hash the password. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+  
+
   return (
     <>
       <Head>
@@ -153,7 +184,7 @@ export default function PasswordGenerator() {
         />
         <meta
           name="keywords"
-          content="password generator, strong passwords, random password generator, secure passwords, online password tool"
+          content="password generator, strong passwords, random password generator, secure passwords, online password tool, bcrypt hashing"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://fastfreetools.com/password-generator" />
@@ -180,71 +211,69 @@ export default function PasswordGenerator() {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <h1 className="text-3xl sm:text-4xl font-bold">Password Generator</h1>
                 <nav className="flex items-center space-x-2">
-                  <nav className="flex items-center space-x-2">
-                    <Dialog>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <DialogTrigger asChild>
-                            <Button variant="outline" size="icon" aria-label="Help" className="bg-white/10 hover:bg-white/20 text-white">
-                              <HelpCircle className="h-5 w-5" />
-                            </Button>
-                          </DialogTrigger>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Get help and information about the Password Generator</p>
-                        </TooltipContent>
-                      </Tooltip>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>About Password Generator</DialogTitle>
-                          <DialogDescription>
-                            <p className="mt-2">
-                              <strong>Why:</strong> This tool helps you create strong, unique passwords to enhance your online security.
-                            </p>
-                            <p className="mt-2">
-                              <strong>What:</strong> It generates random passwords based on your specified criteria, including length and character types.
-                            </p>
-                            <p className="mt-2">
-                              <strong>How:</strong> Adjust the settings to your preference, and a new password will be generated automatically.
-                            </p>
-                          </DialogDescription>
-                        </DialogHeader>
-                      </DialogContent>
-                    </Dialog>
-
+                  <Dialog>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
-                          <Link href="/" aria-label="Home">
-                            <Home className="h-5 w-5" />
-                          </Link>
-                        </Button>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="icon" aria-label="Help" className="bg-white/10 hover:bg-white/20 text-white">
+                            <HelpCircle className="h-5 w-5" />
+                          </Button>
+                        </DialogTrigger>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Return to the home page</p>
+                        <p>Get help and information about the Password Generator</p>
                       </TooltipContent>
                     </Tooltip>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>About Password Generator</DialogTitle>
+                        <DialogDescription>
+                          <p className="mt-2">
+                            <strong>Why:</strong> This tool helps you create strong, unique passwords to enhance your online security.
+                          </p>
+                          <p className="mt-2">
+                            <strong>What:</strong> It generates random passwords based on your specified criteria, including length and character types.
+                          </p>
+                          <p className="mt-2">
+                            <strong>How:</strong> Adjust the settings to your preference, and a new password will be generated automatically. You can also hash your password using bcrypt for secure storage.
+                          </p>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
 
-                    <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Password Generator Tool" />
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
+                        <Link href="/" aria-label="Home">
+                          <Home className="h-5 w-5" />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Return to the home page</p>
+                    </TooltipContent>
+                  </Tooltip>
 
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                          aria-label="Toggle theme"
-                          className="bg-white/10 hover:bg-white/20 text-white"
-                        >
-                          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Switch between light and dark mode</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </nav>
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText="Share the Password Generator Tool" />
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                        aria-label="Toggle theme"
+                        className="bg-white/10 hover:bg-white/20 text-white"
+                      >
+                        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Switch between light and dark mode</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </nav>
               </div>
             </header>
@@ -307,10 +336,10 @@ export default function PasswordGenerator() {
                     <Label htmlFor="generated-password" className="text-lg font-semibold text-gray-700 dark:text-gray-300">Generated Password</Label>
                     <div className="flex flex-wrap gap-2">
                       <Button variant="secondary" size="sm" onClick={generatePassword} className="bg-primary text-primary-foreground hover:bg-primary/90">
-                        <RefreshCw className="h-4 w-4 mr-2" />
+                        <RefreshCw className="h-4  w-4 mr-2" />
                         Regenerate
                       </Button>
-                      <Button variant="secondary" size="sm" onClick={handleCopy} disabled={!password} className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-primary/50">
+                      <Button variant="secondary" size="sm" onClick={() => handleCopy(password)} disabled={!password} className="bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-primary/50">
                         {isCopied ? (
                           <Check className="h-4 w-4 mr-2" />
                         ) : (
@@ -347,6 +376,49 @@ export default function PasswordGenerator() {
                   <Label className="text-lg font-semibold text-gray-700 dark:text-gray-300">Password Strength:</Label>
                   {renderStrengthLabel()}
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="salt-rounds" className="text-lg font-semibold text-gray-700 dark:text-gray-300">Bcrypt Salt Rounds: {saltRounds}</Label>
+                  <Slider
+                    id="salt-rounds"
+                    min={10}
+                    max={20}
+                    step={1}
+                    value={[saltRounds]}
+                    onValueChange={(value) => setSaltRounds(value[0])}
+                    className="[&>span:first-child]:bg-purple-300 [&>span:first-child]:dark:bg-purple-600"
+                  />
+                </div>
+
+                <Button onClick={hashPassword} disabled={!password} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-primary/50">
+                  <Lock className="h-4 w-4 mr-2" />
+                  Hash with Bcrypt
+                </Button>
+
+                {hashedPassword && (
+                  <div className="space-y-2">
+                    <Label htmlFor="hashed-password" className="text-lg font-semibold text-gray-700 dark:text-gray-300">Hashed Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="hashed-password"
+                        value={hashedPassword}
+                        readOnly
+                        className="pr-10 font-mono border-2 border-primary focus:ring-2 focus:ring-primary focus:border-transparent"
+                      />
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                        onClick={() => handleCopy(hashedPassword)}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Note: Bcrypt hashing is commonly used for securely storing passwords. The original password should not be reused elsewhere.
+                    </p>
+                  </div>
+                )}
               </section>
 
               <section className="space-y-4">
@@ -400,13 +472,7 @@ export default function PasswordGenerator() {
                           {showPassword ? savedPassword : '•'.repeat(savedPassword.length)}
                         </p>
                         <div className="flex justify-between">
-                          <Button variant="secondary" size="sm" onClick={() => {
-                            navigator.clipboard.writeText(savedPassword)
-                            toast({
-                              title: "Password copied",
-                              description: "The saved password has been copied to your clipboard.",
-                            })
-                          }} className="bg-primary text-primary-foreground hover:bg-primary/90">
+                          <Button variant="secondary" size="sm" onClick={() => handleCopy(savedPassword)} className="bg-primary text-primary-foreground hover:bg-primary/90">
                             <Copy className="h-4 w-4 mr-2" />
                             Copy
                           </Button>

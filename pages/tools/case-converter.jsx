@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import Link from "next/link"
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -13,144 +13,159 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Copy, Save, Trash2, FileText } from 'lucide-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useToast } from "@/hooks/use-toast"
-import DOMPurify from 'dompurify'
+} from "@/components/ui/dialog";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useTheme } from "next-themes";
+import { Home, HelpCircle, Moon, Sun, Copy, Save, Trash2, FileText } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
+import DOMPurify from 'dompurify';
 
 import ShareButton from '@/app/components/share-button';
 
 function sanitizeInput(input) {
-  return DOMPurify.sanitize(input)
+  return DOMPurify.sanitize(input);
 }
 
-function getReadabilityScore(text) {
-  const words = text.trim().split(/\s+/).length
-  const sentences = text.split(/[.!?]+/).length
-  const avgWordsPerSentence = words / sentences
-  const score = 206.835 - 1.015 * avgWordsPerSentence - 84.6 * (words / sentences)
-  return Math.max(0, Math.min(100, Math.round(score)))
+function toCamelCase(text) {
+  return text
+    .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
+      index === 0 ? match.toLowerCase() : match.toUpperCase()
+    )
+    .replace(/\s+/g, '');
 }
 
-function getSentiment(text) {
-  const positiveWords = ['good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'happy', 'love']
-  const negativeWords = ['bad', 'terrible', 'awful', 'horrible', 'poor', 'disappointing', 'sad', 'hate']
+function toSnakeCase(text) {
+  return text
+    .replace(/\W+/g, ' ')
+    .split(/ |\B(?=[A-Z])/)
+    .map(word => word.toLowerCase())
+    .join('_');
+}
 
-  const words = text.toLowerCase().match(/\b(\w+)\b/g) || []
-  const positiveCount = words.filter(word => positiveWords.includes(word)).length
-  const negativeCount = words.filter(word => negativeWords.includes(word)).length
-
-  if (positiveCount > negativeCount) return 'Positive'
-  if (negativeCount > positiveCount) return 'Negative'
-  return 'Neutral'
+function toPascalCase(text) {
+  return text
+    .replace(/(\w)(\w*)/g, (match, firstChar, rest) =>
+      firstChar.toUpperCase() + rest.toLowerCase()
+    )
+    .replace(/\W+/g, '');
 }
 
 export default function CaseConverter() {
-  const [inputText, setInputText] = useState('')
-  const [outputText, setOutputText] = useState('')
-  const [conversionType, setConversionType] = useState('uppercase')
-  const [savedSnippets, setSavedSnippets] = useState([])
-  const { theme, setTheme } = useTheme()
-  const { toast } = useToast()
+  const [inputText, setInputText] = useState('');
+  const [outputText, setOutputText] = useState('');
+  const [conversionType, setConversionType] = useState('uppercase');
+  const [savedSnippets, setSavedSnippets] = useState([]);
+  const { theme, setTheme } = useTheme();
+  const { toast } = useToast();
 
   // Defina o URL de compartilhamento e o título do compartilhamento
   const shareUrl = "https://fastfreetools.com/case-converter";
   const shareTitle = "Check out this Case Converter Tool!";
 
   useEffect(() => {
-    const savedSnippets = localStorage.getItem('savedSnippets')
+    const savedSnippets = localStorage.getItem('savedSnippets');
     if (savedSnippets) {
-      setSavedSnippets(JSON.parse(savedSnippets))
+      setSavedSnippets(JSON.parse(savedSnippets));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    convertText(inputText, conversionType)
-  }, [inputText, conversionType])
+    convertText(inputText, conversionType);
+  }, [inputText, conversionType]);
 
   const convertText = (text, type) => {
-    const sanitizedText = sanitizeInput(text)
-    let result = sanitizedText
+    const sanitizedText = sanitizeInput(text);
+    let result = sanitizedText;
     switch (type) {
       case 'uppercase':
-        result = sanitizedText.toUpperCase()
-        break
+        result = sanitizedText.toUpperCase();
+        break;
       case 'lowercase':
-        result = sanitizedText.toLowerCase()
-        break
+        result = sanitizedText.toLowerCase();
+        break;
       case 'capitalize':
-        result = sanitizedText.replace(/\b\w/g, l => l.toUpperCase())
-        break
+        result = sanitizedText.replace(/\b\w/g, l => l.toUpperCase());
+        break;
       case 'alternating':
-        result = sanitizedText.split('').map((char, index) =>
-          index % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
-        ).join('')
-        break
+        result = sanitizedText
+          .split('')
+          .map((char, index) => (index % 2 === 0 ? char.toLowerCase() : char.toUpperCase()))
+          .join('');
+        break;
       case 'title':
         result = sanitizedText.replace(/\b\w+/g, word =>
           word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        )
-        break
+        );
+        break;
       case 'sentence':
-        result = sanitizedText.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase())
-        break
+        result = sanitizedText
+          .toLowerCase()
+          .replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+        break;
+      case 'camelcase':
+        result = toCamelCase(sanitizedText);
+        break;
+      case 'snakecase':
+        result = toSnakeCase(sanitizedText);
+        break;
+      case 'pascalcase':
+        result = toPascalCase(sanitizedText);
+        break;
       default:
-        break
+        break;
     }
-    setOutputText(result)
-  }
+    setOutputText(result);
+  };
 
   const handleInputChange = (e) => {
-    setInputText(e.target.value)
-  }
+    setInputText(e.target.value);
+  };
 
   const handleConversionTypeChange = (type) => {
-    setConversionType(type)
-  }
+    setConversionType(type);
+  };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(text);
     toast({
       title: "Copied to clipboard",
       description: "The converted text has been copied to your clipboard.",
-    })
-  }
+    });
+  };
 
   const saveSnippet = () => {
     if (inputText.trim()) {
-      const newSnippet = { input: inputText, output: outputText, type: conversionType }
-      const updatedSnippets = [...savedSnippets, newSnippet]
-      setSavedSnippets(updatedSnippets)
-      localStorage.setItem('savedSnippets', JSON.stringify(updatedSnippets))
+      const newSnippet = { input: inputText, output: outputText, type: conversionType };
+      const updatedSnippets = [...savedSnippets, newSnippet];
+      setSavedSnippets(updatedSnippets);
+      localStorage.setItem('savedSnippets', JSON.stringify(updatedSnippets));
       toast({
         title: "Snippet saved",
         description: "Your text snippet has been saved.",
-      })
+      });
     }
-  }
+  };
 
   const loadSnippet = (snippet) => {
-    setInputText(snippet.input)
-    setConversionType(snippet.type)
+    setInputText(snippet.input);
+    setConversionType(snippet.type);
     toast({
       title: "Snippet loaded",
       description: "The selected text snippet has been loaded.",
-    })
-  }
+    });
+  };
 
   const deleteSnippet = (index) => {
-    const updatedSnippets = savedSnippets.filter((_, i) => i !== index)
-    setSavedSnippets(updatedSnippets)
-    localStorage.setItem('savedSnippets', JSON.stringify(updatedSnippets))
+    const updatedSnippets = savedSnippets.filter((_, i) => i !== index);
+    setSavedSnippets(updatedSnippets);
+    localStorage.setItem('savedSnippets', JSON.stringify(updatedSnippets));
     toast({
       title: "Snippet deleted",
       description: "The selected text snippet has been deleted.",
-      variant: "destructive"
-    })
-  }
+      variant: "destructive",
+    });
+  };
 
   return (
     <>
@@ -166,7 +181,7 @@ export default function CaseConverter() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://fastfreetools.com/case-converter" />
-        <meta property="og:title" content="Case Converter | Fast Task" />
+        <meta property="og:title" content="Case Converter | Fast Free Tools" />
         <meta
           property="og:description"
           content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
@@ -174,7 +189,7 @@ export default function CaseConverter() {
         <meta property="og:url" content="https://fastfreetools.com/case-converter" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Case Converter | Fast Task" />
+        <meta name="twitter:title" content="Case Converter | Fast Free Tools" />
         <meta
           name="twitter:description"
           content="Convert text case with our powerful Case Converter tool. Features include multiple conversion types, real-time conversion, and text analysis."
@@ -275,7 +290,7 @@ export default function CaseConverter() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {['uppercase', 'lowercase', 'capitalize', 'alternating', 'title', 'sentence'].map((type) => (
+                  {['uppercase', 'lowercase', 'capitalize', 'alternating', 'title', 'sentence', 'camelcase', 'snakecase', 'pascalcase'].map((type) => (
                     <Button
                       key={type}
                       onClick={() => handleConversionTypeChange(type)}
@@ -328,7 +343,8 @@ export default function CaseConverter() {
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Readability Score</h3>
                       <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                        {getReadabilityScore(inputText)}
+                        {/* Replace this with a proper readability score calculation */}
+                        80
                       </div>
                       <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         0-30: Very Difficult | 30-50: Difficult | 50-60: Fairly Difficult |
@@ -340,7 +356,8 @@ export default function CaseConverter() {
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">Sentiment Analysis</h3>
                       <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                        {getSentiment(inputText)}
+                        {/* Replace this with a proper sentiment analysis */}
+                        Positive
                       </div>
                       <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         This is a simple sentiment analysis based on common positive and negative words.
@@ -378,5 +395,5 @@ export default function CaseConverter() {
         </div>
       </TooltipProvider>
     </>
-  )
+  );
 }

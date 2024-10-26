@@ -46,14 +46,14 @@ export default function handler(req, res) {
       createdAt: '2023-05-20', 
       categories: ['Text Tools', 'Programming'] 
     },
-    { 
-      name: 'Link Generator', 
-      route: '/tools/linkgenerator', 
-      icon: '🔗', 
-      description: 'Create URL-friendly links.', 
-      createdAt: '2023-05-20', 
-      categories: ['Programming', 'Utility'] 
-    },
+    // { 
+    //   name: 'Link Generator', 
+    //   route: '/tools/link-generator', 
+    //   icon: '🔗', 
+    //   description: 'Create URL-friendly links.', 
+    //   createdAt: '2023-05-20', 
+    //   categories: ['Programming', 'Utility'] 
+    // },
     { 
       name: 'HTML Generator', 
       route: '/tools/html-generator', 
@@ -111,8 +111,8 @@ export default function handler(req, res) {
       categories: ['Text Tools'] 
     },
     { 
-      name: 'Text Reverser', 
-      route: '/tools/text-reverser', 
+      name: 'Text Transformer', 
+      route: '/tools/text-transformer', 
       icon: '🔀', 
       description: 'Reverse the order of characters in text.', 
       createdAt: '2023-06-30', 
@@ -150,14 +150,14 @@ export default function handler(req, res) {
       createdAt: '2023-08-01', 
       categories: ['Programming', 'Text Tools'] 
     },
-    { 
-      name: 'Uppercase Converter', 
-      route: '/tools/uppercase', 
-      icon: '🔠', 
-      description: 'Convert text to uppercase letters.', 
-      createdAt: '2023-01-01', 
-      categories: ['Text Tools'] 
-    },
+    // { 
+    //   name: 'Uppercase Converter', 
+    //   route: '/tools/uppercase', 
+    //   icon: '🔠', 
+    //   description: 'Convert text to uppercase letters.', 
+    //   createdAt: '2023-01-01', 
+    //   categories: ['Text Tools'] 
+    // },
   ];
   
 
