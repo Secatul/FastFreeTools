@@ -285,7 +285,7 @@ border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 t
             </div>
           </div>
 
-          <Header title="Fast Task" description="Your Quick Tools for Every Task" />
+          <Header title="Fast Free Tools" description="Empowering Your Tasks, Free and Fast!" />
 
           <main className="mt-12 space-y-16">
             <section>

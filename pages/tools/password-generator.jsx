@@ -195,7 +195,7 @@ export default function PasswordGenerator() {
         />
         <meta property="og:url" content="https://fastfreetools.com/password-generator" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="/twitter-card.png" />
         <meta name="twitter:title" content="Password Generator | Fast Free Tools" />
         <meta
           name="twitter:description"
