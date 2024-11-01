@@ -115,14 +115,14 @@ const Base64Converter: React.FC = () => {
         />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://fastfreetools.com/image.jpg" />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta
           name="twitter:description"
           content={t('Page_Description')}
         />
-        <meta name="twitter:image" content="https://fastfreetools.com/image.jpg" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
       </Head>
 
       <TooltipProvider>

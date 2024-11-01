@@ -148,16 +148,16 @@ const MarkdownEditor: React.FC = () => {
           property="og:description"
           content={t('Page_Description')}
         />
-        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta property="og:url" content="https://fastfreetools.com/markdown-editor" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta
           name="twitter:description"
           content={t('Page_Description')}
         />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <meta charSet="UTF-8" />
       </Head>

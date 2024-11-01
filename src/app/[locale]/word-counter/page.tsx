@@ -76,7 +76,7 @@ export default function WordCounter() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/word-counter`;
 
   useEffect(() => {
@@ -228,9 +228,12 @@ export default function WordCounter() {
         <meta property="og:description" content={t('Page_Description')} />
         <meta property="og:url" content="https://fastfreetools.com/word-counter" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Page_Description')} />
+
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
       </Head>
       <TooltipProvider>
@@ -241,7 +244,7 @@ export default function WordCounter() {
                 <div>
                   <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('Page_Title')}</h1>
                 </div>
-                
+
                 <nav className="flex flex-wrap items-center space-x-2 mt-2 sm:mt-0">
                   <WordCounterHelper />
 
@@ -340,7 +343,7 @@ export default function WordCounter() {
               </div>
 
               <Tabs defaultValue="basic-stats" className="relative">
-                
+
                 <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-purple-100 dark:bg-purple-900 z-10">
                   <TabsTrigger
                     value="basic-stats"

@@ -67,7 +67,7 @@ export default function LoremIpsumGenerator() {
   const t = useTranslations('LoremIpsumGenerator')
   const pathname = usePathname()
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/lorem-ipsum-generator`
   const shareTitle = t('shareTitle')
 
@@ -195,12 +195,14 @@ export default function LoremIpsumGenerator() {
         />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('pageTitle')} />
         <meta
           name="twitter:description"
           content={t('pageDescription')}
         />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/lorem-ipsum-generator" />
         <link rel="alternate" hrefLang="es" href="https://fastfreetools.com/es/lorem-ipsum-generator" />
@@ -317,7 +319,7 @@ export default function LoremIpsumGenerator() {
                   </div>
                   <div className="w-full sm:w-1/3 flex items-center space-x-2">
                     <Switch
-                      
+
                       id="start-with-lorem"
                       checked={startWithLoremIpsum}
                       onCheckedChange={setStartWithLoremIpsum}
@@ -339,9 +341,9 @@ export default function LoremIpsumGenerator() {
                     aria-label={t('customWordsAriaLabel')}
                   />
                 </div>
-                <Button 
-                  onClick={generateLoremIpsum} 
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700" 
+                <Button
+                  onClick={generateLoremIpsum}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700"
                   aria-label={t('generateButtonAriaLabel')}
                 >
                   <RefreshCw className="h-4 w-4 mr-2" />
@@ -360,9 +362,9 @@ export default function LoremIpsumGenerator() {
                     </p>
                     <Dialog open={clearDialogOpen} onOpenChange={setClearDialogOpen}>
                       <DialogTrigger asChild>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <Button
+                          variant="outline"
+                          size="sm"
                           className="text-red-500 border-red-500 hover:bg-red-100 dark:text-red-400 dark:border-red-400 dark:hover:bg-red-900"
                         >
                           <Trash2 className="h-4 w-4 mr-2" />

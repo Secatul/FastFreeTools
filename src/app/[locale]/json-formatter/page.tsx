@@ -54,7 +54,7 @@ export default function JsonFormatter() {
   const t = useTranslations('JsonFormatter')
   const pathname = usePathname()
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/json-formatter`
   const shareTitle = t('shareTitle')
 
@@ -183,12 +183,14 @@ export default function JsonFormatter() {
         />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('pageTitle')} />
         <meta
           name="twitter:description"
           content={t('pageDescription')}
         />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/json-formatter" />
         <link rel="alternate" hrefLang="es" href="https://fastfreetools.com/es/json-formatter" />
@@ -351,7 +353,7 @@ export default function JsonFormatter() {
                       {isCopied ? <Check className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
                       {isCopied ? t('copiedButton') : t('copyButton')}
                     </Button>
-                
+
                     <Button onClick={handleDownload} disabled={!resultText} className="bg-green-500 hover:bg-green-600 text-white">
                       <Download className="h-4 w-4 mr-2" />
                       {t('downloadButton')}

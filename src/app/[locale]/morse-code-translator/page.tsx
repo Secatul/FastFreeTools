@@ -70,7 +70,7 @@ export default function MorseCodeTranslator() {
   const pathname = usePathname()
 
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/morse-code-translator`
   const shareTitle = t('shareTitle')
 
@@ -136,7 +136,7 @@ export default function MorseCodeTranslator() {
       audioContext.current = new (window.AudioContext || window.webkitAudioContext)()
     }
     const audio = audioContext.current
-    const dotDuration = 60 
+    const dotDuration = 60
 
     const playTone = (duration: number) => {
       const osc = audio.createOscillator()
@@ -320,21 +320,21 @@ export default function MorseCodeTranslator() {
           property="og:description"
           content={t('ogDescription')}
         />
-        <meta property="og:image" content="https://fastfreetools.com/og-image.jpg" />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('twitterTitle')} />
         <meta
           name="twitter:description"
           content={t('twitterDescription')}
         />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-image.jpg" />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/morse-code-translator" />
         <link rel="alternate" hrefLang="es" href="https://fastfreetools.com/es/morse-code-translator" />
-        <link rel="alternate"   hrefLang="fr" href="https://fastfreetools.com/fr/morse-code-translator" />
+        <link rel="alternate" hrefLang="fr" href="https://fastfreetools.com/fr/morse-code-translator" />
         <link rel="alternate" hrefLang="de" href="https://fastfreetools.com/de/morse-code-translator" />
         <link rel="alternate" hrefLang="x-default" href="https://fastfreetools.com/morse-code-translator" />
       </Head>

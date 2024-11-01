@@ -153,15 +153,17 @@ export default function TextTransformer() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:image" content="https://fastfreetools.com/images/text-transformer-preview.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta property="og:site_name" content="Fast Free Tools" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="twitter-card" />
         <meta name="twitter:title" content={t('twitterTitle')} />
         <meta
           name="twitter:description"
           content={t('twitterDescription')}
         />
-        <meta name="twitter:image" content="https://fastfreetools.com/images/text-transformer-preview.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/text-transformer" />
