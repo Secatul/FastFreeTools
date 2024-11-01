@@ -351,6 +351,7 @@ export default function Page() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.fastfreetools.com/" />
         <meta name="twitter:title" content={t('Header_Description')} />
         <meta name="twitter:description" content={t('Header_Description')} />
         <meta name="twitter:image" content="https://www.fastfreetools.com/twitter-card.png" />
