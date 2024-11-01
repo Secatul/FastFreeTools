@@ -9,18 +9,18 @@ interface Tool {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log('Request received:', req.method, req.query);
+  // console.log('Request received:', req.method, req.query);
   const locale = req.query.locale || 'en';
 
   if (req.method !== 'GET') {
-    console.log('Method not allowed:', req.method);
+    // console.log('Method not allowed:', req.method);
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
   
   let translations;
   try {
     translations = (await import(`../../../messages/${locale}.json`)).default;
-    console.log('Translations loaded:', translations);
+    // console.log('Translations loaded:', translations);
   } catch (error) {
     console.error(`Erro ao carregar traduções para o locale ${locale}:`, error);
     translations = (await import('../../../messages/en.json')).default; 

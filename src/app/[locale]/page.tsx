@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from "react";
@@ -15,29 +14,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
-import { Star, Moon, Sun, Share2 } from "lucide-react";
+import { Star, Moon, Sun } from 'lucide-react';
 import { Header } from "./components/header";
 import { useTheme } from "next-themes";
 import Footer from "../[locale]/components/footer";
 import { usePathname } from 'next/navigation';
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-  WhatsappShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  WhatsappIcon,
-} from 'react-share';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 import {
   Pagination,
@@ -47,8 +28,6 @@ import {
   PaginationNext,
   PaginationPrevious
 } from "@/components/ui/pagination";
-
-
 
 interface RootState {
   tools: {
@@ -85,13 +64,12 @@ export default function Page() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [ratingData, setRatingData] = useState<RatingData>({});
-  const [currentPage, setCurrentPage] = useState<number>(1); 
-  const toolsPerPage = 12; 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const toolsPerPage = 12;
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const [isShareDialogOpen, setIsShareDialogOpen] = useState<boolean>(false);
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
 
   const staticTools: Tool[] = [
     {
@@ -179,7 +157,7 @@ export default function Page() {
       categories: ["Programming"],
     },
   ];
-  
+
   const categories: Category[] = [
     { id: "All", label: t("Categories.All") },
     { id: "Programming", label: t("Categories.Programming") },
@@ -190,53 +168,10 @@ export default function Page() {
     { id: "Utility", label: t("Categories.Utility") },
   ];
 
-  const ShareDialog = () => {
-    const shareUrl = 'https://fastfreetools.com';
-    const title = 'Check out Fast Free Tools!';
-
-    return (
-      <Dialog open={isShareDialogOpen} onOpenChange={setIsShareDialogOpen}>
-        <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="relative inline-flex items-center justify-center p-2 rounded-full bg-gray-700 dark:bg-gray-800 focus:outline-none transition-colors duration-300
-            border-2 border-transparent hover:border-blue-500 dark:hover:border-yellow-500 transition-all ml-2"
-          >
-            <Share2 className="w-6 h-6 dark:text-blue-400 text-yellow-400" />
-            <span className="sr-only">Share</span>
-          </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Share Fast Free Tools</DialogTitle>
-            <DialogDescription>
-              Share our website with your friends and colleagues!
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex justify-center space-x-4 mt-4">
-            <FacebookShareButton url={shareUrl} quote={title}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton url={shareUrl} title={title}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <LinkedinShareButton url={shareUrl} title={title}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
-            <WhatsappShareButton url={shareUrl} title={title}>
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
-  };
-
   const fetchRatings = async () => {
     const { data, error } = await supabase.from('ratings').select('name, rating, votes');
     if (error) {
-      console.error('Erro ao buscar ratings:', error);
+      console.error('Error fetching ratings:', error);
     } else {
       const ratingsMap: RatingData = data.reduce((acc: RatingData, curr: { name: string; rating: number; votes: number }) => {
         acc[curr.name] = { rating: curr.rating, votes: curr.votes };
@@ -248,7 +183,7 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(fetchTools()); 
+      await dispatch(fetchTools());
       fetchRatings();
     };
     fetchData();
@@ -267,10 +202,10 @@ export default function Page() {
   const allTools = [...staticTools, ...apiTools];
 
   const filteredTools = allTools.filter((tool) => {
-    const matchesCategory = selectedCategory === 'All' || 
+    const matchesCategory = selectedCategory === 'All' ||
       tool.categories.some(category => category === selectedCategory);
     const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     return matchesCategory && matchesSearch;
   });
 
@@ -300,7 +235,7 @@ export default function Page() {
       .upsert({ name: toolName, rating: updatedRating, votes: updatedVotes });
 
     if (error) {
-      console.error('Erro ao enviar avaliação:', error);
+      console.error('Error submitting rating:', error);
     } else {
       setRatingData((prevData) => ({
         ...prevData,
@@ -367,11 +302,11 @@ export default function Page() {
             <p className="dark:text-gray-400 text-gray-700 mb-4">{tool.description}</p>
 
             <div className="flex gap-2 flex-wrap">
-            {tool.categories.map((categoryId, index) => (
-              <Badge key={index} variant="outline" className="text-blue-400 border-blue-400">
-                {t(`Categories.${categoryId}`)}
-              </Badge>
-            ))}
+              {tool.categories.map((categoryId, index) => (
+                <Badge key={index} variant="outline" className="text-blue-400 border-blue-400">
+                  {t(`Categories.${categoryId}`)}
+                </Badge>
+              ))}
             </div>
           </div>
 
@@ -408,7 +343,6 @@ export default function Page() {
         <div className="container mx-auto px-4">
           <div className="flex justify-end mb-4">
             <div className="flex items-center space-x-2">
-              <ShareDialog />
               <LangSwitcher />
               <Button
                 variant="outline"
@@ -439,10 +373,10 @@ export default function Page() {
               <div className="flex flex-wrap gap-2 justify-center mt-4">
                 {categories.map((category: Category) => (
                   <Button
-                    key={category.id}  // Use o id da categoria como chave
+                    key={category.id}
                     onClick={() => {
-                      setSelectedCategory(category.id);  // Defina o estado usando o id
-                      setCurrentPage(1); // Reseta para a primeira página quando a categoria é alterada
+                      setSelectedCategory(category.id);
+                      setCurrentPage(1);
                     }}
                     className={`px-4 py-2 rounded-lg ${selectedCategory === category.id
                       ? 'bg-blue-500 text-white dark:bg-blue-600 hover:bg-blue-600'
@@ -455,22 +389,21 @@ export default function Page() {
               </div>
 
               <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-                <h2 className="text-3xl font-bold">Tools</h2>
+                <h2 className="text-3xl font-bold">{t('Tools')}</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {currentTools.length > 0 ? (
                   currentTools.map((tool, index) => {
-                    console.log("Rendering tool: ", tool);
                     return <ToolCard key={index} tool={tool} />;
                   })
                 ) : (
                   <p className="text-muted-foreground col-span-full text-center text-lg">
-                    No tools found for your search.
+                    {t('No_Tools_Found')}
                   </p>
                 )}
               </div>
 
-              {/* Componente de Paginação */}
+              {/* Pagination Component */}
               {totalPages > 1 && (
                 <Pagination className="flex justify-center mt-6">
                   <PaginationContent className="flex space-x-2">
@@ -483,7 +416,7 @@ export default function Page() {
                         }}
                         className="px-3 py-1.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                       >
-                        Previous
+                        {t('Previous')}
                       </PaginationPrevious>
                     </PaginationItem>
 
@@ -514,7 +447,7 @@ export default function Page() {
                         }}
                         className="px-3 py-1.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                       >
-                        Next
+                        {t('Next')}
                       </PaginationNext>
                     </PaginationItem>
                   </PaginationContent>
