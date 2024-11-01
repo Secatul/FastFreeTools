@@ -108,13 +108,13 @@ export default function Page() {
       description: t("WordCounter.description"),
       categories: ["Text_Tools"],
     },
-    {
-      name: t("ColorPicker.name"),
-      route: `/${locale}/color-picker`,
-      icon: "🎨",
-      description: t("ColorPicker.description"),
-      categories: ["Design", "Utility"],
-    },
+    // {
+    //   name: t("ColorPicker.name"),
+    //   route: `/${locale}/color-picker`,
+    //   icon: "🎨",
+    //   description: t("ColorPicker.description"),
+    //   categories: ["Design", "Utility"],
+    // },
     {
       name: t("LoremIpsumGenerator.name"),
       route: `/${locale}/lorem-ipsum`,

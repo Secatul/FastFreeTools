@@ -12,7 +12,7 @@ export const pathnames = {
   '/': '/',
   '/word-counter': '/word-counter',
   '/credit-card-validator': '/credit-card-validator',
-  '/color-picker': '/color-picker',
+  // '/color-picker': '/color-picker',
   '/binary-to-text': '/binary-to-text',
   '/base64encoder': '/base64encoder',
   '/html-generator': '/html-generator',
