@@ -54,11 +54,7 @@ export default function JsonFormatter() {
   const t = useTranslations('JsonFormatter')
   const pathname = usePathname()
 
-  if (!pathname) {
-    return null
-  }
-
-  const locale = pathname.split("/")[1]
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const shareUrl = `https://fastfreetools.com/${locale}/json-formatter`
   const shareTitle = t('shareTitle')
 

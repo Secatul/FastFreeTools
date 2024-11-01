@@ -32,12 +32,7 @@ const BinaryTextConverter: React.FC = () => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
-  if (!pathname) {
-    return null;
-  }
-
-  const locale = pathname.split('/')[1];
-
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const shareUrl = `https://fastfreetools.com/${locale}/binary-text-converter`;
   const shareTitle = t('Share_Title');
 
