@@ -72,8 +72,6 @@ export default function Page() {
 
   const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}`;
-  const ogImage = "https://www.fastfreetools.com/twitter-card.png";
-
 
   const staticTools: Tool[] = [
     {
@@ -351,11 +349,11 @@ export default function Page() {
         <meta property="og:description" content={t('Header_Description')} />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Header_Description')} />
         <meta name="twitter:description" content={t('Header_Description')} />
-        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />
       </Head>
 
