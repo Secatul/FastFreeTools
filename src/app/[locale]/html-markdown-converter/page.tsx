@@ -40,9 +40,7 @@ const HTMLToMarkdownConverter: React.FC = () => {
   const [showMarkdown, setShowMarkdown] = useState<boolean>(true);
   const { theme, setTheme } = useTheme();
   
-  if (!pathname) return null;
-  const locale = pathname.split('/')[1];
-
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const turndownService = new TurndownService();
 
   const shareUrl = `https://fastfreetools.com/${locale}/html-to-markdown`;

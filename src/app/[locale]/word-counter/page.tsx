@@ -76,12 +76,7 @@ export default function WordCounter() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
 
-  if (!pathname) {
-    return null;
-  }
-
-  const locale = pathname.split('/')[1];
-
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const shareUrl = `https://fastfreetools.com/${locale}/word-counter`;
 
   useEffect(() => {

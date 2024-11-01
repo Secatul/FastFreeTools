@@ -95,11 +95,8 @@ export default function RegexTester() {
   const pathname = usePathname()
   const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
 
-  if (!pathname) {
-    return null
-  }
 
-  const locale = pathname.split("/")[1]
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/regex-tester`
   const shareTitle = t('shareTitle')
 

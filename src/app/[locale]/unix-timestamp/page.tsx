@@ -40,11 +40,7 @@ export default function UnixTimestampTool() {
   const t = useTranslations('UnixTimestampTool')
   const pathname = usePathname()
 
-  if (!pathname) {
-    return null
-  }
-
-  const locale = pathname.split("/")[1]
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/unix-timestamp`
   const shareTitle = t('shareTitle')
 
@@ -160,7 +156,7 @@ export default function UnixTimestampTool() {
                   </Tooltip>
 
                   <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText={t('shareTooltip')} />
-                  
+
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
@@ -293,7 +289,7 @@ export default function UnixTimestampTool() {
                       type="number"
                       placeholder={t('enterSecondUnixTimestampPlaceholder')}
                       onChange={(e) => {
-                        if (inputTimestamp &&   e.target.value) {
+                        if (inputTimestamp && e.target.value) {
                           const diff = calculateTimeDifference(parseInt(inputTimestamp), parseInt(e.target.value))
                           setConvertedDate(t('difference', { diff }))
                         }

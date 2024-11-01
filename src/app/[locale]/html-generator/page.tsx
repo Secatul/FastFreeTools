@@ -57,10 +57,8 @@ const HTMLGenerator: React.FC = () => {
   const t = useTranslations('HTMLGenerator');
 
   const pathname = usePathname();
-  if (!pathname) {
-    return null;
-  }
-  const locale = pathname.split("/")[1];
+
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const shareUrl = `https://fastfreetools.com/${locale}/html-generator`;
   const shareTitle = t('Share_Title');
 

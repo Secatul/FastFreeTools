@@ -149,11 +149,7 @@ export default function ColorPicker() {
   const [activeTab, setActiveTab] = useState('palette');
   const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
 
-  if (!pathname) {
-    return null;
-  }
-
-  const locale = pathname.split("/")[1];
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/color-picker`;
   const shareTitle = t('Share_Title');
 

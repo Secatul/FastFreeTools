@@ -97,12 +97,8 @@ const CreditCardValidator: React.FC = () => {
   const [helpCardNumber, setHelpCardNumber] = useState("")
   const [helpIsValid, setHelpIsValid] = useState<boolean | null>(null)
 
-  if (!pathname) {
-    return null
-  }
 
-  const locale = pathname.split("/")[1]
-
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
   const shareUrl = `https://fastfreetools.com/${locale}/credit-card-validator`
   const shareTitle = t("Share_Title")
 

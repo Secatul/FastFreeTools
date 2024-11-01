@@ -91,11 +91,7 @@ export default function Page() {
   const { theme, setTheme } = useTheme();
   const [isShareDialogOpen, setIsShareDialogOpen] = useState<boolean>(false);
 
-  if (!pathname) {
-    return null;
-  }
-
-  const locale = pathname.split("/")[1];
+  const locale = pathname ? pathname.split("/")[1] : "en"; 
 
   const staticTools: Tool[] = [
     {
