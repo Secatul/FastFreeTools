@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import type { ComponentPropsWithoutRef } from 'react';
+import type { Components } from 'react-markdown';
 import 'github-markdown-css/github-markdown.css';
 import {
   Dialog,
@@ -24,6 +26,10 @@ import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
+interface CodeComponentType extends ComponentPropsWithoutRef<'code'> {
+  inline?: boolean;
+  className?: string;
+}
 
 const MarkdownEditor: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>('');
@@ -32,8 +38,8 @@ const MarkdownEditor: React.FC = () => {
   const pathname = usePathname();
   const t = useTranslations('MarkdownEditor');
 
-  
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/markdown-editor`;
 
   useEffect(() => {
@@ -361,7 +367,7 @@ const MarkdownEditor: React.FC = () => {
                 <div className="w-full md:w-1/2 border-2 border-primary rounded-md p-4 overflow-auto h-[calc(100vh-300px)] markdown-body bg-white dark:bg-gray-900">
                   <ReactMarkdown
                     components={{
-                      code({ node, inline, className, children, ...props }) {
+                      code: ({ inline, className, children, ...props }: CodeComponentType) => {
                         const match = /language-(\w+)/.exec(className || '');
                         return !inline && match ? (
                           <SyntaxHighlighter
@@ -378,10 +384,11 @@ const MarkdownEditor: React.FC = () => {
                           </code>
                         );
                       }
-                    }}
+                    } as Components}
                   >
                     {markdown}
                   </ReactMarkdown>
+
                 </div>
               </div>
 
