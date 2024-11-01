@@ -20,10 +20,6 @@ import { useTheme } from "next-themes";
 import Footer from "../[locale]/components/footer";
 import { usePathname } from 'next/navigation';
 
-
-import { getPathname } from 'next-intl/navigation';
-
-
 import {
   Pagination,
   PaginationContent,
