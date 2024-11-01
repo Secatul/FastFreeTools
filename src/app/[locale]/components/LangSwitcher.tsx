@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { usePathname, useSelectedLayoutSegments } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Globe } from "lucide-react"
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname, useSelectedLayoutSegments } from 'next/navigation';
+import { Button } from "@/components/ui/button";
+import { Globe } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 interface Option {
-  country: string
-  code: string
-  flag: string
+  country: string;
+  code: string;
+  flag: string;
 }
 
 const LangSwitcher: React.FC = () => {
-  const pathname = usePathname()
-  const urlSegments = useSelectedLayoutSegments()
+  const pathname = usePathname() ?? '';
+  const urlSegments = useSelectedLayoutSegments() ?? [];
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const options: Option[] = [
     { country: 'English', code: 'en', flag: '🇬🇧' },
@@ -49,7 +49,7 @@ const LangSwitcher: React.FC = () => {
         {options.map((lang) => (
           <DropdownMenuItem key={lang.code} asChild>
             <Link
-              href={`/${lang.code}/${urlSegments.join('/')}`}
+              href={`/${lang.code}/${urlSegments.filter(Boolean).join('/')}`}
               className={`flex items-center space-x-2 px-2 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${
                 pathname.startsWith(`/${lang.code}`)
                   ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
@@ -63,7 +63,7 @@ const LangSwitcher: React.FC = () => {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
 
-export default LangSwitcher
+export default LangSwitcher;

@@ -392,7 +392,7 @@ export default function Page() {
             <div>
               <Link href={tool.route}>
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-                  Try Now
+                  {t('Try_Now')}
                 </Button>
               </Link>
             </div>
