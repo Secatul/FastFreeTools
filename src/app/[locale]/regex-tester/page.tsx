@@ -201,7 +201,7 @@ export default function RegexTester() {
         />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="twitter-card" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('pageTitle')} />
         <meta
           name="twitter:description"

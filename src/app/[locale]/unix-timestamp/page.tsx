@@ -93,7 +93,7 @@ export default function UnixTimestampTool() {
         <meta property="og:description" content={t('ogDescription')} />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="twitter-card" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('twitterTitle')} />
         <meta name="twitter:description" content={t('twitterDescription')} />
         <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />

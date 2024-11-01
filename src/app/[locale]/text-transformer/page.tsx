@@ -156,7 +156,7 @@ export default function TextTransformer() {
         <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta property="og:site_name" content="Fast Free Tools" />
-        <meta name="twitter:card" content="twitter-card" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('twitterTitle')} />
         <meta
           name="twitter:description"

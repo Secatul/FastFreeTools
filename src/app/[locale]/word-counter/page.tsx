@@ -228,7 +228,7 @@ export default function WordCounter() {
         <meta property="og:description" content={t('Page_Description')} />
         <meta property="og:url" content="https://fastfreetools.com/word-counter" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="twitter-card" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Page_Description')} />
 
