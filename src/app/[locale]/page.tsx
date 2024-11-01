@@ -19,6 +19,7 @@ import { Header } from "./components/header";
 import { useTheme } from "next-themes";
 import Footer from "../[locale]/components/footer";
 import { usePathname } from 'next/navigation';
+import Head from 'next/head';
 
 import {
   Pagination,
@@ -70,6 +71,9 @@ export default function Page() {
   const { theme, setTheme } = useTheme();
 
   const locale = pathname ? pathname.split("/")[1] : "en";
+  const shareUrl = `https://fastfreetools.com/${locale}`;
+  const ogImage = "https://www.fastfreetools.com/twitter-card.png";
+
 
   const staticTools: Tool[] = [
     {
@@ -339,6 +343,22 @@ export default function Page() {
 
   return (
     <>
+      <Head>
+        <title>{t('Header_Description')}</title>
+        <meta name="description" content={t('Header_Description')} />
+        <meta name="keywords" content="Fast Free Tools, Online Tools, Web Tools, Utilities" />
+        <meta property="og:title" content={t('Header_Description')} />
+        <meta property="og:description" content={t('Header_Description')} />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('Header_Description')} />
+        <meta name="twitter:description" content={t('Header_Description')} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta charSet="UTF-8" />
+      </Head>
+
       <div className="min-h-screen bg-white py-12 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex justify-end mb-4">
