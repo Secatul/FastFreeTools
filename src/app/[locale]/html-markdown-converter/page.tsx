@@ -179,7 +179,7 @@ const HTMLToMarkdownConverter: React.FC = () => {
             </Dialog>
 
             <Button variant="outline" size="icon" asChild>
-              <Link href="/" aria-label={t('Home')}>
+              <Link href={`/${locale}`} aria-label={t('Home')}>
                 <Home className="h-4 w-4" />
                 <span className="sr-only">{t('Home')}</span>
               </Link>

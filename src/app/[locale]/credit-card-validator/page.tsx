@@ -428,7 +428,7 @@ const CreditCardValidator: React.FC = () => {
                         asChild
                         className="bg-white/10 hover:bg-white/20 text-white"
                       >
-                        <Link href="/" aria-label={t("Home_Aria")}>
+                        <Link href={`/${locale}`} aria-label={t("Home_Aria")}>
                           <Home className="h-5 w-5" />
                         </Link>
                       </Button>

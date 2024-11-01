@@ -26,7 +26,7 @@ import Head from "next/head";
 import Link from "next/link";
 import ShareButton from "../components/share-button";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 const Base64Converter: React.FC = () => {
   const [inputText, setInputText] = useState<string>("");
@@ -39,7 +39,7 @@ const Base64Converter: React.FC = () => {
 
   const pathname = usePathname();
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
 
   const shareUrl = `https://fastfreetools.com/${locale}/base64-converter`;
   const shareTitle = t('Share_Title');
@@ -172,7 +172,7 @@ const Base64Converter: React.FC = () => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
-                        <Link href="/" aria-label={t('Home_Aria')}>
+                        <Link href={`/${locale}`} aria-label={t('Home_Aria')}>
                           <Home className="h-5 w-5" />
                           <span className="sr-only">{t('Home')}</span>
                         </Link>

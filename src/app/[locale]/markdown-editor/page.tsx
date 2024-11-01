@@ -210,7 +210,7 @@ const MarkdownEditor: React.FC = () => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
-                        <Link href="/" aria-label={t('Home')}>
+                        <Link href={`/${locale}`} aria-label={t('Home')}>
                           <Home className="h-4 w-4" />
                           <span className="sr-only">{t('Home')}</span>
                         </Link>

@@ -253,7 +253,7 @@ export default function WordCounter() {
                         asChild
                         className="bg-white/10 hover:bg-white/20 text-white"
                       >
-                        <Link href="/" aria-label="Home">
+                        <Link href={`/${locale}`} aria-label="Home">
                           <Home className="h-5 w-5" />
                         </Link>
                       </Button>

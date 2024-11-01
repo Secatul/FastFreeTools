@@ -386,7 +386,7 @@ export default function MorseCodeTranslator() {
                         aria-label={t('homeButtonAriaLabel')}
                         asChild
                       >
-                        <Link href="/" aria-label={t('homeButtonAriaLabel')}>
+                        <Link href={`/${locale}`} aria-label={t('homeButtonAriaLabel')}>
                           <Home className="h-4 w-4" />
                           <span className="sr-only">{t('homeButtonText')}</span>
                         </Link>
