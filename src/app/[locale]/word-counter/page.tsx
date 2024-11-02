@@ -218,8 +218,7 @@ export default function WordCounter() {
         <meta name="description" content={t('Page_Description')} />
         <meta name="keywords" content={t('Page_Keywords')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://fastfreetools.com/word-counter" />
-
+        <link rel="canonical" href={shareUrl} />
         {hreflangs.map(({ locale, href }) => (
           <link key={locale} rel="alternate" hrefLang={locale} href={href} />
         ))}

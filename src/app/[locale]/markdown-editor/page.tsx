@@ -139,7 +139,7 @@ const MarkdownEditor: React.FC = () => {
         />
         <meta name="author" content="Fast Free Tools" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://fastfreetools.com/markdown-editor" />
+        <link rel="canonical" href={shareUrl} />
         {hreflangs.map(({ locale, href }) => (
           <link key={locale} rel="alternate" hrefLang={locale} href={href} />
         ))}

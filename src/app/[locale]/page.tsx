@@ -347,6 +347,7 @@ export default function Page() {
         <meta name="keywords" content="Fast Free Tools, Online Tools, Web Tools, Utilities" />
         <meta property="og:title" content={t('Header_Description')} />
         <meta property="og:description" content={t('Header_Description')} />
+        <link rel="canonical" href={shareUrl} />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:image:type" content="image/png" />

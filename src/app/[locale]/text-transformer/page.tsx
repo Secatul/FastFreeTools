@@ -162,6 +162,7 @@ export default function TextTransformer() {
           name="twitter:description"
           content={t('twitterDescription')}
         />
+        <link rel="canonical" href={shareUrl} />
         <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
         <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta charSet="UTF-8" />

@@ -46,12 +46,12 @@ export default async function RootLayout({
     messages = (await import(`../../../messages/${params.locale}.json`)).default; // Agora pode acessar params.locale
   } catch (error) {
     console.error(`Erro ao carregar mensagens para o locale ${params.locale}`, error);
-    messages = (await import('../../../messages/en.json')).default; // Fallback para inglês
+    messages = (await import('../../../messages/en.json')).default;
   }
 
   return (
     <html
-      lang={params.locale} // Corrigido para usar params.locale
+      lang={params.locale} 
       dir={params.locale === 'ar' || params.locale === 'fa' ? 'rtl' : 'ltr'}
       className={`${space_grotesk.variable} ${rubik.variable} scroll-smooth`}
       suppressHydrationWarning
