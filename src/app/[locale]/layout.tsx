@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'; // Adicione esta linha
+import React from 'react';
 import { ThemeProvider } from '@/src/app/[locale]/components/ThemeProvider'
 import { Inter, Rubik, Space_Grotesk } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
@@ -34,16 +34,16 @@ interface Params {
 
 export default async function RootLayout({
   children,
-  params: paramsPromise, // Renomeie para paramsPromise
+  params: paramsPromise,
 }: {
   children: React.ReactNode;
-  params: Promise<Params>; // Especificar que params é uma Promise
+  params: Promise<Params>; 
 }) {
-  const params = await paramsPromise; // Desembrulhar a Promise
+  const params = await paramsPromise; 
 
   let messages;
   try {
-    messages = (await import(`../../../messages/${params.locale}.json`)).default; // Agora pode acessar params.locale
+    messages = (await import(`../../../messages/${params.locale}.json`)).default;
   } catch (error) {
     console.error(`Erro ao carregar mensagens para o locale ${params.locale}`, error);
     messages = (await import('../../../messages/en.json')).default;

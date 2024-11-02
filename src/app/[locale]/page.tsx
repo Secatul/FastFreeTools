@@ -342,10 +342,10 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>{t('Header_Description')}</title>
+        <title>{t('Page_Title')}</title>
         <meta name="description" content={t('Header_Description')} />
         <meta name="keywords" content="Fast Free Tools, Online Tools, Web Tools, Utilities" />
-        <meta property="og:title" content={t('Header_Description')} />
+        <meta property="og:title" content={t('Page_Title')} />
         <meta property="og:description" content={t('Header_Description')} />
         <link rel="canonical" href={shareUrl} />
         <meta property="og:url" content={shareUrl} />
@@ -356,12 +356,11 @@ export default function Page() {
         <meta property="og:image" content="/opengraph-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.fastfreetools.com/" />
-        <meta name="twitter:title" content={t('Header_Description')} />
+        <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Header_Description')} />
         <meta name="twitter:image" content="https://www.fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
       </Head>
-
       <div className="min-h-screen bg-white py-12 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex justify-end mb-4">
