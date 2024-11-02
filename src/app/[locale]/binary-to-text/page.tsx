@@ -114,10 +114,13 @@ const BinaryTextConverter: React.FC = () => {
           property="og:description"
           content={t('Page_Description')}
         />
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="/opengraph-image.png" />
         <meta property="og:url" content={`https://fastfreetools.com/${locale}/binary-text-converter`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta
