@@ -464,10 +464,9 @@ export default function OnlineFlowchartMaker() {
           onLabelChange: onNodeLabelChange,
           onColorChange: onNodeColorChange,
         },
-        style: { width: 150, height: 150 },
       };
 
-      setNodes((nds) => [...nds, newNode]);
+      setNodes((nds) => nds.concat(newNode));
     },
     [nodes, setNodes, onNodeLabelChange, onNodeColorChange]
   );
@@ -483,10 +482,9 @@ export default function OnlineFlowchartMaker() {
         onLabelChange: onNodeLabelChange,
         onColorChange: onNodeColorChange,
       },
-      style: { width: 150, height: 150 },
     };
-    setNodes((nds) => [...nds, newNode]);
 
+    setNodes((nds) => nds.concat(newNode));
     setNodeName('');
   };
 
@@ -532,10 +530,10 @@ export default function OnlineFlowchartMaker() {
     const template = templates[templateName];
 
     setNodes(
-      template.nodes.map((node): CustomNode => ({
+      template.nodes.map((node) => ({
         ...node,
         data: {
-          ...(node.data || {}),
+          ...node.data,
           onLabelChange: onNodeLabelChange,
           onColorChange: onNodeColorChange,
         },
@@ -543,10 +541,10 @@ export default function OnlineFlowchartMaker() {
     );
 
     setEdges(
-      template.edges.map((edge): CustomEdge => ({
+      template.edges.map((edge) => ({
         ...edge,
         data: {
-          ...(edge.data || {}),
+          ...edge.data,
           onLabelChange: onEdgeLabelChange,
           onColorChange: onEdgeColorChange,
           onStyleChange: onEdgeStyleChange,
