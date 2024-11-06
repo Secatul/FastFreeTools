@@ -38,10 +38,6 @@
       "name": "Contador de Palabras",
       "description": "Cuenta palabras, caracteres y espacios."
     },
-    "OnlineFlowchartMaker": {
-      "name": "Creador de Diagramas de Flujo en Línea",
-      "description": "Cree y personalice diagramas de flujo, árboles de decisión y diagramas fácilmente con nuestra herramienta en línea."
-    },
     "ColorPicker": {
       "name": "Selector de Color",
       "description": "Selecciona y administra colores."
@@ -1397,43 +1393,6 @@
     "Suggestion_Add_Twitter_Title": "Agrega una etiqueta de título de Twitter para una mejor visibilidad en Twitter.",
     "Suggestion_Add_Twitter_Description": "Incluye una descripción de Twitter para proporcionar contexto a tus tweets.",
     "Suggestion_Add_Twitter_Image": "Agrega una imagen de Twitter para hacer tus tweets más atractivos y clicables."
-  },
-  "OnlineFlowchartMaker":{
-    "Page_Title": "Creador de Diagramas de Flujo en Línea",
-    "Page_Description": "Crea y personaliza diagramas de flujo en línea fácilmente con nuestra herramienta.",
-    "Page_Keywords": "creador de diagramas de flujo, diagrama de flujo en línea, herramienta de diagramas, editor de diagramas de flujo",
-    "Title": "Creador de Diagramas de Flujo en Línea",
-    "Help_Text": "Aprende a usar la herramienta de diagramas de flujo",
-    "About_Tool": "Acerca de Esta Herramienta",
-    "Why_Text": "Esta herramienta te ayuda a crear diagramas de flujo fácilmente para presentaciones, proyectos o lluvias de ideas.",
-    "What_Text": "Puedes agregar nodos personalizados, conectarlos y exportar tu diagrama.",
-    "How_Text": "Arrastra y suelta las formas, haz doble clic para editar las etiquetas y personaliza las conexiones.",
-    "Home": "Inicio",
-    "Share_Title": "Compartir Creador de Diagramas",
-    "Share_Tool": "Comparte esta herramienta con tu red",
-    "Toggle_Theme": "Cambiar tema",
-    "Switch_Mode": "Cambiar entre modo claro y oscuro",
-    "Node_Name": "Nombre del Nodo",
-    "Enter_Node_Name": "Ingresa el nombre del nodo",
-    "Node_Type": "Tipo de Nodo",
-    "Square": "Cuadrado",
-    "Circle": "Círculo",
-    "Diamond": "Diamante",
-    "Triangle": "Triángulo",
-    "Add_Node": "Agregar Nodo",
-    "Export_PNG": "Exportar como PNG",
-    "Export_SVG": "Exportar como SVG",
-    "Export_JPG": "Exportar como JPG",
-    "Choose_Template": "Elegir Plantilla",
-    "Snap_to_Grid": "Ajustar a la cuadrícula",
-    "Grid_Size": "Tamaño de la cuadrícula",
-    "Drag_Drop_Shapes": "Arrastra y Suelta Formas",
-    "Toast": {
-      "Export_Success": "Exportación Exitosa",
-      "Export_Description": "Tu diagrama ha sido exportado como {{format}}.",
-      "Export_Failed": "Error de Exportación",
-      "Export_Failed_Description": "Hubo un error al exportar el diagrama."
-    }
   },
   "Search": {
     "Placeholder": "Buscar una herramienta..."

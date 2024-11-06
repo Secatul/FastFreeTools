@@ -30,7 +30,7 @@ export const pathnames = {
   '/user-agent': '/user-agent',
 
   
-  '/online-flowchart-maker': '/online-flowchart-maker',
+  // '/online-flowchart-maker': '/online-flowchart-maker',
   '/seo-meta-tag-analyzer': '/seo-meta-tag-analyzer',
   // '/image-background-remover': '/image-background-remover',
 

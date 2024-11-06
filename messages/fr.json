@@ -46,10 +46,6 @@
       "name": "Générateur de Lorem Ipsum",
       "description": "Générer du texte fictif Lorem Ipsum."
     },
-    "OnlineFlowchartMaker": {
-      "name": "Créateur de Diagrammes de Flux en Ligne",
-      "description": "Créez et personnalisez des diagrammes de flux, des arbres de décision et des schémas facilement grâce à notre outil en ligne."
-    },
     "CaseConverter": {
       "name": "Convertisseur de Majuscules et Minuscules",
       "description": "Convertir du texte entre plusieurs formats."
@@ -1397,43 +1393,6 @@
     "Suggestion_Add_Twitter_Title": "Ajoutez une balise titre Twitter pour une meilleure visibilité sur Twitter.",
     "Suggestion_Add_Twitter_Description": "Incluez une description Twitter pour fournir du contexte à vos tweets.",
     "Suggestion_Add_Twitter_Image": "Ajoutez une image Twitter pour rendre vos tweets plus attrayants et cliquables."
-  },
-  "OnlineFlowchartMaker":{
-    "Page_Title": "Créateur de Diagrammes de Flux en Ligne",
-    "Page_Description": "Créez et personnalisez des diagrammes de flux en ligne facilement avec notre outil.",
-    "Page_Keywords": "créateur de diagrammes de flux, diagramme de flux en ligne, outil de diagrammes, éditeur de diagrammes de flux",
-    "Title": "Créateur de Diagrammes de Flux en Ligne",
-    "Help_Text": "Découvrez comment utiliser l'outil de diagrammes de flux",
-    "About_Tool": "À propos de cet outil",
-    "Why_Text": "Cet outil vous aide à créer des diagrammes de flux facilement pour des présentations, des projets ou des séances de brainstorming.",
-    "What_Text": "Vous pouvez ajouter des nœuds personnalisés, les connecter et exporter votre diagramme.",
-    "How_Text": "Glissez et déposez les formes, double-cliquez pour modifier les étiquettes et personnalisez les connexions.",
-    "Home": "Accueil",
-    "Share_Title": "Partager le Créateur de Diagrammes",
-    "Share_Tool": "Partagez cet outil avec votre réseau",
-    "Toggle_Theme": "Changer de thème",
-    "Switch_Mode": "Passer entre le mode clair et sombre",
-    "Node_Name": "Nom du Nœud",
-    "Enter_Node_Name": "Entrez le nom du nœud",
-    "Node_Type": "Type de Nœud",
-    "Square": "Carré",
-    "Circle": "Cercle",
-    "Diamond": "Diamant",
-    "Triangle": "Triangle",
-    "Add_Node": "Ajouter un Nœud",
-    "Export_PNG": "Exporter en PNG",
-    "Export_SVG": "Exporter en SVG",
-    "Export_JPG": "Exporter en JPG",
-    "Choose_Template": "Choisir un Modèle",
-    "Snap_to_Grid": "Aligner à la Grille",
-    "Grid_Size": "Taille de la Grille",
-    "Drag_Drop_Shapes": "Glisser-Déposer des Formes",
-    "Toast": {
-      "Export_Success": "Exportation Réussie",
-      "Export_Description": "Votre diagramme a été exporté en {{format}}.",
-      "Export_Failed": "Échec de l'Exportation",
-      "Export_Failed_Description": "Une erreur s'est produite lors de l'exportation du diagramme."
-    }
   },
   "Search": {
     "Placeholder": "Rechercher un outil..."

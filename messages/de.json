@@ -54,10 +54,6 @@
       "name": "Texttransformator",
       "description": "Ändern Sie die Reihenfolge der Zeichen im Text."
     },
-    "OnlineFlowchartMaker": {
-      "name": "Online-Flussdiagramm-Generator",
-      "description": "Erstellen und bearbeiten Sie Flussdiagramme, Entscheidungsbäume und Diagramme einfach mit unserem Online-Tool."
-    },
     "HtmlToMarkdown": {
       "name": "HTML-zu-Markdown-Konverter",
       "description": "Konvertieren Sie HTML in das Markdown-Format."
@@ -1397,43 +1393,6 @@
     "Suggestion_Add_Twitter_Title": "Fügen Sie einen Twitter-Titel-Tag hinzu, um die Sichtbarkeit auf Twitter zu verbessern.",
     "Suggestion_Add_Twitter_Description": "Fügen Sie eine Twitter-Beschreibung hinzu, um Kontext zu Ihren Tweets bereitzustellen.",
     "Suggestion_Add_Twitter_Image": "Fügen Sie ein Twitter-Bild hinzu, um Ihre Tweets ansprechender und klickbarer zu machen."
-  },
-  "OnlineFlowchartMaker":{
-    "Page_Title": "Online-Flussdiagramm-Ersteller",
-    "Page_Description": "Erstellen und passen Sie Flussdiagramme online einfach mit unserem Tool an.",
-    "Page_Keywords": "flussdiagramm ersteller, online flussdiagramm, diagramm werkzeug, flussdiagramm editor",
-    "Title": "Online-Flussdiagramm-Ersteller",
-    "Help_Text": "Erfahren Sie, wie Sie das Flussdiagramm-Tool verwenden",
-    "About_Tool": "Über dieses Tool",
-    "Why_Text": "Dieses Tool hilft Ihnen, Flussdiagramme für Präsentationen, Projekte oder Brainstorming-Sitzungen einfach zu erstellen.",
-    "What_Text": "Sie können benutzerdefinierte Knoten hinzufügen, sie verbinden und Ihr Diagramm exportieren.",
-    "How_Text": "Ziehen und ablegen von Formen, Doppelklick zum Bearbeiten von Etiketten und Anpassen von Verbindungen.",
-    "Home": "Startseite",
-    "Share_Title": "Flussdiagramm-Ersteller teilen",
-    "Share_Tool": "Teilen Sie dieses Tool mit Ihrem Netzwerk",
-    "Toggle_Theme": "Thema umschalten",
-    "Switch_Mode": "Zwischen hellem und dunklem Modus wechseln",
-    "Node_Name": "Knotenname",
-    "Enter_Node_Name": "Knotenname eingeben",
-    "Node_Type": "Knotentyp",
-    "Square": "Quadrat",
-    "Circle": "Kreis",
-    "Diamond": "Diamant",
-    "Triangle": "Dreieck",
-    "Add_Node": "Knoten hinzufügen",
-    "Export_PNG": "Als PNG exportieren",
-    "Export_SVG": "Als SVG exportieren",
-    "Export_JPG": "Als JPG exportieren",
-    "Choose_Template": "Vorlage auswählen",
-    "Snap_to_Grid": "An Raster ausrichten",
-    "Grid_Size": "Rastergröße",
-    "Drag_Drop_Shapes": "Formen ziehen und ablegen",
-    "Toast": {
-      "Export_Success": "Export erfolgreich",
-      "Export_Description": "Ihr Diagramm wurde als {{format}} exportiert.",
-      "Export_Failed": "Export fehlgeschlagen",
-      "Export_Failed_Description": "Beim Export des Diagramms ist ein Fehler aufgetreten."
-    }
   },
   "Search": {
     "Placeholder": "Suche nach einem Tool..."

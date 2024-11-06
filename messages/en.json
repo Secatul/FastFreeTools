@@ -82,10 +82,6 @@
       "name": "Markdown Editor",
       "description": "Edit and preview Markdown text."
     },
-    "OnlineFlowchartMaker": {
-      "name": "Online Flowchart Maker",
-      "description": "Create and customize flowcharts, decision trees, and diagrams with ease using our online tool."
-    },
     "HTMLGenerator": {
       "name": "HTML Generator",
       "description": "Generate HTML templates."
@@ -1391,43 +1387,6 @@
     "Suggestion_Add_Twitter_Title": "Add a Twitter title tag for better visibility on Twitter.",
     "Suggestion_Add_Twitter_Description": "Include a Twitter description to provide context for your tweets.",
     "Suggestion_Add_Twitter_Image": "Add a Twitter image to make your tweets more engaging and clickable."
-  },
-  "OnlineFlowchartMaker": {
-    "Page_Title": "Online Flowchart Maker",
-    "Page_Description": "Create and customize flowcharts online with ease using our tool.",
-    "Page_Keywords": "flowchart maker, online flowchart, diagram tool, flowchart editor",
-    "Title": "Online Flowchart Maker",
-    "Help_Text": "Learn how to use the flowchart tool",
-    "About_Tool": "About This Tool",
-    "Why_Text": "This tool helps you create flowcharts easily for presentations, projects, or brainstorming.",
-    "What_Text": "You can add custom nodes, connect them, and export your chart.",
-    "How_Text": "Drag and drop shapes, double-click to edit labels, and customize connections.",
-    "Home": "Home",
-    "Share_Title": "Share Flowchart Maker",
-    "Share_Tool": "Share this tool with your network",
-    "Toggle_Theme": "Toggle theme",
-    "Switch_Mode": "Switch between light and dark mode",
-    "Node_Name": "Node Name",
-    "Enter_Node_Name": "Enter node name",
-    "Node_Type": "Node Type",
-    "Square": "Square",
-    "Circle": "Circle",
-    "Diamond": "Diamond",
-    "Triangle": "Triangle",
-    "Add_Node": "Add Node",
-    "Export_PNG": "Export as PNG",
-    "Export_SVG": "Export as SVG",
-    "Export_JPG": "Export as JPG",
-    "Choose_Template": "Choose Template",
-    "Snap_to_Grid": "Snap to Grid",
-    "Grid_Size": "Grid Size",
-    "Drag_Drop_Shapes": "Drag and Drop Shapes",
-    "Toast": {
-      "Export_Success": "Export Successful",
-      "Export_Description": "Your flowchart has been exported as {{format}}.",
-      "Export_Failed": "Export Failed",
-      "Export_Failed_Description": "There was an error exporting the flowchart."
-    }
   },
   "Search": {
     "Placeholder": "Search for a tool..."

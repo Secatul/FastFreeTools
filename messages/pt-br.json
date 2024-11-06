@@ -54,10 +54,6 @@
       "name": "Transformador de Texto",
       "description": "Inverter a ordem dos caracteres no texto."
     },
-    "OnlineFlowchartMaker": {
-      "name": "Criador de Fluxogramas Online",
-      "description": "Crie e personalize fluxogramas, árvores de decisão e diagramas com facilidade usando nossa ferramenta online."
-    },
     "HtmlToMarkdown": {
       "name": "Conversor de HTML para Markdown",
       "description": "Converter HTML para o formato Markdown."
@@ -1397,43 +1393,6 @@
     "Suggestion_Add_Twitter_Title": "Adicione uma tag de título do Twitter para melhor visibilidade no Twitter.",
     "Suggestion_Add_Twitter_Description": "Inclua uma descrição do Twitter para fornecer contexto aos seus tweets.",
     "Suggestion_Add_Twitter_Image": "Adicione uma imagem do Twitter para tornar seus tweets mais atraentes e clicáveis."
-  },
-  "OnlineFlowchartMaker":{
-    "Page_Title": "Criador de Diagramas de Fluxo Online",
-    "Page_Description": "Crie e personalize diagramas de fluxo online com facilidade usando nossa ferramenta.",
-    "Page_Keywords": "criador de diagramas de fluxo, diagrama de fluxo online, ferramenta de diagramas, editor de diagramas de fluxo",
-    "Title": "Criador de Diagramas de Fluxo Online",
-    "Help_Text": "Aprenda a usar a ferramenta de diagramas de fluxo",
-    "About_Tool": "Sobre Esta Ferramenta",
-    "Why_Text": "Esta ferramenta ajuda você a criar diagramas de fluxo facilmente para apresentações, projetos ou brainstorming.",
-    "What_Text": "Você pode adicionar nós personalizados, conectá-los e exportar seu diagrama.",
-    "How_Text": "Arraste e solte formas, clique duas vezes para editar rótulos e personalize as conexões.",
-    "Home": "Início",
-    "Share_Title": "Compartilhar Criador de Diagramas",
-    "Share_Tool": "Compartilhe esta ferramenta com sua rede",
-    "Toggle_Theme": "Alternar tema",
-    "Switch_Mode": "Mudar entre modo claro e escuro",
-    "Node_Name": "Nome do Nó",
-    "Enter_Node_Name": "Digite o nome do nó",
-    "Node_Type": "Tipo de Nó",
-    "Square": "Quadrado",
-    "Circle": "Círculo",
-    "Diamond": "Diamante",
-    "Triangle": "Triângulo",
-    "Add_Node": "Adicionar Nó",
-    "Export_PNG": "Exportar como PNG",
-    "Export_SVG": "Exportar como SVG",
-    "Export_JPG": "Exportar como JPG",
-    "Choose_Template": "Escolher Modelo",
-    "Snap_to_Grid": "Ajustar à Grade",
-    "Grid_Size": "Tamanho da Grade",
-    "Drag_Drop_Shapes": "Arraste e Solte Formas",
-    "Toast": {
-      "Export_Success": "Exportação Bem-sucedida",
-      "Export_Description": "Seu diagrama foi exportado como {{format}}.",
-      "Export_Failed": "Falha na Exportação",
-      "Export_Failed_Description": "Ocorreu um erro ao exportar o diagrama."
-    }
   },
   "Search": {
     "Placeholder": "Buscar uma ferramenta..."
