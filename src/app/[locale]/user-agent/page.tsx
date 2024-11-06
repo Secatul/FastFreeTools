@@ -76,20 +76,23 @@ export default function UserAgentAnalyzer() {
     let device = 'Desktop'
 
     for (const regex of browserRegexes) {
-      const match = ua.match(regex)
-      if (match) {
-        browser = `${regex.source.match(/([A-Za-z]+)/)[1]} ${match[1]}`
-        break
+      const match = ua.match(regex);
+      const sourceMatch = regex.source.match(/([A-Za-z]+)/);
+      if (match && sourceMatch) {
+        browser = `${sourceMatch[1]} ${match[1]}`;
+        break;
       }
     }
 
     for (const regex of osRegexes) {
-      const match = ua.match(regex)
-      if (match) {
-        os = `${regex.source.match(/([A-Za-z]+)/)[1]} ${match[1] || ''}`
-        break
+      const match = ua.match(regex);
+      const sourceMatch = regex.source.match(/([A-Za-z]+)/);
+      if (match && sourceMatch) {
+        os = `${sourceMatch[1]} ${match[1] || ''}`;
+        break;
       }
     }
+
 
     if (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
       device = 'Mobile'
