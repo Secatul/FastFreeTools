@@ -70,12 +70,12 @@ type CustomEdge = Edge<CustomEdgeData>;
 
 // Custom Node component with editable label, color picker, and resizing functionality
 const CustomNodeComponent: React.FC<NodeProps<CustomNodeData>> = ({ data, id, selected }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   if (!data) {
     return null;
   }
-
-  const [isEditing, setIsEditing] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const startEditing = () => {
     setIsEditing(true);
@@ -92,9 +92,8 @@ const CustomNodeComponent: React.FC<NodeProps<CustomNodeData>> = ({ data, id, se
   return (
     <>
       <div
-        className={`flex items-center justify-center text-white ${
-          data.shape === 'circle' ? 'rounded-full' : data.shape === 'diamond' ? '' : 'rounded'
-        }`}
+        className={`flex items-center justify-center text-white ${data.shape === 'circle' ? 'rounded-full' : data.shape === 'diamond' ? '' : 'rounded'
+          }`}
         style={{
           backgroundColor: data.color || '#3B82F6',
           width: '100%',
@@ -156,12 +155,13 @@ const CustomEdgeComponent: React.FC<EdgeProps<CustomEdgeData>> = ({
   targetPosition,
   data,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   if (!data) {
     return null;
   }
 
-  const [isEditing, setIsEditing] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
   const edgePath = `M ${sourceX},${sourceY} L ${targetX},${targetY}`;
 
   const startEditing = () => {
@@ -515,14 +515,14 @@ export default function OnlineFlowchartMaker() {
       link.click();
 
       toast({
-        title: t('Toast.Export_Success'),
-        description: t('Toast.Export_Description', { format: format.toUpperCase() }),
+        title: t('Export_Success'),
+        description: t('Export_Description', { format: format.toUpperCase() }),
       });
     } catch (error) {
       console.error('Export failed:', error);
       toast({
-        title: t('Toast.Export_Failed'),
-        description: t('Toast.Export_Failed_Description'),
+        title: t('Export_Failed'),
+        description: t('Export_Failed_Description'),
         variant: "destructive",
       });
     }
