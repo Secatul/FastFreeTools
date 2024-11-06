@@ -88,6 +88,28 @@ export default function Page() {
       description: t("WordCounter.description"),
       categories: ["Text_Tools"],
     },
+    {
+      name: t("DataTableGenerator.name"),
+      route: `/${locale}/data-table-generator`,
+      icon: "📊",
+      description: t("DataTableGenerator.description"),
+      categories: ["Utility", "Text_Tools"],
+    },
+    {
+      name: t("UserAgentAnalyzer.name"),
+      route: `/${locale}/user-agent`,
+      icon: "🌐",
+      description: t("UserAgentAnalyzer.description"),
+      categories: ["Utility"],
+    },
+    {
+      name: t("SEOMetaTagAnalyzer.name"),
+      route: `/${locale}/seo-meta-tag-analyzer`,
+      icon: "🔍",
+      description: t("SEOMetaTagAnalyzer.description"),
+      categories: ["Text_Tools", "Utility"],
+    },
+    
     // {
     //   name: t("ColorPicker.name"),
     //   route: `/${locale}/color-picker`,
@@ -115,6 +137,13 @@ export default function Page() {
       icon: "🔀",
       description: t("TextTransformer.description"),
       categories: ["Text_Tools"],
+    },
+    {
+      name: t("OnlineFlowchartMaker.name"),
+      route: `/${locale}/online-flowchart-maker`,
+      icon: "📈",
+      description: t("OnlineFlowchartMaker.description"),
+      categories: ["Design", "Utility"]
     },
     {
       name: t("HtmlToMarkdown.name"),
@@ -291,7 +320,7 @@ export default function Page() {
                 )}
                 {dynamicRating >= 4.5 && (
                   <Badge variant="secondary" className="bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100 px- py-1 rounded-lg font-semibold">
-                    Top Rated
+                  {t("Top_Rated")}
                   </Badge>
                 )}
               </div>
@@ -355,11 +384,22 @@ export default function Page() {
         <meta property="og:image:height" content="630" />
         <meta property="og:image" content="/opengraph-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.fastfreetools.com/" />
+        <meta property="twitter:url" content={shareUrl} />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Header_Description')} />
         <meta name="twitter:image" content="https://www.fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
+
+
+        {[
+          { locale: 'en', href: "https://fastfreetools.com/en" },
+          { locale: 'es', href: "https://fastfreetools.com/es" },
+          { locale: 'pt-br', href: "https://fastfreetools.com/pt-br" },
+          { locale: 'de', href: "https://fastfreetools.com/de" },
+          { locale: 'fr', href: "https://fastfreetools.com/fr" },
+        ].map(({ locale, href }) => (
+          <link key={locale} rel="alternate" hrefLang={locale} href={href} />
+        ))}
       </Head>
       <div className="min-h-screen bg-white py-12 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100">
         <div className="container mx-auto px-4">

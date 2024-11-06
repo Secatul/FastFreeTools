@@ -96,8 +96,8 @@ export default function UnixTimestampTool() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('twitterTitle')} />
         <meta name="twitter:description" content={t('twitterDescription')} />
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/unix-timestamp" />

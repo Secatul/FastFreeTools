@@ -120,7 +120,7 @@ const BinaryTextConverter: React.FC = () => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta

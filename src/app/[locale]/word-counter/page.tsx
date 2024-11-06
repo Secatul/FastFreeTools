@@ -225,14 +225,14 @@ export default function WordCounter() {
 
         <meta property="og:title" content={t('Page_Title')} />
         <meta property="og:description" content={t('Page_Description')} />
-        <meta property="og:url" content="https://fastfreetools.com/word-counter" />
+        <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Page_Description')} />
 
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
       </Head>
       <TooltipProvider>

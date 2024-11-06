@@ -201,8 +201,8 @@ export default function LoremIpsumGenerator() {
           name="twitter:description"
           content={t('pageDescription')}
         />
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/lorem-ipsum-generator" />
         <link rel="alternate" hrefLang="es" href="https://fastfreetools.com/es/lorem-ipsum-generator" />

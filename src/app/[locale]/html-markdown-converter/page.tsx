@@ -136,8 +136,8 @@ const HTMLToMarkdownConverter: React.FC = () => {
           property="og:description"
           content={t('OG_Description')}
         />
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta property="og:url" content={`https://fastfreetools.com/${locale}/html-to-markdown`} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

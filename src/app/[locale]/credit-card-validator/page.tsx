@@ -223,9 +223,7 @@ const CreditCardValidator: React.FC = () => {
     })
   }
 
-  // Help dialog validation functions
   const helpValidateCard = (number: string) => {
-    // Simple Luhn algorithm check
     let sum = 0
     let isEven = false
     for (let i = number.length - 1; i >= 0; i--) {

@@ -208,8 +208,8 @@ export default function RegexTester() {
           content={t('pageDescription')}
         />
 
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="alternate" hrefLang="en" href="https://fastfreetools.com/en/regex-tester" />

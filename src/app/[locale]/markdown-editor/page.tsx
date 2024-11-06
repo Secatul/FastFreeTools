@@ -148,9 +148,9 @@ const MarkdownEditor: React.FC = () => {
           property="og:description"
           content={t('Page_Description')}
         />
-        <meta property="og:image" content="https://www.fastfreetools.com/twitter-card.png" />
-        <meta name="twitter:image" content="https://fastfreetools.com/twitter-card.png" />
-        <meta property="og:url" content="https://fastfreetools.com/markdown-editor" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
+        <meta property="og:url" content={`https://fastfreetools.com/${locale}/markdown-editor`} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />

@@ -25,6 +25,16 @@ export const pathnames = {
   '/morse-code-translator': '/morse-code-translator',
   '/qrcode-generator': '/qrcode-generator',
   '/text-transformer': '/text-transformer',
+  // tests --------
+  '/data-table-generator': '/data-table-generator',
+  '/user-agent': '/user-agent',
+
+  
+  '/online-flowchart-maker': '/online-flowchart-maker',
+  '/seo-meta-tag-analyzer': '/seo-meta-tag-analyzer',
+  // '/image-background-remover': '/image-background-remover',
+
+  
   
 
 } satisfies Pathnames<typeof locales>;
