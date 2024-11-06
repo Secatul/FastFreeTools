@@ -139,13 +139,6 @@ export default function Page() {
       categories: ["Text_Tools"],
     },
     {
-      name: t("OnlineFlowchartMaker.name"),
-      route: `/${locale}/online-flowchart-maker`,
-      icon: "📈",
-      description: t("OnlineFlowchartMaker.description"),
-      categories: ["Design", "Utility"]
-    },
-    {
       name: t("HtmlToMarkdown.name"),
       route: `/${locale}/html-markdown-converter`,
       icon: "📄",
