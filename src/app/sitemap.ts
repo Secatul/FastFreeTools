@@ -26,9 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const locales = ['en', 'es', 'fr', 'pt-br', 'de'];
 
-  const sitemapEntries = [];
+  const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Adiciona a URL principal para cada idioma
   locales.forEach((locale) => {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
@@ -36,7 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Adiciona cada ferramenta para cada idioma
   tools.forEach((tool) => {
     locales.forEach((locale) => {
       sitemapEntries.push({
