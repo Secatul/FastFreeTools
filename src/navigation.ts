@@ -24,6 +24,7 @@ export const pathnames = {
   '/password-generator': '/password-generator',
   '/morse-code-translator': '/morse-code-translator',
   '/qrcode-generator': '/qrcode-generator',
+  '/uuid-generator': '/uuid-generator',
   '/text-transformer': '/text-transformer',
   // tests --------
   '/data-table-generator': '/data-table-generator',

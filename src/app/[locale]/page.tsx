@@ -109,7 +109,7 @@ export default function Page() {
       description: t("SEOMetaTagAnalyzer.description"),
       categories: ["Text_Tools", "Utility"],
     },
-    
+
     // {
     //   name: t("ColorPicker.name"),
     //   route: `/${locale}/color-picker`,
@@ -313,7 +313,7 @@ export default function Page() {
                 )}
                 {dynamicRating >= 4.5 && (
                   <Badge variant="secondary" className="bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100 px- py-1 rounded-lg font-semibold">
-                  {t("Top_Rated")}
+                    {t("Top_Rated")}
                   </Badge>
                 )}
               </div>
@@ -390,9 +390,11 @@ export default function Page() {
           { locale: 'pt-br', href: "https://fastfreetools.com/pt-br" },
           { locale: 'de', href: "https://fastfreetools.com/de" },
           { locale: 'fr', href: "https://fastfreetools.com/fr" },
+          { locale: 'x-default', href: "https://fastfreetools.com/en" },
         ].map(({ locale, href }) => (
           <link key={locale} rel="alternate" hrefLang={locale} href={href} />
         ))}
+
       </Head>
       <div className="min-h-screen bg-white py-12 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100">
         <div className="container mx-auto px-4">
