@@ -81,6 +81,13 @@ export default function DataTableGenerator() {
     }
   }
 
+  const formatCellValue = (value: string | number | Date): string => {
+    if (value instanceof Date) {
+      return value.toISOString().split('T')[0]
+    }
+    return String(value)
+  }
+
   const removeColumn = (id: string) => {
     setColumns(columns.filter(column => column.id !== id));
     setRows(rows.map(row => {
@@ -428,7 +435,7 @@ export default function DataTableGenerator() {
                             <TableCell key={`${row.id}-${column.id}`} className="min-w-[150px] whitespace-nowrap">
                               <Input
                                 type={column.type === 'number' ? 'number' : 'text'}
-                                value={row[column.id] as string}
+                                value={formatCellValue(row[column.id])}
                                 onChange={(e) => updateCell(row.id, column.id, e.target.value)}
                               />
                             </TableCell>
@@ -553,7 +560,9 @@ export default function DataTableGenerator() {
                       {previewData.slice(0, 10).map((row, index) => (
                         <TableRow key={index}>
                           {columns.map(column => (
-                            <TableCell key={column.id}>{row[column.id]}</TableCell>
+                            <TableCell key={column.id}>
+                              {formatCellValue(row[column.id])}
+                            </TableCell>
                           ))}
                         </TableRow>
                       ))}
