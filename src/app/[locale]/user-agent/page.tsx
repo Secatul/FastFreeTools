@@ -43,7 +43,7 @@ export default function UserAgentAnalyzer() {
   const t = useTranslations('UserAgentAnalyzer')
 
   const locale = pathname ? pathname.split("/")[1] : "en"
-  const shareUrl = `https://fastfreetools.com/${locale}/user-agent-analyzer`
+  const shareUrl = `https://fastfreetools.com/${locale}/user-agent`
 
   useEffect(() => {
     setUserAgent(window.navigator.userAgent)
@@ -158,11 +158,11 @@ export default function UserAgentAnalyzer() {
   }
 
   const hreflangs = [
-    { locale: 'en', href: "https://fastfreetools.com/en/user-agent-analyzer" },
-    { locale: 'es', href: "https://fastfreetools.com/es/user-agent-analyzer" },
-    { locale: 'pt-br', href: "https://fastfreetools.com/pt-br/user-agent-analyzer" },
-    { locale: 'de', href: "https://fastfreetools.com/de/user-agent-analyzer" },
-    { locale: 'fr', href: "https://fastfreetools.com/fr/user-agent-analyzer" },
+    { locale: 'en', href: "https://fastfreetools.com/en/user-agent" },
+    { locale: 'es', href: "https://fastfreetools.com/es/user-agent" },
+    { locale: 'pt-br', href: "https://fastfreetools.com/pt-br/user-agent" },
+    { locale: 'de', href: "https://fastfreetools.com/de/user-agent" },
+    { locale: 'fr', href: "https://fastfreetools.com/fr/user-agent" },
   ]
 
   return (

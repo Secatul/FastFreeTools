@@ -184,6 +184,7 @@ export default function Page() {
 
   const categories: Category[] = [
     { id: "All", label: t("Categories.All") },
+    { id: "Most_Popular", label: t("Categories.Most_Popular") },
     { id: "Programming", label: t("Categories.Programming") },
     { id: "Data_Conversion", label: t("Categories.Data_Conversion") },
     { id: "Text_Tools", label: t("Categories.Text_Tools") },
@@ -226,8 +227,10 @@ export default function Page() {
   const allTools = [...staticTools, ...apiTools];
 
   const filteredTools = allTools.filter((tool) => {
-    const matchesCategory = selectedCategory === 'All' ||
-      tool.categories.some(category => category === selectedCategory);
+    const matchesCategory = 
+      selectedCategory === 'All' ||
+      (selectedCategory === 'Most_Popular' && isPopular(tool.name)) ||
+      (selectedCategory !== 'Most_Popular' && tool.categories.some(category => category === selectedCategory));
     const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
 
     return matchesCategory && matchesSearch;

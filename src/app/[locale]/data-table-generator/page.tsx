@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Head from 'next/head'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -319,7 +320,42 @@ export default function DataTableGenerator() {
     }
   }
 
+  const hreflangs = [
+    { locale: 'en', href: "https://fastfreetools.com/en/data-table-generator" },
+    { locale: 'es', href: "https://fastfreetools.com/es/data-table-generator" },
+    { locale: 'pt-br', href: "https://fastfreetools.com/pt-br/data-table-generator" },
+    { locale: 'de', href: "https://fastfreetools.com/de/data-table-generator" },
+    { locale: 'fr', href: "https://fastfreetools.com/fr/data-table-generator" },
+  ];
+  
+
   return (
+    <>
+    
+    <Head>
+        <title>{t('Page_Title')}</title>
+        <meta name="description" content={t('Page_Description')} />
+        <meta name="keywords" content={t('Page_Keywords')} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={shareUrl} />
+
+        {hreflangs.map(({ locale, href }) => (
+          <link key={locale} rel="alternate" hrefLang={locale} href={href} />
+        ))}
+
+        <meta property="og:title" content={t('Page_Title')} />
+        <meta property="og:description" content={t('Page_Description')} />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('Page_Title')} />
+        <meta name="twitter:description" content={t('Page_Description')} />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
+        <meta charSet="UTF-8" />
+      </Head>
+
+
     <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
       <main className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
         <header className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800 text-white p-6">
@@ -619,5 +655,6 @@ export default function DataTableGenerator() {
         </div>
       </main>
     </div>
+  </>
   )
 }

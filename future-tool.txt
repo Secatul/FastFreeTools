@@ -1,0 +1,132 @@
+AI Icon generator tool
+
+actions/generateIcon.ts:
+
+'use server'
+
+import OpenAI from 'openai';
+import { cookies } from 'next/headers';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+export async function generateIcon(prevState: any, formData: FormData) {
+  const prompt = formData.get('prompt') as string;
+  
+  if (!prompt) {
+    return { error: 'Prompt is required' };
+  }
+
+  const cookieStore = cookies();
+  const generationCount = parseInt(cookieStore.get('icon_generation_count')?.value || '0');
+
+  if (generationCount >= 3) {
+    return { error: 'Daily limit reached. You can generate up to 3 icons per day.' };
+  }
+
+  try {
+    const response = await openai.images.generate({
+      model: "dall-e-3",
+      prompt: prompt,
+      n: 1,
+      size: "1024x1024",
+    });
+
+    const newCount = generationCount + 1;
+    cookieStore.set('icon_generation_count', newCount.toString(), { 
+      expires: new Date(new Date().setHours(24, 0, 0, 0)),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict'
+    });
+
+    return { imageUrl: response.data[0].url, remainingGenerations: 3 - newCount };
+  } catch (error) {
+    console.error('Error generating icon:', error);
+    return { error: 'Failed to generate icon. Please try again.' };
+  }
+}
+
+--------------------------
+
+components/AIIconGenerator.tsx
+
+'use client'
+
+import { useState } from 'react';
+import { useFormState } from 'react-dom';
+import { generateIcon } from '../actions/generateIcon';
+
+export default function AIIconGenerator() {
+  const [state, formAction] = useFormState(generateIcon, null);
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleSubmit = async (formData: FormData) => {
+    setIsGenerating(true);
+    await formAction(formData);
+    setIsGenerating(false);
+  };
+
+  return (
+    <div>
+      <form action={handleSubmit} className="mb-6">
+        <label htmlFor="prompt" className="block text-sm font-medium text-gray-700 mb-2">
+          Describe the icon you want to generate
+        </label>
+        <div className="flex">
+          <input
+            type="text"
+            id="prompt"
+            name="prompt"
+            required
+            className="flex-grow px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="e.g., A minimalist logo of a rocket"
+            aria-describedby="prompt-description"
+          />
+          <button
+            type="submit"
+            disabled={isGenerating}
+            className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+            aria-live="polite"
+          >
+            {isGenerating ? 'Generating...' : 'Generate'}
+          </button>
+        </div>
+        <p id="prompt-description" className="mt-2 text-sm text-gray-500">
+          Be specific about the style, colors, and elements you want in your icon.
+        </p>
+      </form>
+
+      {state?.error && (
+        <div className="text-red-500 mb-4" role="alert">
+          {state.error}
+        </div>
+      )}
+
+      {state?.imageUrl && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Generated Icon</h2>
+          <img
+            src={state.imageUrl}
+            alt="AI Generated Icon"
+            className="max-w-full h-auto rounded-lg shadow-lg"
+            width={1024}
+            height={1024}
+          />
+        </div>
+      )}
+
+      {state?.remainingGenerations !== undefined && (
+        <p className="mt-4 text-sm text-gray-600">
+          Remaining generations today: {state.remainingGenerations}
+        </p>
+      )}
+    </div>
+  );
+}
+
+--------------------------
+.env
+
+OPENAI_API_KEY=your_openai_api_key_here

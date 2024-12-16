@@ -23,6 +23,7 @@
     "Next": "Próximo",
     "Categories": {
       "All": "Todas",
+      "Most_Popular": "Mais Popular",
       "Programming": "Programação",
       "Data_Conversion": "Conversão de Dados",
       "Text_Tools": "Ferramentas de Texto",
@@ -314,6 +315,7 @@
     "Invalid_Input": "Entrada inválida. Verifique e tente novamente."
   },
   "HTMLToMarkdown": {
+    "Subtitle": "Um conversor rápido e fácil de HTML para Markdown.",
     "Share_Title": "Confira esta ferramenta de conversão de HTML para Markdown!",
     "Page_Title": "Conversor de HTML para Markdown | Fast Free Tools",
     "Page_Description": "Converta facilmente seu conteúdo HTML para o formato Markdown com esta ferramenta simples e rápida.",
@@ -342,7 +344,29 @@
     "Copy_Clean_HTML": "Copiar HTML limpo",
     "Download_Clean_HTML": "Baixar HTML limpo",
     "Copy_Markdown": "Copiar Markdown",
-    "Download_Markdown": "Baixar Markdown"
+    "Download_Markdown": "Baixar Markdown",
+    "Help_Aria": "Ajuda",
+    "Learn_About_Tool": "Saiba mais sobre esta ferramenta",
+    "HTML_To_Markdown_Guide": "Guia de HTML para Markdown",
+    "Discover_Conversion_Power": "Descubra o poder da conversão de HTML para Markdown.",
+    "What_Is_It": "O que é?",
+    "Tool_Description": "Esta ferramenta converte HTML limpo para o formato Markdown com facilidade.",
+    "Key_Features": "Principais Características",
+    "Clean_HTML": "HTML Limpo",
+    "Clean_HTML_Description": "Processa HTML para garantir que esteja limpo e estruturado.",
+    "Markdown_Conversion": "Conversão para Markdown",
+    "Markdown_Conversion_Description": "Converta HTML para Markdown sem complicações.",
+    "Syntax_Highlighting": "Realce de Sintaxe",
+    "Syntax_Highlighting_Description": "Pré-visualize Markdown com realce de sintaxe.",
+    "Copy_Download": "Copiar e Baixar",
+    "Copy_Download_Description": "Copie ou baixe o resultado Markdown instantaneamente.",
+    "How_It_Works": "Como funciona?",
+    "Step_1_Clean_HTML": "Limpe seu HTML",
+    "Clean_HTML_Explanation": "Comece inserindo HTML limpo e estruturado.",
+    "Step_2_Convert_Markdown": "Converta para Markdown",
+    "Convert_Markdown_Explanation": "A ferramenta converte o conteúdo HTML para formato Markdown.",
+    "Step_3_Syntax_Highlight": "Pré-visualize com realce",
+    "Syntax_Highlight_Explanation": "Veja a saída Markdown com realce de sintaxe."
   },
   "CreditCardValidator": {
     "Page_Title": "Validador de Cartão de Crédito",
@@ -1233,6 +1257,9 @@
     "unixTimestamp": "Timestamp Unix"
   },
   "DataTableGenerator": {
+    "Page_Title": "Gerador de Tabela de Dados",
+    "Page_Description": "Esta ferramenta permite que você crie, edite e gerencie tabelas de dados facilmente. Comece adicionando colunas e linhas, ou importe dados existentes de arquivos CSV ou JSON.",
+    "Page_Keywords": "gerador de tabela de dados, editor de tabela, CSV para tabela, JSON para tabela, criador de tabela, ferramenta online de tabela",
     "shareTitle": "Confira este Gerador de Tabela de Dados!",
     "shareTooltip": "Compartilhe este Gerador de Tabela de Dados",
     "fileTooLarge": "Arquivo muito grande",

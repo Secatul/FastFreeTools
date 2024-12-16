@@ -23,6 +23,7 @@
     "Next": "Next",
     "Categories": {
       "All": "All",
+      "Most_Popular": "Most Popular",
       "Programming": "Programming",
       "Data_Conversion": "Data Conversion",
       "Text_Tools": "Text Tools",
@@ -314,6 +315,7 @@
     "Invalid_Input": "Invalid input. Please check and try again."
   },
   "HTMLToMarkdown": {
+    "Subtitle": "A quick and easy HTML to Markdown converter.",
     "Share_Title": "Check out this HTML to Markdown Converter Tool!",
     "Page_Title": "HTML to Markdown Converter | Fast Free Tools",
     "Page_Description": "Easily convert your HTML content to Markdown format with this simple and fast HTML to Markdown converter tool.",
@@ -342,7 +344,29 @@
     "Copy_Clean_HTML": "Copy Clean HTML",
     "Download_Clean_HTML": "Download Clean HTML",
     "Copy_Markdown": "Copy Markdown",
-    "Download_Markdown": "Download Markdown"
+    "Download_Markdown": "Download Markdown",
+    "Help_Aria": "Help",
+    "Learn_About_Tool": "Learn about this tool",
+    "HTML_To_Markdown_Guide": "HTML to Markdown Guide",
+    "Discover_Conversion_Power": "Discover the power of HTML to Markdown conversion.",
+    "What_Is_It": "What is it?",
+    "Tool_Description": "This tool converts clean HTML to Markdown format with ease.",
+    "Key_Features": "Key Features",
+    "Clean_HTML": "Clean HTML",
+    "Clean_HTML_Description": "Process HTML to ensure it's clean and structured.",
+    "Markdown_Conversion": "Markdown Conversion",
+    "Markdown_Conversion_Description": "Convert HTML to Markdown seamlessly.",
+    "Syntax_Highlighting": "Syntax Highlighting",
+    "Syntax_Highlighting_Description": "Preview Markdown with syntax highlighting.",
+    "Copy_Download": "Copy & Download",
+    "Copy_Download_Description": "Copy or download your Markdown output instantly.",
+    "How_It_Works": "How it works",
+    "Step_1_Clean_HTML": "Clean your HTML",
+    "Clean_HTML_Explanation": "Start by inputting clean, structured HTML.",
+    "Step_2_Convert_Markdown": "Convert to Markdown",
+    "Convert_Markdown_Explanation": "The tool converts HTML content into Markdown format.",
+    "Step_3_Syntax_Highlight": "Preview with Syntax Highlight",
+    "Syntax_Highlight_Explanation": "See the Markdown output with syntax highlighting."
   },
   "CreditCardValidator": {
     "Page_Title": "Credit Card Validator",
@@ -1227,6 +1251,9 @@
     "funFact5": "Unix timestamps are commonly used in programming and are supported in many languages, including JavaScript, Python, and PHP."
   },
   "DataTableGenerator": {
+    "Page_Title": "Data Table Generator",
+    "Page_Description": "This tool allows you to easily create, edit, and manage data tables. Start by adding columns and rows, or import existing data from CSV or JSON files.",
+    "Page_Keywords": "data table generator, table editor, CSV to table, JSON to table, table creator, online table tool",
     "shareTitle": "Check out this Data Table Generator!",
     "shareTooltip": "Share this Data Table Generator",
     "shareTool": "Click to share this tool with others",
