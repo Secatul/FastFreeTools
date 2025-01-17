@@ -19,7 +19,7 @@ import Head from 'next/head';
 import ShareButton from '../components/share-button';
 import { useTheme } from "next-themes";
 import { useTranslations } from 'next-intl';
-import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, Link as LinkIcon, Image, Code, Download, Maximize, Minimize } from 'lucide-react';
+import { Home, HelpCircle, Moon, Sun, Bold, Italic, Heading, List, ListOrdered, LinkIcon, Image, Code, Download, Maximize, Minimize } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -249,6 +249,19 @@ const MarkdownEditor: React.FC = () => {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
+
             <main className="p-6 space-y-4">
               <div className="flex flex-wrap gap-2">
                 {/* Botões de formatação com Tooltip */}
@@ -405,3 +418,4 @@ const MarkdownEditor: React.FC = () => {
 };
 
 export default MarkdownEditor;
+

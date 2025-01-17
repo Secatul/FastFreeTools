@@ -180,6 +180,19 @@ export default function UnixTimestampTool() {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
+
             <div className="p-6 space-y-6">
               <div className="space-y-4">
                 <div>
@@ -339,3 +352,4 @@ export default function UnixTimestampTool() {
     </>
   )
 }
+

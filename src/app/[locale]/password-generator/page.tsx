@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff, Lock } from "lucide-react"
+import { Home, HelpCircle, Copy, Check, Moon, Sun, RefreshCw, Save, Trash2, Eye, EyeOff, Lock } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import DOMPurify from 'dompurify'
@@ -310,6 +310,18 @@ export default function PasswordGenerator() {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
             <div className="p-6 space-y-6">
               <section className="space-y-4">
                 <div className="space-y-2">
@@ -525,3 +537,4 @@ export default function PasswordGenerator() {
     </>
   )
 }
+

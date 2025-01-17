@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/table"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, RefreshCw, Type, Trash2 } from "lucide-react"
+import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, RefreshCw, Type, Trash2 } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
@@ -67,7 +67,7 @@ export default function LoremIpsumGenerator() {
   const t = useTranslations('LoremIpsumGenerator')
   const pathname = usePathname()
 
-  const locale = pathname ? pathname.split("/")[1] : "en";
+  const locale = pathname ? pathname.split("/")[1] : "en"
   const shareUrl = `https://fastfreetools.com/${locale}/lorem-ipsum-generator`
   const shareTitle = t('shareTitle')
 
@@ -284,6 +284,19 @@ export default function LoremIpsumGenerator() {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
+
             <div className="p-6 space-y-6">
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -319,7 +332,6 @@ export default function LoremIpsumGenerator() {
                   </div>
                   <div className="w-full sm:w-1/3 flex items-center space-x-2">
                     <Switch
-
                       id="start-with-lorem"
                       checked={startWithLoremIpsum}
                       onCheckedChange={setStartWithLoremIpsum}
@@ -352,7 +364,7 @@ export default function LoremIpsumGenerator() {
               </div>
 
               <div className="space-y-2">
-                <div className="flex flex-col sm:flex-row justify-between  items-start sm:items-center gap-2">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                   <Label htmlFor="generated-text" className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                     {t('generatedTextLabel')}
                   </Label>
@@ -449,3 +461,4 @@ export default function LoremIpsumGenerator() {
     </>
   )
 }
+

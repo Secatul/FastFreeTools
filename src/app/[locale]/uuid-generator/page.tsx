@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/table"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, RefreshCw, Type, Trash2 } from "lucide-react"
+import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, RefreshCw, Type, Trash2 } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
@@ -52,7 +52,7 @@ export default function EnhancedUUIDGenerator() {
   const pathname = usePathname()
 
 
-  const locale = pathname ? pathname.split("/")[1] : "en"; 
+  const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/uuid-generator`
   const shareTitle = t('shareTitle')
 
@@ -67,11 +67,11 @@ export default function EnhancedUUIDGenerator() {
       d = Math.floor(d / 16)
       return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
     })
-    
+
     if (version === "1") {
       uuid = uuid.substr(0, 8) + '-1' + uuid.substr(9)
     }
-    
+
     return uuid
   }
 
@@ -156,8 +156,8 @@ export default function EnhancedUUIDGenerator() {
           name="twitter:description"
           content={t('twitterDescription')}
         />
-       <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
-       <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
+        <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
+        <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
 
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
@@ -240,7 +240,14 @@ export default function EnhancedUUIDGenerator() {
                 </nav>
               </div>
             </header>
-
+            <div className="p-6 bg-blue-50 dark:bg-blue-900/20 border-b border-blue-100 dark:border-blue-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+            </div>
             <div className="p-6 space-y-6">
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -288,9 +295,9 @@ export default function EnhancedUUIDGenerator() {
                     <Label htmlFor="remove-dashes">{t('removeDashesLabel')}</Label>
                   </div>
                 </div>
-                <Button 
-                  onClick={generateUUIDs} 
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700" 
+                <Button
+                  onClick={generateUUIDs}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700"
                   aria-label={t('generateButtonAriaLabel')}
                 >
                   <RefreshCw className="h-4 w-4 mr-2" />
@@ -306,10 +313,10 @@ export default function EnhancedUUIDGenerator() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
                     <Dialog open={clearDialogOpen} onOpenChange={setClearDialogOpen}>
                       <DialogTrigger asChild>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                
+                        <Button
+                          variant="outline"
+                          size="sm"
+
                           className="text-red-500 border-red-500 hover:bg-red-100 dark:text-red-400 dark:border-red-400 dark:hover:bg-red-900"
                         >
                           <Trash2 className="h-4 w-4 mr-2" />
@@ -394,3 +401,4 @@ export default function EnhancedUUIDGenerator() {
     </>
   )
 }
+

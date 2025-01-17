@@ -47,7 +47,7 @@ export default function HTMLToMarkdownConverter() {
   const [showCleanHtml, setShowCleanHtml] = useState<boolean>(true)
   const [showMarkdown, setShowMarkdown] = useState<boolean>(true)
   const { theme, setTheme } = useTheme()
-  
+
   const locale = pathname ? pathname.split("/")[1] : "en"
   const turndownService = new TurndownService()
 
@@ -135,131 +135,195 @@ export default function HTMLToMarkdownConverter() {
         <meta charSet="UTF-8" />
       </Head>
 
-      <div className="max-w-6xl mx-auto p-6 space-y-6">
-        <header className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg shadow-md mb-6">
-          <h1 className="text-3xl font-bold">{t('Title')}</h1>
-          <p className="text-purple-100 mt-2">{t('Subtitle')}</p>
-          <div className="mt-4 space-x-2 flex items-center">
-            <HTMLToMarkdownHelper t={t} />
+      <TooltipProvider>
+        <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
+          <main className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
+            <header className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800 text-white p-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h1 className="text-3xl sm:text-4xl font-bold">{t('Title')}</h1>
+                <nav className="flex items-center space-x-2">
+                  <Dialog>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="icon" className="bg-white/10 hover:bg-white/20 text-white">
+                            <HelpCircle className="h-5 w-5" />
+                          </Button>
+                        </DialogTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t('Help_Tooltip')}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>{t('About_Title')}</DialogTitle>
+                        <DialogDescription>
+                          <p className="mt-2">{t('About_Description')}</p>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
 
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="icon" className="bg-purple-500 hover:bg-purple-600 text-white" asChild>
-                    <Link href={`/${locale}`} aria-label={t('Home')}>
-                      <Home className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{t('Home')}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
+                        <Link href={`/${locale}`}>
+                          <Home className="h-5 w-5" />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{t('Home')}</p>
+                    </TooltipContent>
+                  </Tooltip>
 
-            <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText={t('Share_Tool')} />
+                  <ShareButton shareUrl={shareUrl} shareTitle={shareTitle} tooltipText={t('Share_Tool')} />
 
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="bg-purple-500 hover:bg-purple-600 text-white">
-                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">{t('Toggle_Theme')}</span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{t('Toggle_Theme')}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-        </header>
-
-        <main className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-          <div className="space-y-2">
-            <Label htmlFor="html-input">{t('HTML_Input')}</Label>
-            <Textarea
-              id="html-input"
-              value={html}
-              onChange={(e) => setHtml(sanitizeHtmlInput(e.target.value))}
-              placeholder={t('Text_Input_Placeholder')}
-              rows={10}
-              aria-label={t('HTML_Input_Label')}
-            />
-          </div>
-
-          {error && <p className="text-red-500 bg-red-100 dark:bg-red-900 p-3 rounded-md">{error}</p>}
-
-          <div className="space-y-2 mt-4">
-            <div className="flex items-center space-x-2">
-              <Switch id="show-rendered-html" checked={showRenderedHtml} onCheckedChange={setShowRenderedHtml} className="data-[state=checked]:bg-purple-500" aria-label={t('Show_Rendered_HTML')} />
-              <Label htmlFor="show-rendered-html">{t('Show_Rendered_HTML')}</Label>
-            </div>
-            {showRenderedHtml && <div className="border p-4 rounded-md" dangerouslySetInnerHTML={{ __html: sanitizeHtmlInput(html) }} />}
-          </div>
-
-          <div className="space-y-2 mt-4">
-            <div className="flex items-center space-x-2">
-              <Switch id="show-clean-html" checked={showCleanHtml} onCheckedChange={setShowCleanHtml} className="data-[state=checked]:bg-purple-500" aria-label={t('Show_Clean_HTML')} />
-              <Label htmlFor="show-clean-html">{t('Show_Clean_HTML')}</Label>
-            </div>
-            {showCleanHtml && (
-              <div className="relative">
-                <pre className="language-markup bg-gray-100 dark:bg-gray-700 p-4 rounded-md">
-                  <code className="text-sm">{cleanHtml}</code>
-                </pre>
-                <div className="absolute top-2 right-2 space-x-2">
-                  <Button variant="outline" size="sm" onClick={() => handleCopy(cleanHtml)} className="bg-purple-500 hover:bg-purple-600 text-white" aria-label={t('Copy_Clean_HTML')}>
-                    <Copy className="h-4 w-4 mr-2" />
-                    {t('Copy')}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleDownload(cleanHtml, "clean_html.html")}
-                    className="bg-purple-500 hover:bg-purple-600 text-white"
-                    aria-label={t('Download_Clean_HTML')}
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    {t('Download')}
-                  </Button>
-                </div>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        className="bg-white/10 hover:bg-white/20 text-white"
+                      >
+                        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{t('Toggle_Theme')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </nav>
               </div>
-            )}
-          </div>
+            </header>
 
-          <div className="space-y-2 mt-4">
-            <div className="flex items-center space-x-2">
-              <Switch id="show-markdown" checked={showMarkdown} onCheckedChange={setShowMarkdown} className="data-[state=checked]:bg-purple-500" aria-label={t('Show_Markdown')} />
-              <Label htmlFor="show-markdown">{t('Show_Markdown')}</Label>
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
             </div>
-            {showMarkdown && (
-              <div className="relative">
-                <pre className="language-markdown bg-gray-100 dark:bg-gray-700 p-4 rounded-md">
-                  <code className="text-sm">{markdown}</code>
-                </pre>
-                <div className="absolute top-2 right-2 space-x-2">
-                  <Button variant="outline" size="sm" onClick={() => handleCopy(markdown)} className="bg-purple-500 hover:bg-purple-600 text-white" aria-label={t('Copy_Markdown')}>
-                    <Copy className="h-4 w-4 mr-2" />
-                    {t('Copy')}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleDownload(markdown, "converted_markdown.md")}
-                    className="bg-purple-500 hover:bg-purple-600 text-white"
-                    aria-label={t('Download_Markdown')}
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    {t('Download')}
-                  </Button>
-                </div>
+
+            <div className="p-6 space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="html-input">{t('HTML_Input')}</Label>
+                <Textarea
+                  id="html-input"
+                  value={html}
+                  onChange={(e) => setHtml(sanitizeHtmlInput(e.target.value))}
+                  placeholder={t('Text_Input_Placeholder')}
+                  rows={10}
+                  className="font-mono"
+                  aria-label={t('HTML_Input_Label')}
+                />
               </div>
-            )}
-          </div>
-        </main>
-      </div>
+
+              {error && (
+                <p className="text-red-500 bg-red-100 dark:bg-red-900 p-3 rounded-md">{error}</p>
+              )}
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="show-rendered-html"
+                    checked={showRenderedHtml}
+                    onCheckedChange={setShowRenderedHtml}
+                    className="data-[state=checked]:bg-blue-500"
+                  />
+                  <Label htmlFor="show-rendered-html">{t('Show_Rendered_HTML')}</Label>
+                </div>
+                {showRenderedHtml && (
+                  <div className="border p-4 rounded-md bg-white dark:bg-gray-900">
+                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtmlInput(html) }} />
+                  </div>
+                )}
+
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="show-clean-html"
+                    checked={showCleanHtml}
+                    onCheckedChange={setShowCleanHtml}
+                    className="data-[state=checked]:bg-blue-500"
+                  />
+                  <Label htmlFor="show-clean-html">{t('Show_Clean_HTML')}</Label>
+                </div>
+                {showCleanHtml && (
+                  <div className="relative">
+                    <pre className="language-markup bg-gray-100 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                      <code className="text-sm">{cleanHtml}</code>
+                    </pre>
+                    <div className="absolute top-2 right-2 space-x-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleCopy(cleanHtml)}
+                        className="bg-blue-500 hover:bg-blue-600 text-white"
+                      >
+                        <Copy className="h-4 w-4 mr-2" />
+                        {t('Copy')}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleDownload(cleanHtml, "clean_html.html")}
+                        className="bg-green-500 hover:bg-green-600 text-white"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        {t('Download')}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="show-markdown"
+                    checked={showMarkdown}
+                    onCheckedChange={setShowMarkdown}
+                    className="data-[state=checked]:bg-blue-500"
+                  />
+                  <Label htmlFor="show-markdown">{t('Show_Markdown')}</Label>
+                </div>
+                {showMarkdown && (
+                  <div className="relative">
+                    <pre className="language-markdown bg-gray-100 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+                      <code className="text-sm">{markdown}</code>
+                    </pre>
+                    <div className="absolute top-2 right-2 space-x-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleCopy(markdown)}
+                        className="bg-blue-500 hover:bg-blue-600 text-white"
+                      >
+                        <Copy className="h-4 w-4 mr-2" />
+                        {t('Copy')}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleDownload(markdown, "converted.md")}
+                        className="bg-green-500 hover:bg-green-600 text-white"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        {t('Download')}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </main>
+        </div>
+      </TooltipProvider>
     </>
   )
 }

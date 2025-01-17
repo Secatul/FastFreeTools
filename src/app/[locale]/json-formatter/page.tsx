@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/table"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useTheme } from "next-themes"
-import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, ArrowDownAZ, Code, Trash2 } from "lucide-react"
+import { Home, HelpCircle, Moon, Sun, Copy, Check, Download, ArrowDownAZ, Code, Trash2 } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import DOMPurify from "isomorphic-dompurify"
@@ -54,7 +54,7 @@ export default function JsonFormatter() {
   const t = useTranslations('JsonFormatter')
   const pathname = usePathname()
 
-  const locale = pathname ? pathname.split("/")[1] : "en";
+  const locale = pathname ? pathname.split("/")[1] : "en"
   const shareUrl = `https://fastfreetools.com/${locale}/json-formatter`
   const shareTitle = t('shareTitle')
 
@@ -272,6 +272,19 @@ export default function JsonFormatter() {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
+
             <div className="p-4 sm:p-6 space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="input-json" className="text-lg font-semibold text-gray-700 dark:text-gray-300">
@@ -405,3 +418,4 @@ export default function JsonFormatter() {
     </>
   )
 }
+

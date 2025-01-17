@@ -69,7 +69,6 @@ export default function MorseCodeTranslator() {
   const t = useTranslations('MorseCodeTranslator')
   const pathname = usePathname()
 
-
   const locale = pathname ? pathname.split("/")[1] : "en";
   const shareUrl = `https://fastfreetools.com/${locale}/morse-code-translator`
   const shareTitle = t('shareTitle')
@@ -311,22 +310,20 @@ export default function MorseCodeTranslator() {
           name="keywords"
           content={t('pageKeywords')}
         />
-        <meta name="author" content="Fast Free Tools" />
-        <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={shareUrl} />
-        <meta property="og:title" content={t('ogTitle')} />
+        <meta property="og:title" content={t('pageTitle')} />
         <meta
           property="og:description"
-          content={t('ogDescription')}
+          content={t('pageDescription')}
         />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('twitterTitle')} />
+        <meta name="twitter:title" content={t('pageTitle')} />
         <meta
           name="twitter:description"
-          content={t('twitterDescription')}
+          content={t('pageDescription')}
         />
         <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
         <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
@@ -338,57 +335,49 @@ export default function MorseCodeTranslator() {
         <link rel="alternate" hrefLang="de" href="https://fastfreetools.com/de/morse-code-translator" />
         <link rel="alternate" hrefLang="x-default" href="https://fastfreetools.com/morse-code-translator" />
       </Head>
-
       <TooltipProvider>
         <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 p-4 sm:p-6">
-          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
+          <main className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
             <header className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-700 dark:to-purple-800 text-white p-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <h1 className="text-3xl sm:text-4xl font-bold">{t('headerTitle')}</h1>
                 <nav className="flex items-center space-x-2">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Dialog>
+                  <Dialog>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
                         <DialogTrigger asChild>
                           <Button variant="outline" size="icon" aria-label={t('helpButtonAriaLabel')} className="bg-white/10 hover:bg-white/20 text-white">
                             <HelpCircle className="h-5 w-5" />
-                            <span className="sr-only">{t('helpButtonText')}</span>
                           </Button>
                         </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>{t('aboutDialogTitle')}</DialogTitle>
-                            <DialogDescription>
-                              <p className="mt-2">
-                                <strong>{t('aboutDialogWhy')}</strong> {t('aboutDialogWhyContent')}
-                              </p>
-                              <p className="mt-2">
-                                <strong>{t('aboutDialogWhat')}</strong> {t('aboutDialogWhatContent')}
-                              </p>
-                              <p className="mt-2">
-                                <strong>{t('aboutDialogHow')}</strong> {t('aboutDialogHowContent')}
-                              </p>
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{t('helpTooltip')}</p>
-                    </TooltipContent>
-                  </Tooltip>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t('helpTooltip')}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>{t('aboutDialogTitle')}</DialogTitle>
+                        <DialogDescription>
+                          <p className="mt-2">
+                            <strong>{t('aboutDialogWhy')}</strong> {t('aboutDialogWhyContent')}
+                          </p>
+                          <p className="mt-2">
+                            <strong>{t('aboutDialogWhat')}</strong> {t('aboutDialogWhatContent')}
+                          </p>
+                          <p className="mt-2">
+                            <strong>{t('aboutDialogHow')}</strong> {t('aboutDialogHowContent')}
+                          </p>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="bg-white/10 hover:bg-white/20 text-white"
-                        aria-label={t('homeButtonAriaLabel')}
-                        asChild
-                      >
+                      <Button variant="outline" size="icon" asChild className="bg-white/10 hover:bg-white/20 text-white">
                         <Link href={`/${locale}`} aria-label={t('homeButtonAriaLabel')}>
-                          <Home className="h-4 w-4" />
-                          <span className="sr-only">{t('homeButtonText')}</span>
+                          <Home className="h-5 w-5" />
                         </Link>
                       </Button>
                     </TooltipTrigger>
@@ -410,7 +399,6 @@ export default function MorseCodeTranslator() {
                       >
                         <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                         <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                        <span className="sr-only">{t('themeToggleText')}</span>
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>
@@ -421,8 +409,21 @@ export default function MorseCodeTranslator() {
               </div>
             </header>
 
-            <main className="p-6 space-y-6">
-              <div className="space-y-4">
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
+
+            <div className="p-6 space-y-6">
+              <section className="space-y-4">
                 <div>
                   <Label htmlFor="translation-mode" className="text-lg font-semibold text-gray-700 dark:text-gray-300">{t('translationModeLabel')}</Label>
                   <select
@@ -435,6 +436,7 @@ export default function MorseCodeTranslator() {
                     <option value="morseToText">{t('morseToTextOption')}</option>
                   </select>
                 </div>
+
                 <div>
                   <Label htmlFor="input" className="text-lg font-semibold text-gray-700 dark:text-gray-300">{t('inputLabel')}</Label>
                   <Textarea
@@ -446,6 +448,7 @@ export default function MorseCodeTranslator() {
                     className="w-full p-3 text-lg border-2 border-purple-300 dark:border-purple-600 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 ease-in-out dark:bg-gray-700 dark:text-white"
                   />
                 </div>
+
                 <div>
                   <Label htmlFor="output" className="text-lg font-semibold text-gray-700 dark:text-gray-300">{t('outputLabel')}</Label>
                   <div className="relative">
@@ -471,9 +474,9 @@ export default function MorseCodeTranslator() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <div className="space-y-2">
+              <section className="space-y-2">
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-white">{t('mostUsedWordsTitle')}</h2>
                 <div className="flex flex-wrap gap-2">
                   {mostUsedWords.map((word) => (
@@ -488,10 +491,10 @@ export default function MorseCodeTranslator() {
                     </Button>
                   ))}
                 </div>
-              </div>
+              </section>
 
               {savedTranslations.length > 0 && (
-                <div className="space-y-4">
+                <section className="space-y-4">
                   <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{t('savedTranslationsTitle')}</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {savedTranslations.map((translation) => (
@@ -512,10 +515,10 @@ export default function MorseCodeTranslator() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </section>
               )}
 
-              <div className="mt-8">
+              <section className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">{t('morseCodeChartTitle')}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
                   {Object.entries(morseCodeMap).map(([char, code]) => (
@@ -525,11 +528,12 @@ export default function MorseCodeTranslator() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </main>
-          </div>
+              </section>
+            </div>
+          </main>
         </div>
       </TooltipProvider>
     </>
   )
 }
+

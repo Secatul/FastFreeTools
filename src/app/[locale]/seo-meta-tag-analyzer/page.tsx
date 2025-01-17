@@ -24,20 +24,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useTheme } from 'next-themes';
-import {
-  Home,
-  Moon,
-  Sun,
-  Search,
-  AlertTriangle,
-  CheckCircle,
-} from 'lucide-react';
+import { Home, Moon, Sun, Search, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { useMediaQuery } from 'react-responsive'; // Import do hook useMediaQuery
+import { useMediaQuery } from 'react-responsive';
 
 interface MetaTags {
   title: string;
@@ -56,7 +49,7 @@ export default function SEOMetaTagAnalyzer() {
   const [url, setUrl] = useState('');
   const [metaTags, setMetaTags] = useState<MetaTags | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedTab, setSelectedTab] = useState('general'); // Estado para o seletor
+  const [selectedTab, setSelectedTab] = useState('general');
 
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
@@ -123,8 +116,7 @@ export default function SEOMetaTagAnalyzer() {
     );
   };
 
-  // Hook para detectar se a tela é pequena (mobile)
-  const isMobile = useMediaQuery({ maxWidth: 640 }); // 640px é o breakpoint para sm
+  const isMobile = useMediaQuery({ maxWidth: 640 });
 
   return (
     <>
@@ -146,7 +138,6 @@ export default function SEOMetaTagAnalyzer() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('Page_Title')} />
         <meta name="twitter:description" content={t('Page_Description')} />
-
         <meta property="og:image" content="https://www.fastfreetools.com/opengraph-image.png" />
         <meta name="twitter:image" content="https://fastfreetools.com/opengraph-image.png" />
         <meta charSet="UTF-8" />
@@ -206,6 +197,18 @@ export default function SEOMetaTagAnalyzer() {
               </div>
             </header>
 
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-800">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph1')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph2')}
+              </p>
+              <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {t('Description_Paragraph3')}
+              </p>
+            </div>
+
             <div className="p-6 space-y-6">
               <div className="space-y-2">
                 <Label
@@ -232,7 +235,6 @@ export default function SEOMetaTagAnalyzer() {
               {metaTags && (
                 <>
                   {isMobile ? (
-                    // Versão Mobile com Select
                     <div className="mt-4">
                       <Label htmlFor="tab-select" className="sr-only">
                         {t('Select_Tab')}
@@ -249,7 +251,6 @@ export default function SEOMetaTagAnalyzer() {
                       </select>
                     </div>
                   ) : (
-                    // Versão Desktop com Tabs
                     <Tabs
                       defaultValue="general"
                       value={selectedTab}
@@ -264,7 +265,6 @@ export default function SEOMetaTagAnalyzer() {
                     </Tabs>
                   )}
 
-                  {/* Conteúdo das Abas ou Select */}
                   {selectedTab === 'general' && (
                     <div className="mt-4">
                       <Card>
@@ -366,7 +366,6 @@ export default function SEOMetaTagAnalyzer() {
                     </div>
                   )}
 
-                  {/* Relatório de Efetividade SEO */}
                   <Card className="mt-6">
                     <CardHeader>
                       <CardTitle>{t('SEO_Effectiveness_Report')}</CardTitle>
@@ -425,3 +424,4 @@ export default function SEOMetaTagAnalyzer() {
     </>
   );
 }
+
