@@ -29,6 +29,7 @@ export const pathnames = {
   // tests --------
   '/data-table-generator': '/data-table-generator',
   '/user-agent': '/user-agent',
+  '/counter': '/counter',
 
   
   // '/online-flowchart-maker': '/online-flowchart-maker',

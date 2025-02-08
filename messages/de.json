@@ -39,6 +39,10 @@
       "name": "Wortzähler",
       "description": "Zählen Sie Wörter, Zeichen und Leerzeichen."
     },
+    "Counter": {
+      "name": "Zähler",
+      "description": "Zählt Zahlen."
+    },
     "ColorPicker": {
       "name": "Farbwähler",
       "description": "Wählen und verwalten Sie Farben."

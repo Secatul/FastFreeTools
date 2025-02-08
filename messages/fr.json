@@ -39,6 +39,10 @@
       "name": "Compteur de Mots",
       "description": "Comptez les mots, les caractères et les espaces."
     },
+    "Counter": {
+      "name": "Compteur",
+      "description": "Compte les nombres."
+    },
     "ColorPicker": {
       "name": "Sélecteur de Couleur",
       "description": "Sélectionnez et gérez les couleurs."

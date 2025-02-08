@@ -109,6 +109,13 @@ export default function Page() {
       description: t("SEOMetaTagAnalyzer.description"),
       categories: ["Text_Tools", "Utility"],
     },
+    {
+      name: t("Counter.name"),
+      route: `/${locale}/counter`,
+      icon: "🌐",
+      description: t("Counter.description"),
+      categories: ["Utility"],
+    },
 
     // {
     //   name: t("ColorPicker.name"),

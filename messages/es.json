@@ -39,6 +39,10 @@
       "name": "Contador de Palabras",
       "description": "Cuenta palabras, caracteres y espacios."
     },
+    "Counter": {
+      "name": "Contador",
+      "description": "Cuenta números."
+    },
     "ColorPicker": {
       "name": "Selector de Color",
       "description": "Selecciona y administra colores."

@@ -51,6 +51,10 @@
       "name": "Case Converter",
       "description": "Convert text between various cases."
     },
+    "Counter": {
+      "name": "Counter",
+      "description": "Count numbers."
+    },
     "TextTransformer": {
       "name": "Text Transformer",
       "description": "Reverse the order of characters in text."
