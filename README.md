@@ -53,6 +53,17 @@ Cada ferramenta possui sua própria interface com:
 
 ---
 
+## 🌍 Internacionalização
+
+O projeto conta com suporte a múltiplos idiomas utilizando **next-intl**, permitindo:
+
+- 🌐 Rotas internacionalizadas (`/en`, `/pt-br`, `/es`, `/fr`, `/de` etc.)
+- 🔄 Troca de idioma dinâmica
+- 📂 Estrutura organizada de traduções
+- 🧩 Suporte completo em todas as ferramentas
+
+---
+
 ## 📸 Preview
 ![Preview](https://raw.githubusercontent.com/Secatul/FastFreeTools/main/public/fastfreetools-preview.png)
 
